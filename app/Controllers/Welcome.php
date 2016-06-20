@@ -48,26 +48,28 @@ class Welcome extends Controller
     }
 
     /**
-     * Define Index page title and load template files.
+     * Create and return a proper View instance.
      */
     public function index()
     {
-        $data['title'] = __('welcomeText');
-        $data['welcomeMessage'] = __('welcomeMessage');
+        $data['title'] = __('Welcome');
+        $data['welcomeMessage'] = __('Hello, welcome from the welcome controller! <br/>
+This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>');
 
-        View::renderTemplate('header', $data);
-        View::render('Welcome/Welcome', $data);
-        View::renderTemplate('footer', $data);
+        return View::make('Welcome/SubPage', $data);
     }
 
     /**
-     * The New Style Rendering - create and return a proper View instance.
+     * Create and return a proper View instance.
      */
     public function subPage()
     {
+        $message = __('Hello, welcome from the welcome controller and subpage method! <br/>
+This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>');
+
         return View::make('Welcome/SubPage')
-            ->shares('title', __('subpageText'))
-            ->withWelcomeMessage(__('subpageMessage'));
+            ->shares('title', __('Subpage'))
+            ->withWelcomeMessage($message);
     }
 
 }

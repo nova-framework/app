@@ -6,5 +6,4 @@ return array (
   'Profile' => 'Bruger konto',
   'Sign In' => '',
   'Sign Up' => '',
-  'User Login' => '',
 );

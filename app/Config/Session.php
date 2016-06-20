@@ -6,7 +6,7 @@
  * @version 3.0
  */
 
-use Core\Config;
+use Nova\Core\Config;
 
 
 Config::set('session', array(

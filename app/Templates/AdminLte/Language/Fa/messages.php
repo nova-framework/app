@@ -6,5 +6,4 @@ return array (
   'Profile' => 'پروفایل',
   'Sign In' => '',
   'Sign Up' => '',
-  'User Login' => 'ورود کاربر',
 );
