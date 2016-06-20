@@ -1,8 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use Nova\Core\View;
-use Nova\Core\Controller;
+use Nova\Routing\Controller;
 
 use App\Models\User;
 
@@ -16,6 +15,7 @@ use Mailer;
 use Redirect;
 use Request;
 use Session;
+use View;
 use DB;
 
 

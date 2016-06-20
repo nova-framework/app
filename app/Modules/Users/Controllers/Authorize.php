@@ -8,7 +8,6 @@
 
 namespace App\Modules\Users\Controllers;
 
-use Nova\Core\View;
 use Nova\Helpers\Url;
 use Nova\Helpers\ReCaptcha;
 
@@ -21,6 +20,7 @@ use Password;
 use Redirect;
 use Response;
 use Session;
+use View;
 
 
 class Authorize extends Controller

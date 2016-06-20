@@ -8,11 +8,11 @@
 
 namespace App\Core;
 
-use Nova\Core\Controller as BaseController;
-use Nova\Core\View;
 use Nova\Helpers\Url;
+use Nova\Routing\Controller as BaseController;
 
 use Session;
+use View;
 
 
 class Controller extends BaseController

@@ -8,13 +8,13 @@
 
 namespace App\Controllers;
 
-use Nova\Core\View;
-use Nova\Core\Controller;
+use Nova\Routing\Controller;
 
 use Config;
 use Language;
 use Router;
 use Session;
+use View;
 
 /**
  * Sample controller showing a construct and 2 methods and their typical usage.

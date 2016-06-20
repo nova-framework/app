@@ -9,7 +9,6 @@
 namespace App\Modules\Users\Controllers\Admin;
 
 use Nova\Core\Config;
-use Nova\Core\View;
 use Nova\Helpers\Url;
 use Nova\Helpers\ReCaptcha;
 
@@ -25,6 +24,7 @@ use Input;
 use Redirect;
 use Session;
 use Validator;
+use View;
 
 
 class Roles extends Controller

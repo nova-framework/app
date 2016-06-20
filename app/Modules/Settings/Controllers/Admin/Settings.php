@@ -8,7 +8,6 @@
 
 namespace App\Modules\Settings\Controllers\Admin;
 
-use Nova\Core\View;
 use Nova\Helpers\Url;
 use Nova\Helpers\Csrf;
 
@@ -22,6 +21,7 @@ use Session;
 use Redirect;
 use Request;
 use Validator;
+use View;
 
 
 class Settings extends Controller

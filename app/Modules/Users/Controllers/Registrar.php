@@ -8,7 +8,6 @@
 
 namespace App\Modules\Users\Controllers;
 
-use Nova\Core\View;
 use Nova\Helpers\Url;
 use Nova\Helpers\ReCaptcha;
 
@@ -24,6 +23,7 @@ use Mailer;
 use Redirect;
 use Session;
 use Validator;
+use View;
 
 
 class Registrar extends Controller

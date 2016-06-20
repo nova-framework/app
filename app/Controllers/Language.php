@@ -2,7 +2,7 @@
 namespace App\Controllers;
 
 use Nova\Core\Config;
-use Nova\Core\Controller;
+use Nova\Routing\Controller;
 
 use Cookie;
 use Redirect;

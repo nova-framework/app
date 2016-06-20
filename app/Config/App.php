@@ -94,6 +94,8 @@ Config::set('app', array(
         'Nova\Auth\Reminders\ReminderServiceProvider',
         'Nova\Session\SessionServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
+        'Nova\Template\TemplateServiceProvider',
+        'Nova\View\ViewServiceProvider',
     ),
 
     /**
@@ -155,5 +157,7 @@ Config::set('app', array(
         'Session'       => 'Nova\Support\Facades\Session',
         'Validator'     => 'Nova\Support\Facades\Validator',
         'Log'           => 'Nova\Support\Facades\Log',
+        'Template'      => 'Nova\Support\Facades\Template',
+        'View'          => 'Nova\Support\Facades\View',
     ),
 ));
