@@ -37,7 +37,7 @@ Config::set('app', array(
     /**
      * Website Name.
      */
-    'name' => 'Nova 3.0',
+    'name' => 'Nova 4.0-dev',
 
     /**
      * Enable multilingual support.
