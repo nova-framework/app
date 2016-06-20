@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 
-use Nova\Core\Config;
+use Nova\Config\Config;
 use Nova\Routing\Controller;
 
 use Cookie;

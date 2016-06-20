@@ -8,9 +8,9 @@
 
 namespace App\Modules\Users\Models;
 
-use Core\Config;
-use Auth\GenericUser;
-use Database\Model as BaseModel;
+use Nova\Config\Config;
+use Nova\Auth\GenericUser;
+use Nova\Database\Model as BaseModel;
 
 use App\Modules\Users\Models\Roles;
 

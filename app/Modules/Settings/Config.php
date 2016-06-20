@@ -7,7 +7,7 @@
  * @version 3.0
  */
 
-use Core\Config;
+use Nova\Config\Config;
 
 /**
  * Configuration constants and options.

@@ -8,7 +8,7 @@
 
 namespace App\Modules\Users\Controllers\Admin;
 
-use Nova\Core\Config;
+use Nova\Config\Config;
 use Nova\Helpers\Url;
 use Nova\Helpers\ReCaptcha;
 

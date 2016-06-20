@@ -13,7 +13,7 @@
 require ROOTDIR .'vendor/autoload.php';
 
 // The used Classes.
-use Nova\Core\Config;
+use Nova\Config\Config;
 use Nova\Config\Repository as ConfigRepository;
 use Nova\Foundation\AliasLoader;
 use Nova\Foundation\Application;
