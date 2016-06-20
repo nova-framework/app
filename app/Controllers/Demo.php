@@ -12,7 +12,7 @@ use Event;
 use Hash;
 use Validator;
 use Input;
-use Mailer;
+use Mail;
 use Redirect;
 use Request;
 use Session;
@@ -175,9 +175,9 @@ class Demo extends Controller
             'content' => __('This is a test!!!'),
         );
 
-        Mailer::pretend(true);
+        Mail::pretend(true);
 
-        Mailer::send('Emails/Welcome', $data, function($message)
+        Mail::send('Emails/Welcome', $data, function($message)
         {
             $message->from('admin@novaframework', 'Administrator')
                 ->to('john@novaframework', 'John Smith')

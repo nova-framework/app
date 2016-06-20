@@ -147,7 +147,7 @@ Config::set('app', array(
         'Hash'          => 'Nova\Support\Facades\Hash',
         'Input'         => 'Nova\Support\Facades\Input',
         'Language'      => 'Nova\Support\Facades\Language',
-        'Mailer'        => 'Nova\Support\Facades\Mailer',
+        'Mail'          => 'Nova\Support\Facades\Mail',
         'Paginator'     => 'Nova\Support\Facades\Paginator',
         'Password'      => 'Nova\Support\Facades\Password',
         'Redirect'      => 'Nova\Support\Facades\Redirect',
