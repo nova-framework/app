@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Controllers;
 
-use Nova\Config\Config;
 use Nova\Routing\Controller;
 
+use Config;
 use Cookie;
 use Redirect;
 use Session;
