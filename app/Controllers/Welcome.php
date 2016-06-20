@@ -87,7 +87,6 @@ This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>');
             $code = Config::get('app.locale');
         }
 
-        return Language::getInstance('app', $this->code)
-            ->translate($message, $params);
+        return Language::instance('app', $this->code)->translate($message, $params);
     }
 }

@@ -88,6 +88,7 @@ Config::set('app', array(
         'Nova\Encryption\EncryptionServiceProvider',
         'Nova\Filesystem\FilesystemServiceProvider',
         'Nova\Hashing\HashServiceProvider',
+        'Nova\Language\LanguageServiceProvider',
         'Nova\Log\LogServiceProvider',
         'Nova\Mail\MailServiceProvider',
         'Nova\Pagination\PaginationServiceProvider',
