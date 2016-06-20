@@ -12,6 +12,12 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/nova-framework/system"
+        }
+    ],
     "require": {
         "php": ">=5.5.0",
         "nova-framework/system": "master",
