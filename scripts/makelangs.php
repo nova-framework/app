@@ -22,7 +22,6 @@ $languages = array(
 );
 
 $workPaths = array(
-    'system',
     'app'
 );
 

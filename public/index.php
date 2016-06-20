@@ -13,10 +13,12 @@ if (! file_exists(ROOTDIR .'vendor/autoload.php')) {
     echo "<h1>Please install via composer.json</h1>";
     echo "<p>Install Composer instructions: <a href='https://getcomposer.org/doc/00-intro.md#globally'>https://getcomposer.org/doc/00-intro.md#globally</a></p>";
     echo "<p>Once composer is installed, navigate to the working directory in your terminal/command prompt and enter 'composer install'</p>";
+
     exit;
 }
 
-define('SYSTEMDIR', realpath(__DIR__.'/../vendor/nova-framework/system/') .DS);
+/** Define the absolute path for the Vendor-based System directory. */
+define('SYSTEMDIR', ROOTDIR .'vendor' .DS .'nova-framework' .DS .'system' .DS);
 
 /*
  *---------------------------------------------------------------
