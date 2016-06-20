@@ -6,8 +6,6 @@
  * @version 3.0
  */
 
-use Helpers\Hooks;
-
 
 /** Define static routes. */
 
@@ -38,10 +36,4 @@ Router::any('language/(:any)', array(
     'uses'    => 'App\Controllers\Language@change'
 ));
 /** End default Routes */
-
-/** Module Routes. */
-$hooks = Hooks::get();
-
-$hooks->run('routes');
-/** End Module Routes. */
 

@@ -6,9 +6,8 @@
  * @version 3.0
  */
 
-use Core\View;
-use Helpers\Hooks;
-use Forensics\Console;
+use Nova\Core\View;
+use Nova\Forensics\Console;
 
 
 /** Define Events. */
@@ -23,15 +22,6 @@ Event::listen('test', function($data) {
 
 // Add a Listener Closure to the Event 'framework.controller.executing'.
 Event::listen('framework.controller.executing', function($instance, $method, $params) {
-    // Run the Hooks associated to the Views.
-    $hooks = Hooks::get();
-
-    foreach (array('afterBody', 'css', 'js', 'meta', 'footer') as $hook) {
-        $result = $hooks->run($hook);
-
-        // Share the result into Views.
-        View::share($hook, $result);
-    }
 });
 
 // Add a Listener Closure to the Event 'nova.framework.booting'.

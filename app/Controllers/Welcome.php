@@ -8,8 +8,8 @@
 
 namespace App\Controllers;
 
-use Core\View;
-use Core\Controller;
+use Nova\Core\View;
+use Nova\Core\Controller;
 
 use Language;
 use Router;
@@ -43,9 +43,6 @@ class Welcome extends Controller
             $this->code = $language;
         }
 
-        // Load the Language file.
-        $this->language->load('Welcome', $this->code);
-
         // Leave to parent's method the Execution Flow decisions.
         return parent::before();
     }
@@ -55,8 +52,8 @@ class Welcome extends Controller
      */
     public function index()
     {
-        $data['title'] = $this->language->get('welcomeText', $this->code);
-        $data['welcomeMessage'] = $this->language->get('welcomeMessage', $this->code);
+        $data['title'] = __('welcomeText');
+        $data['welcomeMessage'] = __('welcomeMessage');
 
         View::renderTemplate('header', $data);
         View::render('Welcome/Welcome', $data);
@@ -69,16 +66,8 @@ class Welcome extends Controller
     public function subPage()
     {
         return View::make('Welcome/SubPage')
-            ->shares('title', $this->trans('subpageText'))
-            ->withWelcomeMessage($this->trans('subpageMessage'));
+            ->shares('title', __('subpageText'))
+            ->withWelcomeMessage(__('subpageMessage'));
     }
 
-    /**
-     * Return a translated string.
-     * @return string
-     */
-    protected function trans($str, $code = LANGUAGE_CODE)
-    {
-        return $this->language->get($str, $this->code);
-    }
 }

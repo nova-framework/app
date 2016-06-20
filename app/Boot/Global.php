@@ -10,22 +10,18 @@ Log::useFiles(storage_path() .'Logs' .DS .'error.log');
 // Application Error Handler
 //--------------------------------------------------------------------------
 
-use Exception\RedirectToException;
 
 App::error(function(Exception $exception, $code)
 {
-    // Do not log the Redirect Exceptions.
-    if (! $exception instanceof RedirectToException) {
-        Log::error($exception);
-    }
+    Log::error($exception);
 });
 
 //--------------------------------------------------------------------------
 // Try To Register Again The Config Manager
 //--------------------------------------------------------------------------
 
-use Config\Repository as ConfigRepository;
-use Support\Facades\Facade;
+use Nova\Config\Repository as ConfigRepository;
+use Nova\Support\Facades\Facade;
 
 if(CONFIG_STORE == 'database') {
     // Get the Database Connection instance.
@@ -45,14 +41,6 @@ if(CONFIG_STORE == 'database') {
 } else if(CONFIG_STORE != 'files') {
     throw new \InvalidArgumentException('Invalid Config Store type.');
 }
-
-//--------------------------------------------------------------------------
-// Start the Legacy Session
-//--------------------------------------------------------------------------
-
-use Helpers\Session as LegacySession;
-
-LegacySession::init();
 
 //--------------------------------------------------------------------------
 // Boot Stage Customization

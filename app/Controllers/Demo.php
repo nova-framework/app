@@ -1,24 +1,21 @@
 <?php
 namespace App\Controllers;
 
-use Core\View;
-use Core\Controller;
+use Nova\Core\View;
+use Nova\Core\Controller;
 
-use Helpers\FastCache;
-use Helpers\Password;
-use Helpers\Url;
+use App\Models\User;
 
 use App;
+use Cache;
 use Event;
+use Hash;
 use Validator;
 use Input;
 use Mailer;
 use Redirect;
 use Request;
 use Session;
-
-use App\Models\User;
-
 use DB;
 
 
@@ -48,7 +45,7 @@ class Demo extends Controller
     {
         $content = '';
 
-        $content .= '<p><b>' .__('Password:') .'</b> : <code>'. Password::make($password) .'</code></p>';
+        $content .= '<p><b>' .__('Password:') .'</b> : <code>'. Hash::make($password) .'</code></p>';
 
         $content .= '<p><b>' .__('Timestamp:') .'</b> : <code>'.time() .'<b></code>';
 
@@ -270,7 +267,7 @@ class Demo extends Controller
     public function cache()
     {
 
-        $cache = FastCache::getInstance();
+        $cache = Cache::instance();
 
         $key = "test_page";
 

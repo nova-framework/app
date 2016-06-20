@@ -1,9 +1,8 @@
 <?php
 namespace App\Controllers;
 
-use Core\Config;
-use Core\Controller;
-use Helpers\Url;
+use Nova\Core\Config;
+use Nova\Core\Controller;
 
 use Cookie;
 use Redirect;
