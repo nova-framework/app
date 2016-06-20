@@ -2,6 +2,12 @@
 
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 
+/** Define the absolute paths for configured directories. */
+
+define('APPDIR', realpath(__DIR__.'/../app/') .DS);
+define('PUBLICDIR', realpath(__DIR__) .DS);
+define('ROOTDIR', realpath(__DIR__.'/../') .DS);
+
 /** Composer installation check. */
 if (! file_exists(ROOTDIR .'vendor/autoload.php')) {
     echo "<h1>Please install via composer.json</h1>";
@@ -10,12 +16,7 @@ if (! file_exists(ROOTDIR .'vendor/autoload.php')) {
     exit;
 }
 
-/** Define the absolute paths for configured directories. */
-
-define('APPDIR', realpath(__DIR__.'/../app/') .DS);
 define('SYSTEMDIR', realpath(__DIR__.'/../vendor/nova-framework/system/') .DS);
-define('PUBLICDIR', realpath(__DIR__) .DS);
-define('ROOTDIR', realpath(__DIR__.'/../') .DS);
 
 /*
  *---------------------------------------------------------------
