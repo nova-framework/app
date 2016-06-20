@@ -8,10 +8,9 @@
 
 namespace App\Modules\Settings\Controllers\Admin;
 
-use Core\View;
-use Helpers\FastCache;
-use Helpers\Url;
-use Helpers\Csrf;
+use Nova\Core\View;
+use Nova\Helpers\Url;
+use Nova\Helpers\Csrf;
 
 use App\Core\Controller;
 use App\Modules\Users\Helpers\RoleVerifier as Authorize;

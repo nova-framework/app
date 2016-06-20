@@ -8,9 +8,9 @@
 
 namespace App\Modules\Users\Controllers;
 
-use Core\View;
-use Helpers\Url;
-use Helpers\ReCaptcha;
+use Nova\Core\View;
+use Nova\Helpers\Url;
+use Nova\Helpers\ReCaptcha;
 
 use App\Core\Controller;
 

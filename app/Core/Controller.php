@@ -8,9 +8,9 @@
 
 namespace App\Core;
 
-use Core\Controller as BaseController;
-use Core\View;
-use Helpers\Url;
+use Nova\Core\Controller as BaseController;
+use Nova\Core\View;
+use Nova\Helpers\Url;
 
 use Session;
 

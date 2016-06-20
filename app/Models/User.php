@@ -8,9 +8,9 @@
 
 namespace App\Models;
 
-use Auth\UserInterface;
-use Auth\Reminders\RemindableInterface;
-use Database\ORM\Model as BaseModel;
+use Nova\Auth\UserInterface;
+use Nova\Auth\Reminders\RemindableInterface;
+use Nova\Database\ORM\Model as BaseModel;
 
 
 class User extends BaseModel implements UserInterface, RemindableInterface

@@ -8,8 +8,7 @@
 
 namespace App\Modules\Dashboard\Controllers\Admin;
 
-use Core\View;
-use Helpers\Url;
+use Nova\Core\View;
 
 use App\Core\Controller;
 

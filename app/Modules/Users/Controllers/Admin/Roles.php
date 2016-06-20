@@ -8,10 +8,10 @@
 
 namespace App\Modules\Users\Controllers\Admin;
 
-use Core\Config;
-use Core\View;
-use Helpers\Url;
-use Helpers\ReCaptcha;
+use Nova\Core\Config;
+use Nova\Core\View;
+use Nova\Helpers\Url;
+use Nova\Helpers\ReCaptcha;
 
 use App\Core\Controller;
 use App\Models\Role;
