@@ -11,6 +11,7 @@ namespace App\Controllers;
 use Nova\Core\View;
 use Nova\Core\Controller;
 
+use Config;
 use Language;
 use Router;
 use Session;
@@ -52,10 +53,10 @@ class Welcome extends Controller
      */
     public function index()
     {
-        $data['welcomeMessage'] = __('Hello, welcome from the welcome controller! <br/>
+        $data['welcomeMessage'] = $this->trans('Hello, welcome from the welcome controller! <br/>
 This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>');
 
-        return View::make('Welcome/Welcome', $data)->shares('title', __('Welcome'));
+        return View::make('Welcome/Welcome', $data)->shares('title', $this->trans('Welcome'));
     }
 
     /**
@@ -63,12 +64,30 @@ This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>');
      */
     public function subPage()
     {
-        $message = __('Hello, welcome from the welcome controller and subpage method! <br/>
+        $title = $this->trans('Subpage');
+
+        $message = $this->trans('Hello, welcome from the welcome controller and subpage method! <br/>
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>');
 
         return View::make('Welcome/SubPage')
-            ->shares('title', __('Subpage'))
+            ->shares('title', $title)
             ->withWelcomeMessage($message);
     }
 
+    protected function trans($message, $args = null)
+    {
+        if (! $message) return '';
+
+        //
+        $params = (func_num_args() === 2) ? (array) $args : array_slice(func_get_args(), 1);
+
+        if(Config::get('app.multilingual', false)) {
+            $code = Router::getLanguage();
+        } else {
+            $code = Config::get('app.locale');
+        }
+
+        return Language::getInstance('app', $this->code)
+            ->translate($message, $params);
+    }
 }
