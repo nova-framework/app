@@ -108,9 +108,6 @@ Config::set('app', array(
      * The registered Class Aliases.
      */
     'aliases' => array(
-        // The Core Tools.
-        'Errors'        => 'Nova\Core\Error',
-
         // The Helpers.
         'Assets'        => 'Nova\Helpers\Assets',
         'Date'          => 'Nova\Helpers\Date',
