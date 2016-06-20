@@ -1,6 +1,6 @@
 ![Nova Framework](http://novaframework.com/app/templates/publicthemes/nova/images/nova.png)
 
-# Nova Framework
+# Nova Framework 4.0-dev
 
 [![Total Downloads](https://img.shields.io/packagist/dt/nova-framework/framework.svg)](https://packagist.org/packages/nova-framework/framework)
 [![Dependency Status](https://www.versioneye.com/user/projects/554367f738331321e2000005/badge.svg)](https://www.versioneye.com/user/projects/554367f738331321e2000005)
