@@ -36,5 +36,11 @@ define('SYSTEMDIR', ROOTDIR .'vendor' .DS .'nova-framework' .DS .'system' .DS);
  */
 define('ENVIRONMENT', 'development');
 
-/** Boot the Application. */
-require APPDIR .'Boot' .DS .'Start.php';
+/** Load The Composer Autoloader */
+require ROOTDIR .'vendor/autoload.php';
+
+/** Bootstrap the Framework and load the Application. */
+$app = require_once APPDIR .'Boot' .DS .'Start.php';
+
+/** Run the Application */
+$app->run();

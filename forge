@@ -1,0 +1,46 @@
+#!/usr/bin/env php
+<?php
+
+defined('DS') || define('DS', DIRECTORY_SEPARATOR);
+
+/** Define the absolute paths for configured directories. */
+define('APPDIR', realpath(__DIR__.'/app/') .DS);
+define('PUBLICDIR', realpath(__DIR__ .'/public/') .DS);
+define('ROOTDIR', realpath(__DIR__) .DS);
+
+/** Define the absolute path for the Vendor-based System directory. */
+define('SYSTEMDIR', ROOTDIR .str_replace('/', DS, 'vendor/nova-framework/system/'));
+
+//--------------------------------------------------------------------------
+// Register The Auto Loader
+//--------------------------------------------------------------------------
+
+require __DIR__ .str_replace('/', DS, '/vendor/autoload.php');
+
+//--------------------------------------------------------------------------
+// Turn On The Lights
+//--------------------------------------------------------------------------
+
+$app = require_once __DIR__ .str_replace('/', DS, '/app/Boot/Start.php');
+
+//--------------------------------------------------------------------------
+// Load The Forge Console Application
+//--------------------------------------------------------------------------
+
+$app->setRequestForConsoleEnvironment();
+
+$forge = Nova\Console\Application::start($app);
+
+//--------------------------------------------------------------------------
+// Run The Forge Application
+//--------------------------------------------------------------------------
+
+$status = $forge->run();
+
+//--------------------------------------------------------------------------
+// Shutdown The Application
+//--------------------------------------------------------------------------
+
+$app->shutdown();
+
+exit($status);
