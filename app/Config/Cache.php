@@ -23,7 +23,7 @@ Config::set('cache', array(
      * Keep it blank '', it will automatic setup for you
      */
     'path'        =>  STORAGE_PATH .'Cache' , // default path for files
-    'securityKey' =>  '',                     // default will good. It will create a path by PATH/securityKey
+    'securityKey' =>  'default',              // default will good. It will create a path by PATH/securityKey
 
     /*
      * FallBack Driver
