@@ -80,7 +80,7 @@ Config::set('app', array(
      * The registered Service Providers.
      */
     'providers' => array(
-        // The Forge only Providers.
+        // The Forge Console Providers.
         'Nova\Foundation\Providers\ForgeServiceProvider',
         'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
         'Nova\Routing\ControllerServiceProvider',
