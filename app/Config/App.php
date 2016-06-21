@@ -82,6 +82,7 @@ Config::set('app', array(
     'providers' => array(
         'Nova\Auth\AuthServiceProvider',
         'Nova\Cache\CacheServiceProvider',
+        'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
         'Nova\Routing\RoutingServiceProvider',
         'Nova\Cookie\CookieServiceProvider',
         'Nova\Database\DatabaseServiceProvider',
