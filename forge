@@ -1,6 +1,10 @@
 #!/usr/bin/env php
 <?php
 
+//--------------------------------------------------------------------------
+// Define The Application Paths
+//--------------------------------------------------------------------------
+
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 
 /** Define the absolute paths for configured directories. */
@@ -12,7 +16,7 @@ define('ROOTDIR', realpath(__DIR__) .DS);
 define('SYSTEMDIR', ROOTDIR .str_replace('/', DS, 'vendor/nova-framework/system/'));
 
 //--------------------------------------------------------------------------
-// APPLICATION ENVIRONMENT
+// Application Environment
 //--------------------------------------------------------------------------
 
 define('ENVIRONMENT', 'development');
