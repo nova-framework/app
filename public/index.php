@@ -18,7 +18,7 @@ if (! file_exists(ROOTDIR .'vendor/autoload.php')) {
 }
 
 /** Define the absolute path for the Vendor-based System directory. */
-define('SYSTEMDIR', ROOTDIR .'vendor' .DS .'nova-framework' .DS .'system' .DS);
+define('SYSTEMDIR', ROOTDIR .str_replace('/', DS, 'vendor/nova-framework/system/'));
 
 /*
  *---------------------------------------------------------------
@@ -39,8 +39,8 @@ define('ENVIRONMENT', 'development');
 /** Load The Composer Autoloader */
 require ROOTDIR .'vendor/autoload.php';
 
-/** Bootstrap the Framework and load the Application. */
+/** Bootstrap the Framework and retrieve the Application. */
 $app = require_once APPDIR .'Boot' .DS .'Start.php';
 
-/** Run the Application */
+/** Run the Application. */
 $app->run();
