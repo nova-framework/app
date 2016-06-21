@@ -80,10 +80,14 @@ Config::set('app', array(
      * The registered Service Providers.
      */
     'providers' => array(
+        // The Forge Console Providers.
         'Nova\Foundation\Providers\ForgeServiceProvider',
+        'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
+        'Nova\Routing\ControllerServiceProvider',
+
+        // The Application Providers.
         'Nova\Auth\AuthServiceProvider',
         'Nova\Cache\CacheServiceProvider',
-        'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
         'Nova\Routing\RoutingServiceProvider',
         'Nova\Cookie\CookieServiceProvider',
         'Nova\Database\DatabaseServiceProvider',
