@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <title><?= $title .' - ' .Config::get('app.name', SITETITLE); ?></title>
 <?php
-echo $meta; // Place to pass data / plugable hook zone
+echo isset($meta) ? $meta : ''; // Place to pass data / plugable hook zone
 
 Assets::css([
     template_url('dist/css/bootstrap.min.css', 'Default'),
