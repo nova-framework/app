@@ -39,7 +39,7 @@ define('ENVIRONMENT', 'development');
 /** Load The Composer Autoloader */
 require ROOTDIR .'vendor/autoload.php';
 
-/** Bootstrap the Framework and retrieve the Application. */
+/** Bootstrap the Framework and get the Application instance. */
 $app = require_once APPDIR .'Boot' .DS .'Start.php';
 
 /** Run the Application. */
