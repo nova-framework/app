@@ -10,28 +10,28 @@
 /** Define static routes. */
 
 // Default Routing
-Router::any('', 'App\Controllers\Welcome@index');
-Router::any('subpage', 'App\Controllers\Welcome@subPage');
+Route::any('', 'App\Controllers\Welcome@index');
+Route::any('subpage', 'App\Controllers\Welcome@subPage');
 
 // Demo Routes
-Router::any('demo/database',        'App\Controllers\Demo@database');
-Router::any('demo/password/(:any)', 'App\Controllers\Demo@password');
-Router::any('demo/events',          'App\Controllers\Demo@events');
-Router::any('demo/mailer',          'App\Controllers\Demo@mailer');
-Router::any('demo/session',         'App\Controllers\Demo@session');
-Router::any('demo/validate',        'App\Controllers\Demo@validate');
-Router::any('demo/paginate',        'App\Controllers\Demo@paginate');
-Router::any('demo/cache',           'App\Controllers\Demo@cache');
+Route::any('demo/database',        'App\Controllers\Demo@database');
+Route::any('demo/password/(:any)', 'App\Controllers\Demo@password');
+Route::any('demo/events',          'App\Controllers\Demo@events');
+Route::any('demo/mailer',          'App\Controllers\Demo@mailer');
+Route::any('demo/session',         'App\Controllers\Demo@session');
+Route::any('demo/validate',        'App\Controllers\Demo@validate');
+Route::any('demo/paginate',        'App\Controllers\Demo@paginate');
+Route::any('demo/cache',           'App\Controllers\Demo@cache');
 
-Router::any('demo/request(/(:any)(/(:any)(/(:all))))', 'App\Controllers\Demo@request');
+Route::any('demo/request(/(:any)(/(:any)(/(:all))))', 'App\Controllers\Demo@request');
 
-Router::any('demo/test/(:any)(/(:any)(/(:any)(/(:all))))', array(
+Route::any('demo/test/(:any)(/(:any)(/(:any)(/(:all))))', array(
     'filters' => 'test',
     'uses'    => 'App\Controllers\Demo@test'
 ));
 
 // The Framework's Language Changer.
-Router::any('language/(:any)', array(
+Route::any('language/(:any)', array(
     'filters' => 'referer',
     'uses'    => 'App\Controllers\Language@change'
 ));

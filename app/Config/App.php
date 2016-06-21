@@ -151,7 +151,6 @@ Config::set('app', array(
         'Request'       => 'Nova\Support\Facades\Request',
         'Response'      => 'Nova\Support\Facades\Response',
         'Route'         => 'Nova\Support\Facades\Route',
-        'Router'        => 'Nova\Support\Facades\Router',
         'Session'       => 'Nova\Support\Facades\Session',
         'Validator'     => 'Nova\Support\Facades\Validator',
         'Log'           => 'Nova\Support\Facades\Log',

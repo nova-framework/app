@@ -10,7 +10,7 @@
 /** Define static routes. */
 
 // The Adminstrations's Dashboard.
-Router::get('admin(/dashboard)', array(
+Route::get('admin(/dashboard)', array(
     'filters' => 'auth',
     'uses' => 'App\Modules\Dashboard\Controllers\Admin\Dashboard@index'
 ));

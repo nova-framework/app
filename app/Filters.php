@@ -10,12 +10,12 @@
 /** Define Route Filters. */
 
 // A Testing Filter which dump the matched Route.
-Router::filter('test', function($route) {
+Route::filter('test', function($route) {
     echo '<pre style="margin: 10px;">' .var_export($route, true) .'</pre>';
 });
 
 // A simple CSRF Filter.
-Router::filter('csrf', function($route) {
+Route::filter('csrf', function($route) {
     $token = Request::input('csrfToken');
 
     $method = Request::method();
@@ -27,7 +27,7 @@ Router::filter('csrf', function($route) {
 });
 
 // Referer checking Filter.
-Router::filter('referer', function($route) {
+Route::filter('referer', function($route) {
     // Check if the visitor come to this Route from another site.
     $referer = Request::header('referer');
 
@@ -38,7 +38,7 @@ Router::filter('referer', function($route) {
 });
 
 // Authentication Filters.
-Router::filter('auth', function($route) {
+Route::filter('auth', function($route) {
     if (! Auth::check()) {
          // User is not logged in, redirect him to Login Page.
          return Redirect::to('login');
@@ -46,7 +46,7 @@ Router::filter('auth', function($route) {
 });
 
 // Role-based Authorization Filter.
-Router::filter('roles', function($route) {
+Route::filter('roles', function($route) {
     $action = $route->getAction();
 
     $roles = array_get($action, 'roles');
@@ -58,7 +58,7 @@ Router::filter('roles', function($route) {
     }
 });
 
-Router::filter('guest', function($route) {
+Route::filter('guest', function($route) {
     if (! Auth::guest()) {
         // User is authenticated, redirect him to Dashboard Page.
         return Redirect::to('admin/dashboard');

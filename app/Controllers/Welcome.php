@@ -12,7 +12,7 @@ use Nova\Routing\Controller;
 
 use Config;
 use Language;
-use Router;
+use Route;
 use Session;
 use View;
 
@@ -21,31 +21,12 @@ use View;
  */
 class Welcome extends Controller
 {
-    protected $code;
-
     /**
      * Call the parent construct
      */
     public function __construct()
     {
         parent::__construct();
-
-        // Setup the Controller's Language code.
-        $this->code = Language::code();
-    }
-
-    protected function before()
-    {
-        // Process the Multi-Language.
-        $language = Router::getLanguage();
-
-        // Adjust the Controller's Language.
-        if($language != $this->code) {
-            $this->code = $language;
-        }
-
-        // Leave to parent's method the Execution Flow decisions.
-        return parent::before();
     }
 
     /**
@@ -82,11 +63,11 @@ This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>');
         $params = (func_num_args() === 2) ? (array) $args : array_slice(func_get_args(), 1);
 
         if(Config::get('app.multilingual', false)) {
-            $code = Router::getLanguage();
+            $code = Route::getLanguage();
         } else {
             $code = Config::get('app.locale');
         }
 
-        return Language::instance('app', $this->code)->translate($message, $params);
+        return Language::instance('app', $code)->translate($message, $params);
     }
 }
