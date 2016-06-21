@@ -139,6 +139,7 @@ Config::set('app', array(
 
         // The Support Facades.
         'App'           => 'Nova\Support\Facades\App',
+        'Forge'         => 'Nova\Support\Facades\Forge',
         'Auth'          => 'Nova\Support\Facades\Auth',
         'Cache'         => 'Nova\Support\Facades\Cache',
         'Config'        => 'Nova\Support\Facades\Config',
