@@ -25,9 +25,24 @@
         "twbs/bootstrap": "^3.3"
     },
     "autoload": {
+        "classmap": [
+            "app/Database/Migrations",
+            "app/Database/Seeds"
+        ],
         "psr-4": {
             "App\\" : "app/"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "php forge optimize"
+        ],
+        "post-update-cmd": [
+            "php forge optimize"
+        ],
+        "post-create-project-cmd": [
+            "php forge key:generate"
+        ]
     },
     "prefer-stable": true,
     "minimum-stability": "dev"
