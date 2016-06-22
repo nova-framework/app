@@ -29,6 +29,11 @@
             "App\\" : "app/"
         }
     },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php forge key:generate"
+        ]
+     },
     "prefer-stable": true,
     "minimum-stability": "dev"
 }
