@@ -89,7 +89,7 @@ $opt_role     = ! empty($opt_role)     ? $opt_role     : $user->role_id;
                 </div>
             </div>
 
-            <input type="hidden" name="csrfToken" value="<?= $csrfToken; ?>" />
+            <input type="hidden" name="_token" value="<?= $csrfToken; ?>" />
             <input type="hidden" name="userId" value="<?= $user->id; ?>" />
 
             </form>

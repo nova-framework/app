@@ -16,7 +16,7 @@ Route::filter('test', function($route) {
 
 // A simple CSRF Filter.
 Route::filter('csrf', function($route) {
-    $token = Request::input('csrfToken');
+    $token = Request::input('_token');
 
     $method = Request::method();
 

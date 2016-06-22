@@ -80,7 +80,7 @@ $opt_role = Input::old('role');
                 </div>
             </div>
 
-            <input type="hidden" name="csrfToken" value="<?= $csrfToken; ?>" />
+            <input type="hidden" name="_token" value="<?= $csrfToken; ?>" />
 
             </form>
         </div>
