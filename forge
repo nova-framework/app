@@ -12,15 +12,6 @@ define('APPDIR', realpath(__DIR__.'/app/') .DS);
 define('PUBLICDIR', realpath(__DIR__ .'/public/') .DS);
 define('ROOTDIR', realpath(__DIR__) .DS);
 
-/** Define the absolute path for the Vendor-based System directory. */
-define('SYSTEMDIR', ROOTDIR .str_replace('/', DS, 'vendor/nova-framework/system/'));
-
-//--------------------------------------------------------------------------
-// Application Environment
-//--------------------------------------------------------------------------
-
-define('ENVIRONMENT', 'development');
-
 //--------------------------------------------------------------------------
 // Register The Auto Loader
 //--------------------------------------------------------------------------
