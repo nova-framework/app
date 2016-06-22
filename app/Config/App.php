@@ -99,6 +99,7 @@ Config::set('app', array(
         'Nova\Mail\MailServiceProvider',
         'Nova\Database\MigrationServiceProvider',
         'Nova\Pagination\PaginationServiceProvider',
+        'Nova\Redis\RedisServiceProvider',
         'Nova\Auth\Reminders\ReminderServiceProvider',
         'Nova\Database\SeedServiceProvider',
         'Nova\Session\SessionServiceProvider',
