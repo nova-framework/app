@@ -1,5 +1,8 @@
 <?php
 
+use Nova\Database\ORM\Model;
+
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -9,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Database\ORM\Model::unguard();
+        Model::unguard();
 
         // $this->call('UserTableSeeder');
     }
