@@ -19,7 +19,7 @@ use Auth;
 use Config;
 use Hash;
 use Input;
-use Mailer;
+use Mail;
 use Redirect;
 use Session;
 use Validator;
@@ -156,7 +156,7 @@ class Registrar extends Controller
         ));
 
         // Send the associated Activation E-mail.
-        Mailer::send('Emails/Auth/Activate', array('token' => $token), function($message) use ($user)
+        Mail::send('Emails/Auth/Activate', array('token' => $token), function($message) use ($user)
         {
             $subject = __d('users', 'Activate your Account!');
 
