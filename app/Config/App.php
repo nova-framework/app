@@ -140,6 +140,9 @@ Config::set('app', array(
         'Arr'           => 'Nova\Support\Arr',
         'Str'           => 'Nova\Support\Str',
 
+        // The Database Seeder.
+        'Seeder'        => 'Nova\Database\Seeder',
+
         // The Support Facades.
         'App'           => 'Nova\Support\Facades\App',
         'Forge'         => 'Nova\Support\Facades\Forge',
