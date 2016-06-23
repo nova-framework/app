@@ -6,6 +6,7 @@
  * @version 3.0
  */
 
+use Nova\Config\EnvironmentVariables;
 use Nova\Config\Config;
 use Nova\Config\Repository as ConfigRepository;
 use Nova\Foundation\AliasLoader;
@@ -112,6 +113,13 @@ $app->registerCoreContainerAliases();
 $app->startExceptionHandling();
 
 if ($env != 'testing') ini_set('display_errors', 'Off');
+
+//--------------------------------------------------------------------------
+// Register The Environment Variables
+//--------------------------------------------------------------------------
+
+with($envVariables = new EnvironmentVariables(
+        $app->getEnvironmentVariablesLoader()))->load($env);
 
 //--------------------------------------------------------------------------
 // Load The Configuration
