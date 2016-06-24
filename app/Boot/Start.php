@@ -133,12 +133,12 @@ with($envVariables = new EnvironmentVariables(
 //--------------------------------------------------------------------------
 
 // Load first the file constants file.
-$path = app_path() .'Config' .DS .'Constants.php';
+$path = app_path() .DS .'Config' .DS .'Constants.php';
 
 if (is_readable($path)) require $path;
 
 // Include all other files located on Config directory.
-foreach (glob(app_path() .'Config/*') as $path) {
+foreach (glob(app_path() .DS .'Config/*') as $path) {
     if (basename($path) == 'Constants.php') continue;
 
     if (is_readable($path)) require $path;
@@ -148,7 +148,7 @@ foreach (glob(app_path() .'Config/*') as $path) {
 $modules = Config::get('modules');
 
 foreach ($modules as $module) {
-    $path = app_path() .'Modules' .DS .$module .DS .'Config.php';
+    $path = app_path() .DS .'Modules' .DS .$module .DS .'Config.php';
 
     if (is_readable($path)) require $path;
 }
@@ -261,11 +261,11 @@ if(CONFIG_STORE == 'database') {
 // Load The Application Events
 //--------------------------------------------------------------------------
 
-require app_path() .'Events.php';
+require app_path() .DS .'Events.php';
 
 // Load the Events defined on Modules.
 foreach ($modules as $module) {
-    $path = app_path() .'Modules' .DS .$module .DS .'Events.php';
+    $path = app_path() .DS .'Modules' .DS .$module .DS .'Events.php';
 
     if (is_readable($path)) require $path;
 }
@@ -274,11 +274,11 @@ foreach ($modules as $module) {
 // Load The Application's Route Filters
 //--------------------------------------------------------------------------
 
-require app_path() .'Filters.php';
+require app_path() .DS .'Filters.php';
 
 // Load the Filters defined on Modules.
 foreach ($modules as $module) {
-    $path = app_path() .'Modules' .DS .$module .DS .'Filters.php';
+    $path = app_path() .DS .'Modules' .DS .$module .DS .'Filters.php';
 
     if (is_readable($path)) require $path;
 }
@@ -293,7 +293,7 @@ if (is_readable($routes)) require $routes;
 
 // Load the Routes defined on Modules.
 foreach ($modules as $module) {
-    $path = app_path() .'Modules' .DS .$module .DS .'Routes.php';
+    $path = app_path() .DS .'Modules' .DS .$module .DS .'Routes.php';
 
     if (is_readable($path)) require $path;
 }

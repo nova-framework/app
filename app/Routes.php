@@ -27,13 +27,13 @@ Route::any('demo/request/{param1?}/{param2?}/{slug?}','App\Controllers\Demo@requ
     ->where('slug', '.*');
 
 Route::any('demo/test/{param1}/{param2?}/{param3?}/{slug?}', array(
-    'filters' => 'test',
+    'before' => 'test',
     'uses'    => 'App\Controllers\Demo@test'
 ))->where('slug', '.*');
 
 // The Framework's Language Changer.
 Route::any('language/{language}', array(
-    'filters' => 'referer',
+    'before' => 'referer',
     'uses'    => 'App\Controllers\Language@change'
 ));
 /** End default Routes */
