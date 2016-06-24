@@ -99,6 +99,7 @@ Config::set('app', array(
         'Nova\Database\SeedServiceProvider',
         'Nova\Session\SessionServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
+        'Nova\Html\HtmlServiceProvider',
         'Nova\Template\TemplateServiceProvider',
         'Nova\View\ViewServiceProvider',
     ),
