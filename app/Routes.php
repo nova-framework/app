@@ -32,7 +32,7 @@ Route::any('demo/test/{param1}/{param2?}/{param3?}/{slug?}', array(
 ))->where(array('lang' => '[a-z]{2}', 'slug' => '.*'));
 
 // The Framework's Language Changer.
-Route::any('language/{language}', array(
+Route::any('language/{locale}', array(
     'before' => 'referer',
     'uses'    => 'App\Controllers\Language@change'
 ));
