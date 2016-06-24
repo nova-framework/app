@@ -34,10 +34,10 @@ class Welcome extends Controller
      */
     public function index()
     {
-        $data['welcomeMessage'] = $this->trans('Hello, welcome from the welcome controller! <br/>
+        $data['welcomeMessage'] = __('Hello, welcome from the welcome controller! <br/>
 This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>');
 
-        return View::make('Welcome/Welcome', $data)->shares('title', $this->trans('Welcome'));
+        return View::make('Welcome/Welcome', $data)->shares('title', __('Welcome'));
     }
 
     /**
@@ -45,29 +45,13 @@ This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>');
      */
     public function subPage()
     {
-        $title = $this->trans('Subpage');
+        $title = __('Subpage');
 
-        $message = $this->trans('Hello, welcome from the welcome controller and subpage method! <br/>
+        $message = __('Hello, welcome from the welcome controller and subpage method! <br/>
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>');
 
         return View::make('Welcome/SubPage')
             ->shares('title', $title)
             ->withWelcomeMessage($message);
-    }
-
-    protected function trans($message, $args = null)
-    {
-        if (! $message) return '';
-
-        //
-        $params = (func_num_args() === 2) ? (array) $args : array_slice(func_get_args(), 1);
-
-        if(Config::get('app.multilingual', false)) {
-            $code = Route::getLanguage();
-        } else {
-            $code = Config::get('app.locale');
-        }
-
-        return Language::instance('app', $code)->translate($message, $params);
     }
 }
