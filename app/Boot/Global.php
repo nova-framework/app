@@ -17,6 +17,17 @@ App::error(function(Exception $exception, $code)
 });
 
 //--------------------------------------------------------------------------
+// Application Missing Route Handler
+//--------------------------------------------------------------------------
+
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
+App::missing(function(NotFoundHttpException $exception)
+{
+     return Response::error(404);
+});
+
+//--------------------------------------------------------------------------
 // Boot Stage Customization
 //--------------------------------------------------------------------------
 
