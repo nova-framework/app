@@ -26,11 +26,14 @@ App::missing(function(NotFoundHttpException $exception)
 {
     $status = $exception->getStatusCode();
 
+    $headers = $exception->getHeaders();
+
+    // Create the themed Error Page Response.
     $view = Template::make('default')
         ->shares('title', 'Error ' .$status)
         ->nest('content', 'Error/' .$status);
 
-    return Response::make($view, $status, $exception->getHeaders());
+    return Response::make($view, $status, $headers);
 });
 
 //--------------------------------------------------------------------------
