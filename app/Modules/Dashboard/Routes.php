@@ -11,11 +11,11 @@
 
 // The Adminstrations's Dashboard.
 Route::get('admin', array(
-    'filters' => 'auth',
+    'before' => 'auth',
     'uses' => 'App\Modules\Dashboard\Controllers\Admin\Dashboard@index'
 ));
 
 Route::get('admin/dashboard', array(
-    'filters' => 'auth',
+    'before' => 'auth',
     'uses' => 'App\Modules\Dashboard\Controllers\Admin\Dashboard@index'
 ));

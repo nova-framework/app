@@ -11,7 +11,7 @@
 
 // The Adminstration Routes.
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Modules\Settings\Controllers\Admin'), function() {
-    Route::get( 'settings', array('filters' => 'auth',      'uses' => 'Settings@index'));
-    Route::post('settings', array('filters' => 'auth|csrf', 'uses' => 'Settings@store'));
+    Route::get( 'settings', array('before' => 'auth',      'uses' => 'Settings@index'));
+    Route::post('settings', array('before' => 'auth|csrf', 'uses' => 'Settings@store'));
 });
 
