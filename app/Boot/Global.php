@@ -24,7 +24,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 App::missing(function(NotFoundHttpException $exception)
 {
-     return Response::error(404);
+    $view = Template::make('default')
+        ->shares('title', 'Error ' .$exception->getStatusCode())
+        ->nest('content', 'Error/' .$exception->getStatusCode());
+
+    return Response::make($view, $exception->getStatusCode(), $exception->getHeaders());
 });
 
 //--------------------------------------------------------------------------
