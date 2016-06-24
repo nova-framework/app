@@ -37,7 +37,7 @@ Route::post('password/remind', array(
 ));
 
 // The Password Reset.
-Route::get('password/reset(/(:any))', array(
+Route::get('password/reset/{token?}', array(
     'before' => 'guest',
     'uses' => 'App\Modules\Users\Controllers\Authorize@reset'
 ));
@@ -58,7 +58,7 @@ Route::post('register', array(
     'uses' => 'App\Modules\Users\Controllers\Registrar@store'
 ));
 
-Route::get('register/verify/(:any)', array(
+Route::get('register/verify/{token}', array(
     'before' => 'guest',
     'uses' => 'App\Modules\Users\Controllers\Registrar@verify'
 ));
