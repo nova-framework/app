@@ -8,7 +8,6 @@
 
 namespace App\Modules\Users\Controllers;
 
-use Nova\Helpers\Url;
 use Nova\Helpers\ReCaptcha;
 
 use App\Core\Controller;
@@ -21,6 +20,7 @@ use Hash;
 use Input;
 use Mail;
 use Redirect;
+use Request;
 use Session;
 use Validator;
 use View;
@@ -39,7 +39,7 @@ class Registrar extends Controller
 
     protected function before()
     {
-        View::share('currentUri', Url::detectUri());
+        View::share('currentUri', Request::path());
 
         return parent::before();
     }

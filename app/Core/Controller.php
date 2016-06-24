@@ -11,6 +11,7 @@ namespace App\Core;
 use Nova\Helpers\Url;
 use Nova\Routing\Controller as BaseController;
 
+use Request;
 use Session;
 use View;
 
@@ -32,7 +33,7 @@ class Controller extends BaseController
         View::share('csrfToken', Session::token());
 
         // Calculate and share on Views  the URIs.
-        $uri = Url::detectUri();
+        $uri = Request::path();
 
         // Prepare the base URI.
         $parts = explode('/', trim($uri, '/'));

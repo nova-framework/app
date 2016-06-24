@@ -8,7 +8,6 @@
 
 namespace App\Modules\Users\Controllers;
 
-use Nova\Helpers\Url;
 use Nova\Helpers\ReCaptcha;
 
 use App\Core\Controller;
@@ -18,6 +17,7 @@ use Hash;
 use Input;
 use Password;
 use Redirect;
+use Request;
 use Response;
 use Session;
 use View;
@@ -38,7 +38,7 @@ class Authorize extends Controller
 
     protected function before()
     {
-        View::share('currentUri', Url::detectUri());
+        View::share('currentUri', Request::path());
 
         return parent::before();
     }
