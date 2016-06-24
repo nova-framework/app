@@ -20,18 +20,7 @@ Event::listen('test', function($data) {
     return '<pre>Closure : ' .var_export($data, true) .'</pre>';
 });
 
-// Add a Listener Closure to the Event 'framework.controller.executing'.
-Event::listen('framework.controller.executing', function($instance, $method, $params) {
-});
-
 // Add a Listener Closure to the Event 'nova.framework.booting'.
 Event::listen('nova.framework.booting', function() {
     Console::logSpeed("Nova Framework booting");
-});
-
-// Add a Listener Closure to the Event 'framework.controller.executing'.
-Event::listen('framework.controller.executing', function($instance, $method, $params) {
-    $className = get_class($instance);
-
-    Console::logSpeed("Executing '$className@$method'");
 });

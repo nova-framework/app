@@ -61,7 +61,9 @@ class ContentGuard implements HttpKernelInterface
         $response = $this->app->handle($request, $type, $catch);
 
         // Minify the Response's Content.
-        $this->processContent($response);
+        if ($response instanceof Response) {
+            $this->processContent($response);
+        }
 
         return $response;
     }
@@ -74,10 +76,6 @@ class ContentGuard implements HttpKernelInterface
      */
     protected function processContent(SymfonyResponse $response)
     {
-        if (! $response instanceof Response) {
-            return;
-        }
-
         $content = $response->getContent();
 
         if($this->debug) {
