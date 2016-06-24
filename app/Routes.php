@@ -29,7 +29,7 @@ Route::any('demo/request/{param1?}/{param2?}/{slug?}','App\Controllers\Demo@requ
 Route::any('demo/test/{param1}/{param2?}/{param3?}/{slug?}', array(
     'before' => 'test',
     'uses'    => 'App\Controllers\Demo@test'
-))->where('slug', '.*');
+))->where(array('lang' => '[a-z]{2}', 'slug' => '.*'));
 
 // The Framework's Language Changer.
 Route::any('language/{language}', array(

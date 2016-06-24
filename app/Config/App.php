@@ -126,7 +126,6 @@ Config::set('app', array(
         'SimpleCurl'    => 'Nova\Helpers\SimpleCurl',
         'TableBuilder'  => 'Nova\Helpers\TableBuilder',
         'Tags'          => 'Nova\Helpers\Tags',
-        'Url'           => 'Nova\Helpers\Url',
 
         // The Forensics Console.
         'Console'       => 'Nova\Forensics\Console',
@@ -164,6 +163,7 @@ Config::set('app', array(
         'Session'       => 'Nova\Support\Facades\Session',
         'Validator'     => 'Nova\Support\Facades\Validator',
         'Log'           => 'Nova\Support\Facades\Log',
+        'URL'           => 'Nova\Support\Facades\URL',
         'Template'      => 'Nova\Support\Facades\Template',
         'View'          => 'Nova\Support\Facades\View',
     ),
