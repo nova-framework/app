@@ -57,6 +57,9 @@ class Demo extends Controller
 
     public function test($param1 = '', $param2 = '', $param3 = '', $param4 = '')
     {
+        $content = '<pre>' .var_export($this->getParams(), true).'</pre>';
+
+        //
         $params = array(
             'param1' => $param1,
             'param2' => $param2,
@@ -64,7 +67,7 @@ class Demo extends Controller
             'param4' => $param4
         );
 
-        $content = '<pre>' .var_export($params, true) .'</pre>';
+        $content .= '<pre>' .var_export($params, true) .'</pre>';
 
         //
         $model = new App\Modules\Users\Models\Users();
