@@ -11,9 +11,15 @@ Log::useFiles(storage_path() .DS .'Logs' .DS .'error.log');
 //--------------------------------------------------------------------------
 
 
-App::error(function(Exception $exception, $code)
+App::error(function(Exception $exception, $code, $fromConsole)
 {
     Log::error($exception);
+
+    if ($fromConsole) {
+        return 'Error ' .$code .': ' .$e->getMessage()."\n";
+    }
+
+    //return '<h1>Error ' .$code .'</h1><p>' .$e->getMessage() .'</p>';
 });
 
 //--------------------------------------------------------------------------
