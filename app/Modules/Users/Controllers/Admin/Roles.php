@@ -74,6 +74,10 @@ class Roles extends Controller
             'description' => 'required|min:5|max:255',
         );
 
+        $messages = array(
+            'valid_name' => __('The :attribute field is not a valid Name.'),
+        );
+
         $attributes = array(
             'name'        => __('Name'),
             'slug'        => __('Slug'),
@@ -88,7 +92,7 @@ class Roles extends Controller
             return (preg_match($pattern, $value) === 1);
         });
 
-        return Validator::make($data, $rules, array(), $attributes);
+        return Validator::make($data, $rules, $messages, $attributes);
     }
 
     public function index()
