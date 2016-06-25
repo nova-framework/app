@@ -158,8 +158,6 @@ class Users extends Controller
         $validator = $this->validate($input);
 
         if($validator->passes()) {
-            User::unguard();
-
             // Encrypt the given Password.
             $password = Hash::make($input['password']);
 

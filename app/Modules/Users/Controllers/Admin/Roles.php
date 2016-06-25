@@ -118,8 +118,6 @@ class Roles extends Controller
         $validator = $this->validate($input);
 
         if($validator->passes()) {
-            Role::unguard();
-
             // Create a Role Model instance - used with the Extended Auth Driver.
             Role::create($input);
 
