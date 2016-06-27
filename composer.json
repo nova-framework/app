@@ -35,10 +35,10 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php forge clear-compiled",
+            "php forge clear-compiled"
         ],
         "post-update-cmd": [
-            "php forge clear-compiled",
+            "php forge clear-compiled"
         ],
         "post-create-project-cmd": [
             "php forge key:generate"
