@@ -23,8 +23,6 @@ class User extends BaseModel implements UserInterface, RemindableInterface
 
     protected $hidden = array('password', 'activation_code', 'remember_token');
 
-    public $timestamps = true;
-
     // Cache for associated Role instance.
     private $cachedRole;
 

@@ -11,8 +11,6 @@ class Role extends BaseModel
 
     protected $fillable = array('name', 'alug', 'description');
 
-    public $timestamps = true;
-
 
     public function users()
     {
