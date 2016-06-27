@@ -9,7 +9,7 @@ class Role extends BaseModel
 {
     protected $table = 'roles';
 
-    protected $fillable = array('name', 'alug', 'description');
+    protected $fillable = array('name', 'slug', 'description');
 
 
     public function users()
