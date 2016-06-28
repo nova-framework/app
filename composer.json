@@ -35,11 +35,12 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php forge clear-compiled",
             "php forge optimize"
         ],
+        "pre-update-cmd": [
+            "php forge clear-compiled"
+        ],
         "post-update-cmd": [
-            "php forge clear-compiled",
             "php forge optimize"
         ],
         "post-create-project-cmd": [
