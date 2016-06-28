@@ -28,7 +28,7 @@ class RoleVerifier
         $this->model = new Roles();
     }
 
-    protected static getInstance()
+    protected static function getInstance()
     {
         if(! isset(static::$instance)) {
             static::$instance = new static();
