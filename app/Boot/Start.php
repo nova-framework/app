@@ -261,7 +261,9 @@ if(CONFIG_STORE == 'database') {
 // Load The Application Events
 //--------------------------------------------------------------------------
 
-require app_path() .DS .'Events.php';
+$path = app_path() .DS .'Events.php';
+
+if (is_readable($path)) require $path;
 
 // Load the Events defined on Modules.
 foreach ($modules as $module) {
@@ -274,7 +276,9 @@ foreach ($modules as $module) {
 // Load The Application's Route Filters
 //--------------------------------------------------------------------------
 
-require app_path() .DS .'Filters.php';
+$path = app_path() .DS .'Filters.php';
+
+if (is_readable($path)) require $path;
 
 // Load the Filters defined on Modules.
 foreach ($modules as $module) {
@@ -287,9 +291,9 @@ foreach ($modules as $module) {
 // Load The Application Routes
 //--------------------------------------------------------------------------
 
-$routes = $app['path'] .DS .'Routes.php';
+$path = $app['path'] .DS .'Routes.php';
 
-if (is_readable($routes)) require $routes;
+if (is_readable($path)) require $path;
 
 // Load the Routes defined on Modules.
 foreach ($modules as $module) {
