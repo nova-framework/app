@@ -169,5 +169,6 @@ Config::set('app', array(
         'HTML'          => 'Nova\Support\Facades\HTML',
         'Template'      => 'Nova\Support\Facades\Template',
         'View'          => 'Nova\Support\Facades\View',
+        'Module'        => 'Nova\Support\Facades\Module',
     ),
 ));
