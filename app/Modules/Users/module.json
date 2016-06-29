@@ -1,0 +1,9 @@
+{
+    "name": "Users",
+    "slug": "users",
+    "namespace": "Users",
+    "version": "1.0",
+    "author": "Virgil-Adrian Teaca",
+    "license": "MIT",
+    "description": "A Users Module"
+}

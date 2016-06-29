@@ -10,7 +10,6 @@ Log::useFiles(storage_path() .DS .'Logs' .DS .'error.log');
 // Application Error Handler
 //--------------------------------------------------------------------------
 
-
 App::error(function(Exception $exception, $code, $fromConsole)
 {
     Log::error($exception);

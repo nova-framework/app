@@ -1,0 +1,9 @@
+{
+    "name": "Demos",
+    "slug": "demos",
+    "namespace": "Demos",
+    "version": "1.0",
+    "author": "Virgil-Adrian Teaca",
+    "license": "MIT",
+    "description": "A Demos Module"
+}

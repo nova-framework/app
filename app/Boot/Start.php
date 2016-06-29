@@ -138,17 +138,8 @@ $path = app_path() .DS .'Config' .DS .'Constants.php';
 if (is_readable($path)) require $path;
 
 // Include all other files located on Config directory.
-foreach (glob(app_path() .DS .'Config/*') as $path) {
+foreach (glob(app_path() .DS .'Config/*.php') as $path) {
     if (basename($path) == 'Constants.php') continue;
-
-    if (is_readable($path)) require $path;
-}
-
-// Load the Modules configuration.
-$modules = Config::get('modules');
-
-foreach ($modules as $module) {
-    $path = app_path() .DS .'Modules' .DS .$module .DS .'Config.php';
 
     if (is_readable($path)) require $path;
 }
@@ -209,7 +200,7 @@ App::middleware('App\Extensions\Http\ContentGuard', array(
 // Register Booted Start Files
 //--------------------------------------------------------------------------
 
-$app->booted(function() use ($app, $env, $modules)
+$app->booted(function() use ($app, $env)
 {
 
 //--------------------------------------------------------------------------
@@ -265,13 +256,6 @@ $path = app_path() .DS .'Events.php';
 
 if (is_readable($path)) require $path;
 
-// Load the Events defined on Modules.
-foreach ($modules as $module) {
-    $path = app_path() .DS .'Modules' .DS .$module .DS .'Events.php';
-
-    if (is_readable($path)) require $path;
-}
-
 //--------------------------------------------------------------------------
 // Load The Application's Route Filters
 //--------------------------------------------------------------------------
@@ -280,13 +264,6 @@ $path = app_path() .DS .'Filters.php';
 
 if (is_readable($path)) require $path;
 
-// Load the Filters defined on Modules.
-foreach ($modules as $module) {
-    $path = app_path() .DS .'Modules' .DS .$module .DS .'Filters.php';
-
-    if (is_readable($path)) require $path;
-}
-
 //--------------------------------------------------------------------------
 // Load The Application Routes
 //--------------------------------------------------------------------------
@@ -294,13 +271,6 @@ foreach ($modules as $module) {
 $path = $app['path'] .DS .'Routes.php';
 
 if (is_readable($path)) require $path;
-
-// Load the Routes defined on Modules.
-foreach ($modules as $module) {
-    $path = app_path() .DS .'Modules' .DS .$module .DS .'Routes.php';
-
-    if (is_readable($path)) require $path;
-}
 
 });
 

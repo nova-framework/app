@@ -1,0 +1,9 @@
+{
+    "name": "Dashboard",
+    "slug": "dashboard",
+    "namespace": "Dashboard",
+    "version": "1.0",
+    "author": "Virgil-Adrian Teaca",
+    "license": "MIT",
+    "description": "A Dashboard Module"
+}
