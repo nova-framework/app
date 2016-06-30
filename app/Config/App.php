@@ -108,7 +108,7 @@ Config::set('app', array(
     /**
      * The Service Providers Manifest path.
      */
-    'manifest' => STORAGE_PATH,
+    'manifest' => storage_path(),
 
     /**
      * The registered Class Aliases.
