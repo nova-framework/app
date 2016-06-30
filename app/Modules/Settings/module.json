@@ -1,9 +1,17 @@
 {
     "name": "Settings",
-    "slug": "settings",
-    "namespace": "Settings",
     "version": "1.0",
-    "author": "Virgil-Adrian Teaca",
+    "description": "A Settings Module",
+    "homepage" : "http://www.novaframework.com/",
+    "authors" : [
+        {
+            "name" : "Virgil-Adrian Teaca",
+            "email" : "virgil@giulianaeassociati.com",
+            "homepage": "http://www.giulianaeassociati.com",
+            "role": "Developer"
+        }
+    ],
     "license": "MIT",
-    "description": "A Settings Module"
+    "slug": "settings",
+    "namespace": "Settings"
 }
