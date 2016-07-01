@@ -6,7 +6,7 @@ use Nova\Database\Seeder;
 use Nova\Database\ORM\Model;
 
 
-class BlogDatabaseSeeder extends Seeder
+class DemosDatabaseSeeder extends Seeder
 {
     /**
      * Run the Database Seeds.
