@@ -1,7 +1,7 @@
 {
     "name": "Settings",
     "version": "1.0",
-    "description": "A Settings Module",
+    "description": "This is the description for the Settings module.",
     "homepage" : "http://www.novaframework.com/",
     "authors" : [
         {
