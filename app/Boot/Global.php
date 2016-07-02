@@ -56,16 +56,6 @@ define('SITEURL', $app['config']['app.url']);
 define('SITETITLE', $app['config']['app.name']);
 
 /**
- * Set a default language.
- */
-define('LANGUAGE_CODE', $app['config']['app.locale']);
-
-/**
- * Set the default template.
- */
-define('TEMPLATE', $app['config']['app.template']);
-
-/**
  * Set a Site administrator email address.
  */
 define('SITEEMAIL', $app['config']['app.email']);
