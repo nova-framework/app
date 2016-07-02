@@ -51,11 +51,6 @@ App::missing(function(NotFoundHttpException $exception)
 define('SITEURL', $app['config']['app.url']);
 
 /**
- * Define relative base path.
- */
-define('DIR', $app['config']['app.path']);
-
-/**
  * Create a constant for the name of the site.
  */
 define('SITETITLE', $app['config']['app.name']);
