@@ -37,11 +37,9 @@ Route::filter('test', function($route, $request) {
 
 // A simple CSRF Filter.
 Route::filter('csrf', function($route, $request) {
-    $token = Request::input('_token');
+    $token = $request->ajax() ? $request->header('X-CSRF-Token') : $request->input('_token');
 
-    $method = Request::method();
-
-    if (($method == 'POST') && ($token != Session::token())) {
+    if ($request->session()->token() != $token) {
         // When CSRF Token is invalid, respond with Error 400 Page (Bad Request)
         return Response::error(400);
     }
@@ -50,7 +48,7 @@ Route::filter('csrf', function($route, $request) {
 // Referer checking Filter.
 Route::filter('referer', function($route, $request) {
     // Check if the visitor come to this Route from another site.
-    $referer = Request::header('referer');
+    $referer = $request->header('referer');
 
     if(! str_starts_with($referer, Config::get('app.url'))) {
         // When Referrer is invalid, respond with Error 400 Page (Bad Request)
