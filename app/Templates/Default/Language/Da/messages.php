@@ -2,8 +2,8 @@
 
 return array (
   'Dashboard' => 'Skrivebord',
-  'Forgot Password?' => '',
+  'Forgot Password?' => 'Glemt kodeord',
   'Logout' => 'Log ud',
   'Profile' => 'Bruger konto',
-  'User Login' => '',
+  'User Login' => 'Log ind',
 );
