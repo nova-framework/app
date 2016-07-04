@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Blog\Providers;
+namespace App\Modules\Users\Providers;
 
 use Nova\Support\ServiceProvider;
 
@@ -22,7 +22,7 @@ class UsersServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the Blog module Service Provider.
+     * Register the Users module Service Provider.
      *
      * This service provider is a convenient place to register your modules
      * services in the IoC container. If you wish, you may make additional
