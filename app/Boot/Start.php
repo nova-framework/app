@@ -133,14 +133,12 @@ with($envVariables = new EnvironmentVariables(
 //--------------------------------------------------------------------------
 
 // Load first the file constants file.
-$path = app_path() .DS .'Config' .DS .'Constants.php';
+$path = app_path() .DS .'Config.php';
 
 if (is_readable($path)) require $path;
 
 // Include all other files located on Config directory.
 foreach (glob(app_path() .DS .'Config/*.php') as $path) {
-    if (basename($path) == 'Constants.php') continue;
-
     if (is_readable($path)) require $path;
 }
 

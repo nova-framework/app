@@ -28,9 +28,12 @@ $app = require_once __DIR__ .str_replace('/', DS, '/app/Boot/Start.php');
 // Load The Forge Console Application
 //--------------------------------------------------------------------------
 
+use Nova\Console\Application as ConsoleApplication;
+
+
 $app->setRequestForConsoleEnvironment();
 
-$forge = Nova\Console\Application::start($app);
+$forge = ConsoleApplication::start($app);
 
 //--------------------------------------------------------------------------
 // Run The Forge Application
