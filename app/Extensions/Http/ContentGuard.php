@@ -61,7 +61,6 @@ class ContentGuard implements HttpKernelInterface
         $response = $this->app->handle($request, $type, $catch);
 
         if ($response instanceof Response) {
-            // Minify the Response's Content.
             $this->processContent($response);
         }
 
