@@ -77,6 +77,7 @@ Config::set('app', array(
     'providers' => array(
         // The Forge Console Providers.
         'Nova\Foundation\Providers\ForgeServiceProvider',
+        'Nova\Session\CommandsServiceProvider',
         'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
         'Nova\Routing\ControllerServiceProvider',
 

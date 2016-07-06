@@ -32,7 +32,7 @@ Config::set('database', array(
         ),
         'mysql' => array(
             'driver'    => 'mysql',
-            'hostname'  => 'localhost',
+            'host'      => 'localhost',
             'database'  => 'nova',
             'username'  => 'nova',
             'password'  => 'password',
@@ -42,7 +42,7 @@ Config::set('database', array(
         ),
         'pgsql' => array(
             'driver'   => 'pgsql',
-            'hostname' => 'localhost',
+            'host'     => 'localhost',
             'database' => 'nova',
             'username' => 'nova',
             'password' => 'password',
