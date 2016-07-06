@@ -281,7 +281,7 @@ class Demo extends Controller
             $content = "Files Cache --> Well done !";
 
             // Write products to Cache in 10 minutes with same keyword
-            $cache->set($key, $content, 600);
+            $cache->put($key, $content, 600);
         } else {
             $content = "READ FROM CACHE // " .$content;
         }
