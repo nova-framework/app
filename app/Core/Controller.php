@@ -67,7 +67,7 @@ class Controller extends BaseController
             $response = Template::make($this->layout, $this->template)->with('content', $response);
         }
 
-        return $response;
+        return new Response($response);
     }
 
     /**
