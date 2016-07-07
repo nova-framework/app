@@ -84,7 +84,7 @@ class Controller extends BaseController
      */
     protected function getModule()
     {
-        if(! isset($this->defaultView)) {
+        if (! isset($this->defaultView)) {
             list(, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
             $this->setupDefaultView($caller['function']);
@@ -100,7 +100,7 @@ class Controller extends BaseController
      */
     protected function getView(array $data = array())
     {
-        if(! isset($this->defaultView)) {
+        if (! isset($this->defaultView)) {
             list(, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
             $this->setupDefaultView($caller['function']);
