@@ -103,6 +103,20 @@ class Controller extends BaseController
     }
 
     /**
+     * @return string|null
+     */
+    protected function getModule()
+    {
+        if(! isset($this->defaultView)) {
+            list(, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+
+            $this->setupDefaultView($caller['function']);
+        }
+
+        return $this->module;
+    }
+
+    /**
      * Return a default View instance.
      *
      * @return \Nova\View\View
@@ -118,7 +132,6 @@ class Controller extends BaseController
         return View::make($this->defaultView, $data, $this->module);
     }
 
-
     /**
      * @return mixed
      */
@@ -133,20 +146,6 @@ class Controller extends BaseController
     protected function getLayout()
     {
         return $this->layout;
-    }
-
-    /**
-     * @return string|null
-     */
-    protected function getModule()
-    {
-        if(! isset($this->defaultView)) {
-            list(, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
-
-            $this->setupDefaultView($caller['function']);
-        }
-
-        return $this->module;
     }
 
     /**
