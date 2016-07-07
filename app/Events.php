@@ -32,7 +32,7 @@ Event::listen('router.matched', function($route, $request) {
 
     if(! empty($segments)) {
         // Make the path equal with the first part if it exists, i.e. 'admin'
-        $baseUri = array_shift($segments) .'/';
+        $baseUri .= array_shift($segments) .'/';
 
         // Add to path the next part, if it exists, defaulting to 'dashboard'.
         $baseUri .= ! empty($segments) ? array_shift($segments) : 'dashboard';
