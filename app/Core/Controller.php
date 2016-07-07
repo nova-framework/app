@@ -77,6 +77,8 @@ class Controller extends BaseController
     protected function title($title)
     {
         View::share('title', $title);
+
+        return $this;
     }
 
     /**
