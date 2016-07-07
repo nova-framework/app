@@ -36,13 +36,6 @@ class Authorize extends Controller
         //$this->model = new \App\Modules\Users\Models\Users();
     }
 
-    protected function before()
-    {
-        View::share('currentUri', Request::path());
-
-        return parent::before();
-    }
-
     /**
      * Display the login view.
      *

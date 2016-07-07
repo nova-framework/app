@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="_token" value="<?= $csrfToken; ?>" />
+                <input type="hidden" name="_token" value="<?= csrf_token(); ?>" />
                 <input type="hidden" name="token" value="<?= $token; ?>" />
 
                 </form>

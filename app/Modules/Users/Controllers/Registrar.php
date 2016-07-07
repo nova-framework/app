@@ -37,13 +37,6 @@ class Registrar extends Controller
         parent::__construct();
     }
 
-    protected function before()
-    {
-        View::share('currentUri', Request::path());
-
-        return parent::before();
-    }
-
     protected function validate(array $data)
     {
         // Validation rules.

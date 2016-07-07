@@ -9,12 +9,14 @@
 namespace App\Modules\Users\Controllers\Admin;
 
 use Nova\Config\Config;
-use Nova\Helpers\Url;
 use Nova\Helpers\ReCaptcha;
+use Nova\Routing\Route;
 
 use App\Core\Controller;
 use App\Models\Role;
 use App\Modules\Users\Helpers\RoleVerifier as Authorize;
+
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 use Carbon\Carbon;
 
@@ -33,11 +35,17 @@ class Roles extends Controller
     {
         parent::__construct();
 
+        //
+        $this->beforeFilter('@filterRequests');
+
         // Prepare the Roles Model instance - while using the Database Auth Driver.
         //$this->model = new \App\Modules\Users\Models\Roles();
     }
 
-    protected function before()
+    /**
+     * Filter the incoming requests.
+     */
+    public function filterRequests(Route $route, SymfonyRequest $request)
     {
         // Check the User Authorization - while using the Extended Auth Driver.
         if (! Auth::user()->hasRole('administrator')) {
@@ -54,9 +62,6 @@ class Roles extends Controller
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
         */
-
-        // Leave to parent's method the Execution Flow decisions.
-        return parent::before();
     }
 
     protected function validate(array $data, $id = null)

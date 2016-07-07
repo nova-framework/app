@@ -26,12 +26,16 @@ use DB;
 */
 class Demo extends Controller
 {
+    protected $template = 'Default';
+    protected $layout   = 'default';
+
+
     /**
      * Call the parent construct
      */
     public function __construct()
     {
-        parent::__construct();
+        //
     }
 
     /**
@@ -57,7 +61,7 @@ class Demo extends Controller
 
     public function test($param1 = '', $param2 = '', $param3 = '', $param4 = '')
     {
-        $content = '<pre>' .var_export($this->getParameters(), true).'</pre>';
+        $content = '<pre>' .var_export(static::class, true) .'</pre>';
 
         //
         $params = array(

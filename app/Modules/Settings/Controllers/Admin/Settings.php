@@ -8,8 +8,8 @@
 
 namespace App\Modules\Settings\Controllers\Admin;
 
-use Nova\Helpers\Url;
-use Nova\Helpers\Csrf;
+use Nova\Http\Request;
+use Nova\Routing\Route;
 
 use App\Core\Controller;
 use App\Modules\Users\Helpers\RoleVerifier as Authorize;
@@ -17,9 +17,7 @@ use App\Modules\Users\Helpers\RoleVerifier as Authorize;
 use Auth;
 use Config;
 use Input;
-use Session;
 use Redirect;
-use Request;
 use Validator;
 use View;
 
@@ -33,9 +31,15 @@ class Settings extends Controller
     public function __construct()
     {
         parent::__construct();
+
+        //
+        $this->beforeFilter('@filterRequests');
     }
 
-    protected function before()
+    /**
+     * Filter the incoming requests.
+     */
+    public function filterRequests(Route $route, Request $request)
     {
         // Check the User Authorization.
         if (! Auth::user()->hasRole('administrator')) {
@@ -52,9 +56,6 @@ class Settings extends Controller
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
         */
-
-        // Leave to parent's method the Execution Flow decisions.
-        return parent::before();
     }
 
     protected function validate(array $data)

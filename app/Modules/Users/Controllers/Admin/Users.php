@@ -8,13 +8,15 @@
 
 namespace App\Modules\Users\Controllers\Admin;
 
-use Nova\Helpers\Url;
 use Nova\Helpers\ReCaptcha;
+use Nova\Routing\Route;
 
 use App\Core\Controller;
 use App\Models\Role;
 use App\Models\User;
 use App\Modules\Users\Helpers\RoleVerifier as Authorize;
+
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 use Carbon\Carbon;
 
@@ -33,44 +35,35 @@ class Users extends Controller
     {
         parent::__construct();
 
+        //
+        $this->beforeFilter('@filterRequests', array(
+            'except' => array('profile', 'postProfile')
+        ));
+
         // Prepare the Users Model instance - while using the Database Auth Driver.
         //$this->model = new \App\Modules\Users\Models\Users();
     }
 
-    protected function before()
+    /**
+     * Filter the incoming requests.
+     */
+    public function filterRequests(Route $route, SymfonyRequest $request)
     {
         // Check the User Authorization - while using the Extended Auth Driver.
-        switch ($this->getMethod()) {
-            case 'profile':
-            case 'postProfile':
-                break;
+        if (! Auth::user()->hasRole('administrator')) {
+            $status = __('You are not authorized to access this resource.');
 
-            default:
-                if (! Auth::user()->hasRole('administrator')) {
-                    $status = __('You are not authorized to access this resource.');
-
-                    return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
-                }
+            return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
 
         // Check the User Authorization - while using the Database Auth Driver.
         /*
-        switch ($this->getMethod()) {
-            case 'profile':
-            case 'postProfile':
-                break;
+        if (!  Authorize::userHasRole('administrator')) {
+            $status = __('You are not authorized to access this resource.');
 
-            default:
-                if (!  Authorize::userHasRole('administrator')) {
-                    $status = __('You are not authorized to access this resource.');
-
-                    return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
-                }
+            return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
         */
-
-        // Leave to parent's method the Execution Flow decisions.
-        return parent::before();
     }
 
     protected function validate(array $data, $id = null)

@@ -21,12 +21,16 @@ use View;
  */
 class Welcome extends Controller
 {
+    protected $template = 'Default';
+    protected $layout   = 'default';
+
+
     /**
      * Call the parent construct
      */
     public function __construct()
     {
-        parent::__construct();
+        //
     }
 
     /**
