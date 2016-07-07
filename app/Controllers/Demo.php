@@ -31,7 +31,7 @@ class Demo extends Controller
 
 
     /**
-     * Call the parent construct
+     * Create a new Controller instance
      */
     public function __construct()
     {

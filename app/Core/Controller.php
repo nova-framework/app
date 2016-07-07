@@ -23,16 +23,18 @@ class Controller extends BaseController
     protected $template = 'AdminLte';
     protected $layout   = 'backend';
 
-
+    /**
+     * Create a new Controller instance
+     */
     public function __construct()
     {
-        $this->beforeFilter('@setupVariables');
+        $this->beforeFilter('@setupController');
     }
 
     /**
      * Filter the incoming requests.
      */
-    public function setupVariables(Route $route, SymfonyRequest $request)
+    public function setupController(Route $route, SymfonyRequest $request)
     {
         $parts = $request->segments();
 
