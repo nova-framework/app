@@ -23,9 +23,10 @@ Event::listen('nova.framework.booting', function() {
 
 // Add a Listener Closure to the Event 'router.matched'.
 Event::listen('router.matched', function($route, $request) {
+    // Share the Views the current URI.
     View::share('currentUri', $request->path());
 
-    // Setup the base URI.
+    // Share the Views the Backend's base URI.
     $segments = $request->segments();
 
     if(! empty($segments)) {
