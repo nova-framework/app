@@ -31,6 +31,10 @@ use View;
 
 class Users extends Controller
 {
+    protected $template = 'AdminLte';
+    protected $layout   = 'backend';
+
+    
     public function __construct()
     {
         parent::__construct();

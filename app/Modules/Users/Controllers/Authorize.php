@@ -25,7 +25,8 @@ use View;
 
 class Authorize extends Controller
 {
-    protected $layout = 'default';
+    protected $template = 'AdminLte';
+    protected $layout   = 'default';
 
 
     public function __construct()

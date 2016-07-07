@@ -8,7 +8,7 @@
 
 namespace App\Controllers;
 
-use Nova\Routing\Controller;
+use App\Core\Controller;
 
 use Config;
 use Language;
@@ -30,7 +30,7 @@ class Welcome extends Controller
      */
     public function __construct()
     {
-        //
+        parent::__construct();
     }
 
     /**

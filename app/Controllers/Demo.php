@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use Nova\Routing\Controller;
+use App\Core\Controller;
 
 use App\Models\User;
 
@@ -35,7 +35,7 @@ class Demo extends Controller
      */
     public function __construct()
     {
-        //
+        parent::__construct();
     }
 
     /**
