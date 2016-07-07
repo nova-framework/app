@@ -22,20 +22,6 @@ use View;
 class Controller extends BaseController
 {
     /**
-     * The Module name.
-     *
-     * @var string|null
-     */
-    private $module = null;
-
-    /**
-     * The Default View.
-     *
-     * @var string
-     */
-    private $defaultView;
-
-    /**
      * The currently used Template.
      *
      * @var string
@@ -70,45 +56,31 @@ class Controller extends BaseController
     }
 
     /**
-     * @param  string $title
-     *
-     * @return \Nova\Routing\Controller
-     */
-    protected function title($title)
-    {
-        View::share('title', $title);
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    protected function getModule()
-    {
-        if (! isset($this->defaultView)) {
-            list(, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
-
-            $this->setupDefaultView($caller['function']);
-        }
-
-        return $this->module;
-    }
-
-    /**
      * Return a default View instance.
      *
      * @return \Nova\View\View
+     *
+     * @throw \BadMethodCallException
      */
     protected function getView(array $data = array())
     {
-        if (! isset($this->defaultView)) {
-            list(, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+        list(, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
-            $this->setupDefaultView($caller['function']);
+        $baseView = ucfirst($caller['function']);
+
+        if (preg_match('#^App\\Controllers\\(.*)$#i', static::class, $matches)) {
+            $view = str_replace('\\', DS, $matches[1]) .DS .$baseView;
+
+            $module = null;
+        } else if (preg_match('#^App\\Modules\\(.+)\\Controllers\\(.*)$#i', static::class, $matches)) {
+            $view = str_replace('\\', DS, $matches[2]) .DS .$baseView;
+
+            $module = $matches[1];
+        } else {
+            throw new BadMethodCallException('Invalid Controller namespace: ' .static::class);
         }
 
-        return View::make($this->defaultView, $data, $this->module);
+        return View::make($view, $data, $module);
     }
 
     /**
@@ -125,25 +97,6 @@ class Controller extends BaseController
     protected function getLayout()
     {
         return $this->layout;
-    }
-
-    /**
-     * @return void
-     */
-    private function setupDefaultView($method)
-    {
-        // Prepare the View Path using the Controller's full Name including its namespace.
-        $classPath = str_replace('\\', '/', static::class);
-
-        if (preg_match('#^App/Controllers/(.*)$#i', $classPath, $matches)) {
-            $this->defaultView = $matches[1] .DS .ucfirst($method);
-        } else if (preg_match('#^App/Modules/(.+)/Controllers/(.*)$#i', $classPath, $matches)) {
-            $this->module = $matches[1];
-
-            $this->defaultView = $matches[2] .DS .ucfirst($method);
-        } else {
-            throw new BadMethodCallException('Invalid Controller: ' .static::class);
-        }
     }
 
 }
