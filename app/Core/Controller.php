@@ -11,10 +11,9 @@ namespace App\Core;
 use Nova\Http\Response;
 use Nova\Routing\Controller as BaseController;
 use Nova\Routing\Route;
-use Nova\View\View as Renderer;
+use Nova\View\View as BaseView;
 
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
-use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 use Config;
 use Template;
@@ -53,32 +52,11 @@ class Controller extends BaseController
         if(! isset($this->template)) {
             $this->template = Config::get('app.template');
         }
-
-        //
-        $this->beforeFilter('@setupController');
-    }
-
-    /**
-     * Filter the incoming requests.
-     */
-    public function setupController(Route $route, SymfonyRequest $request)
-    {
-        $parts = $request->segments();
-
-        // Make the path equal with the first part if it exists, i.e. 'admin'
-        $baseUri = array_shift($parts) .'/';
-
-        // Add to path the next part, if it exists, defaulting to 'dashboard'.
-        $baseUri .= ! empty($parts) ? array_shift($parts) : 'dashboard';
-
-        //
-        View::share('currentUri', $request->path());
-        View::share('baseUri',    $baseUri);
     }
 
     protected function processResponse($response)
     {
-        if (! $response instanceof Renderer) {
+        if (! $response instanceof BaseView) {
             return $response;
         }
 

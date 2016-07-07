@@ -6,10 +6,6 @@
  * @version 3.0
  */
 
-use Nova\Core\View;
-use Nova\Forensics\Console;
-
-
 /** Define Events. */
 
 // Add a Listener Class to the Event 'test'.
@@ -23,4 +19,24 @@ Event::listen('test', function($data) {
 // Add a Listener Closure to the Event 'nova.framework.booting'.
 Event::listen('nova.framework.booting', function() {
     Console::logSpeed("Nova Framework booting");
+});
+
+// Add a Listener Closure to the Event 'router.matched'.
+Event::listen('router.matched', function($route, $request) {
+    View::share('currentUri', $request->path());
+
+    $segments = $request->segments();
+
+    //
+    $baseUri = '';
+
+    if(! empty($segments)) {
+        // Make the path equal with the first part if it exists, i.e. 'admin'
+        $baseUri = array_shift($segments) .'/';
+
+        // Add to path the next part, if it exists, defaulting to 'dashboard'.
+        $baseUri .= ! empty($segments) ? array_shift($segments) : 'dashboard';
+    }
+
+    View::share('baseUri', $baseUri);
 });
