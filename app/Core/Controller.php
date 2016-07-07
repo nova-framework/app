@@ -10,7 +10,6 @@ namespace App\Core;
 
 use Nova\Http\Response;
 use Nova\Routing\Controller as BaseController;
-use Nova\Routing\Route;
 use Nova\View\View as BaseView;
 
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
