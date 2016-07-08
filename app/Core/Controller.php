@@ -68,12 +68,15 @@ class Controller extends BaseController
 
         $baseView = ucfirst($caller['function']);
 
-        if (preg_match('#^App\\Controllers\\(.*)$#i', static::class, $matches)) {
-            $view = str_replace('\\', DS, $matches[1]) .DS .$baseView;
+        //
+        $classPath = str_replace('\\', '/', static::class);
+
+        if (preg_match('#^App/Controllers/(.*)$#i', $classPath, $matches)) {
+            $view = str_replace('/', DS, $matches[1]) .DS .$baseView;
 
             $module = null;
-        } else if (preg_match('#^App\\Modules\\(.+)\\Controllers\\(.*)$#i', static::class, $matches)) {
-            $view = str_replace('\\', DS, $matches[2]) .DS .$baseView;
+        } else if (preg_match('#^App/Modules/(.+)/Controllers/(.*)$#i', $classPath, $matches)) {
+            $view = str_replace('/', DS, $matches[2]) .DS .$baseView;
 
             $module = $matches[1];
         } else {
