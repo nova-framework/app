@@ -89,7 +89,7 @@ class Controller extends BaseController
     /**
      * @return mixed
      */
-    protected function getTemplate()
+    public function getTemplate()
     {
         return $this->template;
     }
@@ -97,7 +97,7 @@ class Controller extends BaseController
     /**
      * @return mixed
      */
-    protected function getLayout()
+    public function getLayout()
     {
         return $this->layout;
     }
