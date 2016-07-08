@@ -28,6 +28,13 @@ class Controller extends BaseController
      */
     protected $template;
 
+    /**
+     * The currently used Layout.
+     *
+     * @var mixed
+     */
+    protected $layout = 'default';
+
 
     /**
      * Create a new Controller instance
