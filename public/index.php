@@ -26,16 +26,6 @@ This can be set to anything, but default usage is:
 define('ENVIRONMENT', 'development');
 
 //--------------------------------------------------------------------------
-//  Check the Composer installation
-//--------------------------------------------------------------------------
-
-if (! file_exists(ROOTDIR .'vendor/autoload.php')) {
-    die("<h1>Please install via composer.json</h1>
-<p>Install Composer instructions: <a href='https://getcomposer.org/doc/00-intro.md#globally'>https://getcomposer.org/doc/00-intro.md#globally</a></p>
-<p>Once composer is installed, navigate to the working directory in your terminal/command prompt and enter 'composer install'</p>");
-}
-
-//--------------------------------------------------------------------------
 // Load the Composer Autoloader
 //--------------------------------------------------------------------------
 
