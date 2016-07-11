@@ -129,7 +129,7 @@ $langMenuLinks = ob_get_clean();
 
                 <p>
                   <?= $user->realname; ?> - <?= $user->role->name; ?>
-                  <small><?= __d('admin_lte', 'Member since {0}', $user->created_at->formatLocalized('%d %b %Y, %R')); ?></small>
+                  <small><?= __d('admin_lte', 'Member since {0}', $user->created_at->formatLocalized('%d %b %Y, %H:%M')); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->

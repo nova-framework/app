@@ -35,7 +35,7 @@
     <td style='text-align: center; vertical-align: middle;' width='20%'>" .$user->username ."</td>
     <td style='text-align: center; vertical-align: middle;' width='25%'>" .$user->realname ."</td>
     <td style='text-align: center; vertical-align: middle;' width='20%'>" .$user->email ."</td>
-    <td style='text-align: center; vertical-align: middle;' width='15%'>" .$user->created_at->formatLocalized('%d %b %Y, %R') ."</td>
+    <td style='text-align: center; vertical-align: middle;' width='15%'>" .$user->created_at->formatLocalized('%d %b %Y, %H:%M') ."</td>
     <td style='text-align: right; vertical-align: middle;' width='15%'>
         <div class='btn-group' role='group' aria-label='...'>
             <a class='btn btn-sm btn-warning' href='" .site_url('admin/users/' .$user->id). "' title='". __d('users', 'Show the Details') ."' role='button'><i class='fa fa-search'></i></a>

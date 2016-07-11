@@ -40,11 +40,11 @@
             </tr>
             <tr>
                 <th style='text-align: center; vertical-align: right;'><?= __d('users', 'Created At'); ?></th>
-                <td style='text-align: center; vertical-align: middle;' width='75%'><?= $user->created_at->formatLocalized('%d %b %Y, %R'); ?></td>
+                <td style='text-align: center; vertical-align: middle;' width='75%'><?= $user->created_at->formatLocalized('%d %b %Y, %H:%M'); ?></td>
             </tr>
             <tr>
                 <th style='text-align: center; vertical-align: right;'><?= __d('users', 'Updated At'); ?></th>
-                <td style='text-align: center; vertical-align: middle;' width='75%'><?= $user->updated_at->formatLocalized('%d %b %Y, %R'); ?></td>
+                <td style='text-align: center; vertical-align: middle;' width='75%'><?= $user->updated_at->formatLocalized('%d %b %Y, %H:%M'); ?></td>
             <tr>
         </table>
     </div>
