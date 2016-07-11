@@ -5,11 +5,9 @@ return array (
   'Database API' => '',
   'Events API' => '',
   'Hello, welcome from the welcome controller and subpage method! <br/>
-This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => 'Hej og velkommen fra  welcome controlleren and subpage method! <br/>
-        Indeholdet kan ændres i <code>/app/Views/Welcome/SubPage.php</code>',
+This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => '',
   'Hello, welcome from the welcome controller! <br/>
-This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => 'Hej og velkommen fra welcome controller! <br/>
-        Indholdet kan ændres i <code>/app/Views/Welcome/Welcome.php</code>',
+This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => '',
   'Home' => 'Hjem',
   'If you have problems, please paste the above URL into your web browser.' => 'Hvis du har problemer, så indsæt den overstående url i din browser.',
   'Mailing API' => '',

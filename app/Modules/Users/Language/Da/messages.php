@@ -54,8 +54,6 @@ return array (
   'Password Reset' => 'Nulstil kodeord',
   'Password confirmation' => 'Gentag kodeord',
   'Passwords must be strong enough and match the confirmation.' => 'Kodeordet skal være stærkt nok og passe med bekræftelsen',
-  'Phone' => 'Telefonnr.',
-  'Home phone' => 'Privat telefonnr.',
   'Please click the button <b>Delete the Role</b> to proceed, or <b>Cancel</b> to abbandon the operation.' => 'Tryk på knappen <b>Slet brugerniveauet</b> for at forsætte, eller <b>Fortryd</b> for at fortryde sletningen.',
   'Please click the button <b>Delete the User</b> to proceed, or <b>Cancel</b> to abbandon the operation.' => 'Tryk på knappen <b>Slet brugeren</b> for at forsætte, eller <b>Fortryd</b> for at fortryde sletningen.',
   'Please enter your e-mail address to be sent a link to reset your password.' => 'For at nulstille din kode skal du indtaste din mail adresse.',
