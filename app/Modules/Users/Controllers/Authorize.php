@@ -45,8 +45,7 @@ class Authorize extends Controller
     public function login()
     {
         return $this->getView()
-            ->shares('title', __d('users', 'User Login'))
-            ->with('csrfToken', Session::token());
+            ->shares('title', __d('users', 'User Login'));
     }
 
     /**
@@ -130,10 +129,8 @@ class Authorize extends Controller
      */
     public function remind()
     {
-
         return $this->getView()
-            ->shares('title', __d('users', 'Password Recovery'))
-            ->with('csrfToken', Session::token());
+            ->shares('title', __d('users', 'Password Recovery'));
     }
 
     /**
@@ -143,8 +140,6 @@ class Authorize extends Controller
      */
     public function postRemind()
     {
-        $error = array();
-
         // Verify the reCAPTCHA
         if(! ReCaptcha::check()) {
             $status = __d('users', 'Invalid reCAPTCHA submitted.');
@@ -180,7 +175,6 @@ class Authorize extends Controller
 
         return $this->getView()
             ->shares('title', __d('users', 'Password Reset'))
-            ->with('csrfToken', Session::token())
             ->with('token', $token);
     }
 
