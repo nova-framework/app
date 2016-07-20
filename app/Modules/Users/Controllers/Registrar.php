@@ -85,8 +85,7 @@ class Registrar extends Controller
     public function create()
     {
         return $this->getView()
-            ->shares('title', __d('users', 'User Registration'))
-            ->with('csrfToken', Session::token());
+            ->shares('title', __d('users', 'User Registration'));
     }
 
     /**
@@ -197,7 +196,8 @@ class Registrar extends Controller
 
     public function status()
     {
-        return $this->getView()->shares('title', __d('users', 'Registration Status'));
+        return $this->getView()
+            ->shares('title', __d('users', 'Registration Status'));
     }
 
     /**
