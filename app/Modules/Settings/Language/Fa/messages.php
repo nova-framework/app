@@ -37,6 +37,7 @@ return array (
   'The Password used to connect to the external SMTP Server.' => 'رمزعبور برای اتصال به سرور خارجی SMTP.',
   'The Port used for connecting to the external SMTP Server.' => 'پورت برای اتصال به سرور خارجی SMTP.',
   'The Settings was successfully updated.' => 'تنظیمات با موفقیت بروز شدند.',
+  'The Settings are not available while the Config Store is on Files Mode.' => '',
   'The Skin used by the Site\'s Template.' => 'پوسته استفاده شده در قالب سایت.',
   'The Username used to connect to the external SMTP Server.' => 'نام کاربری برای اتصال به سرر خارجی SMTP.',
   'The name of the external SMTP Server.' => 'نام سرور خارجی SMTP.',
