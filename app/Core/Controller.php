@@ -48,18 +48,14 @@ class Controller extends BaseController
 
     protected function processResponse($response)
     {
-        if (! $response instanceof BaseView) {
-            return $response;
-        }
-
-        // If the response is returned from the controller action is a View instance
-        // and it is not marked as Layout, we will assume we want to render it on the
+        // If the response which is returned from the controller action is a View instance
+        // and also it is not marked as Layout, we will assume we want to render it on the
         // default templated environment, setup via the current controller properties.
-        if (is_string($this->layout) && ! $response->isLayout()) {
+        if (($response instanceof BaseView) && ! $response->isLayout() && is_string($this->layout)) {
             $response = Template::make($this->layout, $this->template)->with('content', $response);
         }
 
-        return new Response($response);
+        return parent::processResponse($response);
     }
 
     /**
