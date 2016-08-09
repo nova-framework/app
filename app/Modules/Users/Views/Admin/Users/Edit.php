@@ -46,7 +46,7 @@ $opt_role     = ! empty($opt_role)     ? $opt_role     : $user->role_id;
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-4 control-label" for="role"><?= __('Role'); ?> <font color='#CC0000'>*</font></label>
+                <label class="col-sm-4 control-label" for="role"><?= __d('users', 'Role'); ?> <font color='#CC0000'>*</font></label>
                 <div class="col-sm-8">
                     <select name="role" id="role" class="form-control select2">
                         <?php foreach ($roles as $role) { ?>

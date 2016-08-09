@@ -2,7 +2,7 @@
     <h1><?= __d('users', 'Search Users'); ?></h1>
     <ol class="breadcrumb">
         <li><a href='<?= site_url('admin/dashboard'); ?>'><i class="fa fa-dashboard"></i> <?= __d('users', 'Dashboard'); ?></a></li>
-        <li><a href='<?= site_url('admin/users'); ?>'><?= __('Users'); ?></a></li>
+        <li><a href='<?= site_url('admin/users'); ?>'><?= __d('users', 'Users'); ?></a></li>
         <li><?= __d('users', 'Search'); ?></li>
     </ol>
 </section>
@@ -57,7 +57,7 @@
     </div>
 </div>
 
-<a class='btn btn-primary' href='<?= Request::header('referer'); ?>'><?= __('<< Previous Page'); ?></a>
+<a class='btn btn-primary' href='<?= Request::header('referer'); ?>'><?= __d('users', '<< Previous Page'); ?></a>
 
 </section>
 

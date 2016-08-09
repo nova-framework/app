@@ -34,7 +34,7 @@ class Roles extends Controller
     protected $template = 'AdminLte';
     protected $layout   = 'backend';
 
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -53,7 +53,7 @@ class Roles extends Controller
     {
         // Check the User Authorization - while using the Extended Auth Driver.
         if (! Auth::user()->hasRole('administrator')) {
-            $status = __('You are not authorized to access this resource.');
+            $status = __d('users', 'You are not authorized to access this resource.');
 
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
@@ -61,7 +61,7 @@ class Roles extends Controller
         // Check the User Authorization - while using the Database Auth Driver.
         /*
         if (! Authorize::userHasRole('administrator')) {
-            $status = __('You are not authorized to access this resource.');
+            $status = __d('users', 'You are not authorized to access this resource.');
 
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
@@ -84,13 +84,13 @@ class Roles extends Controller
         );
 
         $messages = array(
-            'valid_name' => __('The :attribute field is not a valid Name.'),
+            'valid_name' => __d('users', 'The :attribute field is not a valid Name.'),
         );
 
         $attributes = array(
-            'name'        => __('Name'),
-            'slug'        => __('Slug'),
-            'description' => __('Description'),
+            'name'        => __d('users', 'Name'),
+            'slug'        => __d('users', 'Slug'),
+            'description' => __d('users', 'Description'),
         );
 
         // Add the custom Validation Rule commands.
@@ -113,14 +113,14 @@ class Roles extends Controller
         //$roles = $this->model->paginate(25);
 
         return $this->getView()
-            ->shares('title', __('Roles'))
+            ->shares('title', __d('users', 'Roles'))
             ->with('roles', $roles);
     }
 
     public function create()
     {
         return $this->getView()
-            ->shares('title', __('Create Role'));
+            ->shares('title', __d('users', 'Create Role'));
     }
 
     public function store()
@@ -140,7 +140,7 @@ class Roles extends Controller
             //$this->model->insert($input);
 
             // Prepare the flash message.
-            $status = __('The Role <b>{0}</b> was successfully created.', $input['name']);
+            $status = __d('users', 'The Role <b>{0}</b> was successfully created.', $input['name']);
 
             return Redirect::to('admin/roles')->withStatus($status);
         }
@@ -161,13 +161,13 @@ class Roles extends Controller
 
         if($role === null) {
             // There is no Role with this ID.
-            $status = __('Role not found: #{0}', $id);
+            $status = __d('users', 'Role not found: #{0}', $id);
 
             return Redirect::to('admin/roles')->withStatus($status, 'danger');
         }
 
         return $this->getView()
-            ->shares('title', __('Show Role'))
+            ->shares('title', __d('users', 'Show Role'))
             ->with('role', $role);
     }
 
@@ -181,13 +181,13 @@ class Roles extends Controller
 
         if($role === null) {
             // There is no Role with this ID.
-            $status = __('Role not found: #{0}', $id);
+            $status = __d('users', 'Role not found: #{0}', $id);
 
             return Redirect::to('admin/roles')->withStatus($status, 'danger');
         }
 
         return $this->getView()
-            ->shares('title', __('Edit Role'))
+            ->shares('title', __d('users', 'Edit Role'))
             ->with('role', $role);
     }
 
@@ -201,7 +201,7 @@ class Roles extends Controller
 
         if($role === null) {
             // There is no Role with this ID.
-            $status = __('Role not found: #{0}', $id);
+            $status = __d('users', 'Role not found: #{0}', $id);
 
             return Redirect::to('admin/roles')->withStatus($status, 'danger');
         }
@@ -228,7 +228,7 @@ class Roles extends Controller
             //$this->model->update($id, (array) $role);
 
             // Prepare the flash message.
-            $status = __('The Role <b>{0}</b> was successfully updated.', $origName);
+            $status = __d('users', 'The Role <b>{0}</b> was successfully updated.', $origName);
 
             return Redirect::to('admin/roles')->withStatus($status);
         }
@@ -249,7 +249,7 @@ class Roles extends Controller
 
         if($role === null) {
             // There is no Role with this ID.
-            $status = __('Role not found: #{0}', $id);
+            $status = __d('users', 'Role not found: #{0}', $id);
 
             return Redirect::to('admin/roles')->withStatus($status, 'danger');
         }
@@ -261,7 +261,7 @@ class Roles extends Controller
         //$this->model->delete($id);
 
         // Prepare the flash message.
-        $status = __('The Role <b>{0}</b> was successfully deleted.', $role->name);
+        $status = __d('users', 'The Role <b>{0}</b> was successfully deleted.', $role->name);
 
         return Redirect::to('admin/roles')->withStatus($status);
     }

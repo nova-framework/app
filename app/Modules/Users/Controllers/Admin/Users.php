@@ -34,7 +34,7 @@ class Users extends Controller
     protected $template = 'AdminLte';
     protected $layout   = 'backend';
 
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -55,7 +55,7 @@ class Users extends Controller
     {
         // Check the User Authorization - while using the Extended Auth Driver.
         if (! Auth::user()->hasRole('administrator')) {
-            $status = __('You are not authorized to access this resource.');
+            $status = __d('users', 'You are not authorized to access this resource.');
 
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
@@ -63,7 +63,7 @@ class Users extends Controller
         // Check the User Authorization - while using the Database Auth Driver.
         /*
         if (!  Authorize::userHasRole('administrator')) {
-            $status = __('You are not authorized to access this resource.');
+            $status = __d('users', 'You are not authorized to access this resource.');
 
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
@@ -93,17 +93,17 @@ class Users extends Controller
         );
 
         $messages = array(
-            'valid_name'      => __('The :attribute field is not a valid name.'),
-            'strong_password' => __('The :attribute field is not strong enough.'),
+            'valid_name'      => __d('users', 'The :attribute field is not a valid name.'),
+            'strong_password' => __d('users', 'The :attribute field is not strong enough.'),
         );
 
         $attributes = array(
-            'username'              => __('Username'),
-            'role'                  => __('Role'),
-            'realname'              => __('Name and Surname'),
-            'password'              => __('Password'),
-            'password_confirmation' => __('Password confirmation'),
-            'email'                 => __('E-mail'),
+            'username'              => __d('users', 'Username'),
+            'role'                  => __d('users', 'Role'),
+            'realname'              => __d('users', 'Name and Surname'),
+            'password'              => __d('users', 'Password'),
+            'password_confirmation' => __d('users', 'Password confirmation'),
+            'email'                 => __d('users', 'E-mail'),
         );
 
         // Add the custom Validation Rule commands.
@@ -133,7 +133,7 @@ class Users extends Controller
         //$users = $this->model->where('active', 1)->paginate(25);
 
         return $this->getView()
-            ->shares('title', __('Users'))
+            ->shares('title', __d('users', 'Users'))
             ->with('users', $users);
     }
 
@@ -143,7 +143,7 @@ class Users extends Controller
         $roles = Role::all();
 
         return $this->getView()
-            ->shares('title', __('Create User'))
+            ->shares('title', __d('users', 'Create User'))
             ->with('roles', $roles);
     }
 
@@ -183,7 +183,7 @@ class Users extends Controller
             */
 
             // Prepare the flash message.
-            $status = __('The User <b>{0}</b> was successfully created.', $input['username']);
+            $status = __d('users', 'The User <b>{0}</b> was successfully created.', $input['username']);
 
             return Redirect::to('admin/users')->withStatus($status);
         }
@@ -204,13 +204,13 @@ class Users extends Controller
 
         if($user === null) {
             // There is no User with this ID.
-            $status = __('User not found: #{0}', $id);
+            $status = __d('users', 'User not found: #{0}', $id);
 
             return Redirect::to('admin/users')->withStatus($status, 'danger');
         }
 
         return $this->getView()
-            ->shares('title', __('Show User'))
+            ->shares('title', __d('users', 'Show User'))
             ->with('user', $user);
     }
 
@@ -224,7 +224,7 @@ class Users extends Controller
 
         if($user === null) {
             // There is no User with this ID.
-            $status = __('User not found: #{0}', $id);
+            $status = __d('users', 'User not found: #{0}', $id);
 
             return Redirect::to('admin/users')->withStatus($status, 'danger');
         }
@@ -233,7 +233,7 @@ class Users extends Controller
         $roles = Role::all();
 
         return $this->getView()
-            ->shares('title', __('Edit User'))
+            ->shares('title', __d('users', 'Edit User'))
             ->with('roles', $roles)
             ->with('user', $user);
     }
@@ -248,7 +248,7 @@ class Users extends Controller
 
         if($user === null) {
             // There is no User with this ID.
-            $status = __('User not found: #{0}', $id);
+            $status = __d('users', 'User not found: #{0}', $id);
 
             return Redirect::to('admin/users')->withStatus($status, 'danger');
         }
@@ -286,7 +286,7 @@ class Users extends Controller
             //$this->model->update($id, (array) $user);
 
             // Prepare the flash message.
-            $status = __('The User <b>{0}</b> was successfully updated.', $origName);
+            $status = __d('users', 'The User <b>{0}</b> was successfully updated.', $origName);
 
             return Redirect::to('admin/users')->withStatus($status);
         }
@@ -307,7 +307,7 @@ class Users extends Controller
 
         if($user === null) {
             // There is no User with this ID.
-            $status = __('User not found: #{0}', $id);
+            $status = __d('users', 'User not found: #{0}', $id);
 
             return Redirect::to('admin/users')->withStatus($status, 'danger');
         }
@@ -319,7 +319,7 @@ class Users extends Controller
         //$this->model->delete($id);
 
         // Prepare the flash message.
-        $status = __('The User <b>{0}</b> was successfully deleted.', $user->username);
+        $status = __d('users', 'The User <b>{0}</b> was successfully deleted.', $user->username);
 
         return Redirect::to('admin/users')->withStatus($status);
     }
@@ -409,11 +409,11 @@ class Users extends Controller
         );
 
         $messages = array(
-            'valid_query' => __('The :attribute field is not a valid query string.'),
+            'valid_query' => __d('users', 'The :attribute field is not a valid query string.'),
         );
 
         $attributes = array(
-            'query' => __('Search Query'),
+            'query' => __d('users', 'Search Query'),
         );
 
         // Add the custom Validation Rule commands.
@@ -446,7 +446,7 @@ class Users extends Controller
         $search = htmlentities($search);
 
         return $this->getView()
-            ->shares('title', __('Searching Users for: {0}', $search))
+            ->shares('title', __d('users', 'Searching Users for: {0}', $search))
             ->with('search', $search)
             ->with('users', $users);
     }

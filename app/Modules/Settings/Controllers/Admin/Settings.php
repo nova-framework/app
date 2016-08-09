@@ -51,7 +51,7 @@ class Settings extends Controller
         // Check the User Authorization - while using the Database Auth Driver.
         /*
         if (! Authorize::userHasRole('administrator')) {
-            $status = __('You are not authorized to access this resource.');
+            $status = __d('settings', 'You are not authorized to access this resource.');
 
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
