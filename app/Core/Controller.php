@@ -10,7 +10,7 @@ namespace App\Core;
 
 use Nova\Http\Response;
 use Nova\Routing\Controller as BaseController;
-use Nova\View\View as BaseView;
+use Nova\Support\Contracts\RenderableInterface;
 
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
@@ -48,14 +48,18 @@ class Controller extends BaseController
 
     protected function processResponse($response)
     {
-        // If the response which is returned from the controller action is a View instance
-        // and also it is not marked as Layout, we will assume we want to render it on the
+        if (! $response instanceof RenderableInterface) {
+            return $response;
+        }
+
+        // If the response is returned from the controller action is a View instance
+        // and it is not marked as Layout, we will assume we want to render it on the
         // default templated environment, setup via the current controller properties.
-        if (($response instanceof BaseView) && ! $response->isLayout() && is_string($this->layout)) {
+        if (is_string($this->layout) && ! $response->isLayout()) {
             $response = Template::make($this->layout, $this->template)->with('content', $response);
         }
 
-        return parent::processResponse($response);
+        return new Response($response);
     }
 
     /**
