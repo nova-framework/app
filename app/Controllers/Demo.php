@@ -61,9 +61,6 @@ class Demo extends Controller
 
     public function test($param1 = '', $param2 = '', $param3 = '', $param4 = '')
     {
-        $content = '<pre>' .var_export(static::class, true) .'</pre>';
-
-        //
         $params = array(
             'param1' => $param1,
             'param2' => $param2,
@@ -71,14 +68,7 @@ class Demo extends Controller
             'param4' => $param4
         );
 
-        $content .= '<pre>' .var_export($params, true) .'</pre>';
-
-        //
-        $model = new App\Modules\Users\Models\Users();
-
-        $users = $model->all();
-
-        $content .= '<pre>' .var_export($users, true) .'</pre>';
+        $content = '<pre>' .var_export($params, true) .'</pre>';
 
         return View::make('Default')
             ->shares('title', __('Test'))
