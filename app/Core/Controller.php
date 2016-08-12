@@ -12,8 +12,6 @@ use Nova\Http\Response;
 use Nova\Routing\Controller as BaseController;
 use Nova\Support\Contracts\RenderableInterface;
 
-use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
-
 use Config;
 use Template;
 use View;
@@ -56,10 +54,10 @@ class Controller extends BaseController
         // and it is not marked as Layout, we will assume we want to render it on the
         // default templated environment, setup via the current controller properties.
         if (is_string($this->layout) && ! $response->isLayout()) {
-            $response = Template::make($this->layout, $this->template)->with('content', $response);
+            return Template::make($this->layout, $this->template)->with('content', $response);
         }
 
-        return new Response($response);
+        return $response;
     }
 
     /**
