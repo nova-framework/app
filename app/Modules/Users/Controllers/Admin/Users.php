@@ -14,7 +14,6 @@ use Nova\Routing\Route;
 use App\Core\Controller;
 use App\Models\Role;
 use App\Models\User;
-use App\Modules\Users\Helpers\RoleVerifier as Authorize;
 
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
@@ -43,9 +42,6 @@ class Users extends Controller
         $this->beforeFilter('@filterRequests', array(
             'except' => array('profile', 'postProfile')
         ));
-
-        // Prepare the Users Model instance - while using the Database Auth Driver.
-        //$this->model = new \App\Modules\Users\Models\Users();
     }
 
     /**
@@ -59,15 +55,6 @@ class Users extends Controller
 
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
-
-        // Check the User Authorization - while using the Database Auth Driver.
-        /*
-        if (!  Authorize::userHasRole('administrator')) {
-            $status = __d('users', 'You are not authorized to access this resource.');
-
-            return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
-        }
-        */
     }
 
     protected function validate(array $data, $id = null)
@@ -126,11 +113,8 @@ class Users extends Controller
 
     public function index()
     {
-        // Get all User records for current page - used with the Extended Auth Driver.
+        // Get all User records for current page.
         $users = User::where('active', 1)->paginate(25);
-
-        // Get all User records for current page - used with the Database Auth Driver.
-        //$users = $this->model->where('active', 1)->paginate(25);
 
         return $this->getView()
             ->shares('title', __d('users', 'Users'))
@@ -158,7 +142,7 @@ class Users extends Controller
             // Encrypt the given Password.
             $password = Hash::make($input['password']);
 
-            // Create a User Model instance - used with the Extended Auth Driver.
+            // Create a User Model instance.
             User::create(array(
                 'username' => $input['username'],
                 'password' => $password,
@@ -167,20 +151,6 @@ class Users extends Controller
                 'email'    => $input['email'],
                 'active'   => 1,
             ));
-
-            // Create a User Model instance - used with the Database Auth Driver.
-            /*
-            $this->model->insert(array(
-                'username'   => $input['username'],
-                'password'   => $password,
-                'role_id'    => $input['role'],
-                'realname'   => $input['realname'],
-                'email'      => $input['email'],
-                'created_at' => new Carbon(),
-                'updated_at' => new Carbon(),
-                'active'     => 1,
-            ));
-            */
 
             // Prepare the flash message.
             $status = __d('users', 'The User <b>{0}</b> was successfully created.', $input['username']);
@@ -196,11 +166,8 @@ class Users extends Controller
 
     public function show($id)
     {
-        // Get the User Model instance - used with the Extended Auth Driver.
+        // Get the User Model instance.
         $user = User::find($id);
-
-        // Get the User Model instance - used with the Database Auth Driver.
-        //$user = $this->model->find($id);
 
         if($user === null) {
             // There is no User with this ID.
@@ -216,11 +183,8 @@ class Users extends Controller
 
     public function edit($id)
     {
-        // Get the User Model instance - used with the Extended Auth Driver.
+        // Get the User Model instance.
         $user = User::find($id);
-
-        // Get the User Model instance - used with the Database Auth Driver.
-        //$user = $this->model->find($id);
 
         if($user === null) {
             // There is no User with this ID.
@@ -240,11 +204,8 @@ class Users extends Controller
 
     public function update($id)
     {
-        // Get the User Model instance - used with the Extended Auth Driver.
+        // Get the User Model instance.
         $user = User::find($id);
-
-        // Get the User Model instance - used with the Database Auth Driver.
-        //$user = $this->model->find($id);
 
         if($user === null) {
             // There is no User with this ID.
@@ -277,13 +238,8 @@ class Users extends Controller
                 $user->password = Hash::make($input['password']);
             }
 
-            // Save the User information - used with the Extended Auth Driver.
+            // Save the User information.
             $user->save();
-
-            // Save the User information - used with the Database Auth Driver.
-            // $user->updated_at = new Carbon();
-            //
-            //$this->model->update($id, (array) $user);
 
             // Prepare the flash message.
             $status = __d('users', 'The User <b>{0}</b> was successfully updated.', $origName);
@@ -299,11 +255,8 @@ class Users extends Controller
 
     public function destroy($id)
     {
-        // Get the User Model instance - used with the Extended Auth Driver.
+        // Get the User Model instance.
         $user = User::find($id);
-
-        // Get the User Model instance - used with the Database Auth Driver.
-        //$user = $this->model->find($id);
 
         if($user === null) {
             // There is no User with this ID.
@@ -312,11 +265,8 @@ class Users extends Controller
             return Redirect::to('admin/users')->withStatus($status, 'danger');
         }
 
-        // Destroy the requested User record - used with the Extended Auth Driver.
+        // Destroy the requested User record.
         $user->delete();
-
-        // Destroy the requested User record - used with the Database Auth Driver.
-        //$this->model->delete($id);
 
         // Prepare the flash message.
         $status = __d('users', 'The User <b>{0}</b> was successfully deleted.', $user->username);
@@ -381,13 +331,8 @@ class Users extends Controller
             // Update the password on the User Model instance.
             $user->password = Hash::make($password);
 
-            // Save the User Model instance - used with the Extended Auth Driver.
+            // Save the User Model instance.
             $user->save();
-
-            // Save the User Model instance - used with the Database Auth Driver.
-            // $user->updated_at = new Carbon();
-            //
-            //$this->model->updateGenericUser($user);
 
             // Use a Redirect to avoid the reposting the data.
             $status = __d('users', 'You have successfully updated your Password.');
