@@ -8,7 +8,6 @@
 
 namespace App\Core;
 
-use Nova\Http\Response;
 use Nova\Routing\Controller as BaseController;
 use Nova\Support\Contracts\RenderableInterface;
 
