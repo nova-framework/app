@@ -102,6 +102,7 @@ Config::set('app', array(
         'Nova\Session\SessionServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
         'Nova\Html\HtmlServiceProvider',
+        'Nova\Template\TemplateServiceProvider',
         'Nova\View\ViewServiceProvider',
         'Nova\Modules\ModulesServiceProvider',
     ),
