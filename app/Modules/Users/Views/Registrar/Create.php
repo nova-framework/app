@@ -16,7 +16,7 @@
                 <div class="panel-title"><?= __d('users', 'Register to <b>{0}</b>', SITETITLE); ?></div>
             </div>
             <div class="panel-body">
-                <form method='post' role="form">
+                <form action="<?= site_url('register'); ?>" method='POST' role="form">
 
                 <div class="form-group">
                     <p><input type="text" name="realname" id="realname" class="form-control input-lg col-xs-12 col-sm-12 col-md-12" placeholder="<?= __d('users', 'Name and Surname'); ?>"><br><br></p>

@@ -11,7 +11,7 @@
             <div style="padding-top: 30px" class="panel-body" >
                 <?= Session::getMessages(); ?>
 
-                <form method='post' role="form">
+                <form action="<?= site_url('password/remind'); ?>" method='POST' role="form">
 
                 <fieldset>
                     <p><?= __d('system', 'Please enter your e-mail address to be sent a link to reset your password.'); ?></p>

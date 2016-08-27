@@ -11,7 +11,7 @@
             <div class="panel-body">
                 <?= Session::getMessages(); ?>
 
-                <form method='post' action="<?= site_url('password/reset'); ?>" role="form">
+                <form action="<?= site_url('password/reset'); ?>" method='POST' role="form">
 
                 <div class="form-group">
                     <p><input type="text" name="email" id="email" class="form-control input-lg col-xs-12 col-sm-12 col-md-12" placeholder="<?= __d('system', 'Insert the current E-Mail'); ?>"><br><br></p>
