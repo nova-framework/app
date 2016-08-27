@@ -1,17 +1,17 @@
 <?php
 
 return array (
-  'ADMINISTRATION' => '',
-  'Control Panel' => '',
-  'Dashboard' => '',
-  'Forgot Password?' => 'Glemt kodeord',
+  'ADMINISTRATION' => 'ADMINISTRATION',
+  'Control Panel' => 'Kontrolpanel',
+  'Dashboard' => 'Skrivebord',
+  'Forgot Password?' => 'Glemt kodeord?',
   'Logout' => 'Log ud',
-  'Member since {0}' => '',
+  'Member since {0}' => 'Medlem siden {0}',
   'Profile' => 'Bruger konto',
-  'Roles' => '',
-  'Settings' => '',
+  'Roles' => 'Roller',
+  'Settings' => 'Indestillinger',
   'Sign In' => 'Log ind',
   'Sign Up' => 'Tilmeld',
-  'Sign out' => '',
-  'Users' => '',
+  'Sign out' => 'Log ud',
+  'Users' => 'Brugere',
 );
