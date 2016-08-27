@@ -56,7 +56,11 @@ class Controller extends BaseController
             }
         }
 
-        return parent::processResponse($response);
+        if (! $response instanceof SymfonyResponse) {
+            $response = new Response($response);
+        }
+
+        return $response;
     }
 
     /**
