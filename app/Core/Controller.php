@@ -52,11 +52,11 @@ class Controller extends BaseController
             // default templated environment, setup via the current controller properties.
 
             if (is_string($this->layout) && (! $response instanceof Layout)) {
-                return Template::make($this->layout, $this->template)->with('content', $response);
+                $response = Template::make($this->layout, $this->template)->with('content', $response);
             }
         }
 
-        return $response;
+        return parent::processResponse($response);
     }
 
     /**
