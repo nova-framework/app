@@ -105,6 +105,7 @@ Config::set('app', array(
         'Nova\Template\TemplateServiceProvider',
         'Nova\View\ViewServiceProvider',
         'Nova\Modules\ModulesServiceProvider',
+        'Nova\Cron\CronServiceProvider',
     ),
 
     /**
@@ -173,5 +174,6 @@ Config::set('app', array(
         'Template'      => 'Nova\Support\Facades\Template',
         'View'          => 'Nova\Support\Facades\View',
         'Module'        => 'Nova\Support\Facades\Module',
+        'Cron'          => 'Nova\Support\Facades\Cron',
     ),
 ));

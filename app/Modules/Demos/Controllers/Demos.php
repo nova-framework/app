@@ -1,43 +1,32 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Modules\Demos\Controllers;
 
 use App\Core\Controller;
-
 use App\Models\User;
+
+use Nova\Routing\Route;
 
 use App;
 use Cache;
+use DB;
 use Event;
 use Hash;
-use Validator;
 use Input;
-use Mail;
+use Mailer;
 use Redirect;
 use Request;
 use Session;
+use Validator;
 use View;
-use DB;
 
 
 /*
 *
 * Demo controller
 */
-class Demo extends Controller
+class Demos extends Controller
 {
-    protected $template = 'Default';
-    protected $layout   = 'default';
-
-
-    /**
-     * Create a new Controller instance
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     /**
      * Define Index method
      */
@@ -50,28 +39,57 @@ class Demo extends Controller
     {
         $content = '';
 
-        $content .= '<p><b>' .__('Password:') .'</b> : <code>'. Hash::make($password) .'</code></p>';
+        $content .= '<p><b>' .__d('demos', 'Password:') .'</b> : <code>'. Hash::make($password) .'</code></p>';
 
-        $content .= '<p><b>' .__('Timestamp:') .'</b> : <code>'.time() .'<b></code>';
+        $content .= '<p><b>' .__d('demos', 'Timestamp:') .'</b> : <code>'.time() .'<b></code>';
 
         return View::make('Default')
-            ->shares('title', __('Password Sample'))
+            ->shares('title', __d('demos', 'Password Sample'))
             ->with('content', $content);
     }
 
-    public function test($param1 = '', $param2 = '', $param3 = '', $param4 = '')
+    /**
+     * Returns the next static character in the Route pattern that will serve as a separator.
+     *
+     * @param string $pattern The route pattern
+     *
+     * @return string The next static character that functions as separator (or empty string when none available)
+     */
+    private static function findNextSeparator($pattern)
     {
-        $params = array(
-            'param1' => $param1,
-            'param2' => $param2,
-            'param3' => $param3,
-            'param4' => $param4
-        );
+        if ('' == $pattern) {
+            // return empty string if pattern is empty or false (false which can be returned by substr)
+            return '';
+        }
 
-        $content = '<pre>' .var_export($params, true) .'</pre>';
+        // first remove all placeholders from the pattern so we can find the next real static character
+        $pattern = preg_replace('#\(:\w+\)#', '', $pattern);
+
+        return (isset($pattern[0]) && (false !== strpos(static::SEPARATORS, $pattern[0]))) ? $pattern[0] : '';
+    }
+
+    public function test()
+    {
+        $uri = 'demo/test/{param1?}/{param2?}/{param3?}/{slug?}';
+
+        //
+        $route = new Route('GET', $uri, function() {
+            //
+        });
+
+        $route->where('slug', '(.*)');
+
+        // Match the Route.
+        $request = Request::instance();
+
+        if ($route->matches($request)) {
+            $content = '<pre>' .htmlspecialchars(var_export($route, true)) .'</pre>';
+        } else {
+            $content = '<pre>' .htmlspecialchars($uri) .'</pre>';
+        }
 
         return View::make('Default')
-            ->shares('title', __('Test'))
+            ->shares('title', __d('demos', 'Test'))
             ->with('content', $content);
     }
 
@@ -104,7 +122,7 @@ class Demo extends Controller
         $content .= '<pre>' .var_export(Request::instance(), true).'</pre>';
 
         return View::make('Default')
-            ->shares('title', __('Request API'))
+            ->shares('title', __d('demos', 'Request API'))
             ->with('content', $content);
     }
 
@@ -127,7 +145,7 @@ class Demo extends Controller
         $content .= Event::until('test', $payload);
 
         return View::make('Default')
-            ->shares('title', __('Events API'))
+            ->shares('title', __d('demos', 'Events API'))
             ->with('content', $content);
     }
 
@@ -161,20 +179,20 @@ class Demo extends Controller
         $content .= '<pre>' .var_export($users->toArray(), true) .'</pre>';
 
         return View::make('Default')
-            ->shares('title', __('Database API'))
+            ->shares('title', __d('demos', 'Database API'))
             ->with('content', $content);
     }
 
     public function mailer()
     {
         $data = array(
-            'title'   => __('Welcome to {0}!', SITETITLE),
-            'content' => __('This is a test!!!'),
+            'title'   => __d('demos', 'Welcome to {0}!', SITETITLE),
+            'content' => __d('demos', 'This is a test!!!'),
         );
 
-        Mail::pretend(true);
+        Mailer::pretend(true);
 
-        Mail::send('Emails/Welcome', $data, function($message)
+        Mailer::send('Emails/Welcome', $data, function($message)
         {
             $message->from('admin@novaframework', 'Administrator')
                 ->to('john@novaframework', 'John Smith')
@@ -182,10 +200,10 @@ class Demo extends Controller
         });
 
         // Prepare and return the View instance.
-        $content = __('Message sent while pretending. Please, look on <code>{0}</code>', 'app/Storage/Logs/messages.log');
+        $content = __d('demos', 'Message sent while pretending. Please, look on <code>{0}</code>', 'app/Storage/Logs/messages.log');
 
         return View::make('Default')
-            ->shares('title', __('Mailing API'))
+            ->shares('title', __d('demos', 'Mailing API'))
             ->with('content', $content);
     }
 
@@ -200,7 +218,7 @@ class Demo extends Controller
         $content .= '<pre>' .var_export($data, true) .'</pre>';
 
         return View::make('Default')
-            ->shares('title', __('Session API'))
+            ->shares('title', __d('demos', 'Session API'))
             ->with('content', $content);
     }
 
@@ -234,7 +252,7 @@ class Demo extends Controller
         }
 
         return View::make('Default')
-            ->shares('title', __('Validation API'))
+            ->shares('title', __d('demos', 'Validation API'))
             ->with('content', $content);
     }
 
@@ -258,30 +276,36 @@ class Demo extends Controller
         }
 
         return View::make('Default')
-            ->shares('title', __('Pagination'))
+            ->shares('title', __d('demos', 'Pagination'))
             ->with('content', $content);
     }
 
     public function cache()
     {
-
-        $cache = Cache::instance();
-
         $key = "test_page";
 
-        $content = $cache->get($key);
+        $content = Cache::get($key);
 
         if (is_null($content)) {
             $content = "Files Cache --> Well done !";
 
             // Write products to Cache in 10 minutes with same keyword
-            $cache->put($key, $content, 600);
+            Cache::put($key, $content, 10);
         } else {
             $content = "READ FROM CACHE // " .$content;
         }
 
         return View::make('Default')
-            ->shares('title', __('Cache'))
+            ->shares('title', __d('demos', 'Cache'))
+            ->with('content', $content);
+    }
+
+    public function catchAll($slug)
+    {
+        $content = '<pre>' .htmlspecialchars($slug) .'</pre>';
+
+        return View::make('Default')
+            ->shares('title', __d('demos', 'The catch-all Route'))
             ->with('content', $content);
     }
 }
