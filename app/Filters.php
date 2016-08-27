@@ -30,11 +30,6 @@ App::after(function($request, $response)
 
 /** Define Route Filters. */
 
-// A Testing Filter which dump the matched Route.
-Route::filter('test', function($route, $request) {
-    echo '<pre style="margin: 10px;">' .var_export($route, true) .'</pre>';
-});
-
 // A simple CSRF Filter.
 Route::filter('csrf', function($route, $request) {
     $token = $request->ajax() ? $request->header('X-CSRF-Token') : $request->input('_token');
@@ -69,12 +64,15 @@ Route::filter('auth.basic', function()
     return Auth::basic();
 });
 
+Route::filter('guest', function($route, $request) {
+    if (! Auth::guest()) {
+        // User is authenticated, redirect him to Dashboard Page.
+        return Redirect::to('admin/dashboard');
+    }
+});
+
 // Role-based Authorization Filter.
-Route::filter('roles', function($route, $request) {
-    $action = $route->getAction();
-
-    $roles = array_get($action, 'roles');
-
+Route::filter('roles', function($route, $request, $response, $roles = null) {
     if (! is_null($roles) && ! Auth::user()->hasRole($roles)) {
          $status = __('You are not authorized to access this resource.');
 
@@ -82,9 +80,3 @@ Route::filter('roles', function($route, $request) {
     }
 });
 
-Route::filter('guest', function($route, $request) {
-    if (! Auth::guest()) {
-        // User is authenticated, redirect him to Dashboard Page.
-        return Redirect::to('admin/dashboard');
-    }
-});

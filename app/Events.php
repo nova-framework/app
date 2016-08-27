@@ -8,19 +8,6 @@
 
 /** Define Events. */
 
-// Add a Listener Class to the Event 'test'.
-Event::listen('test', 'App\Events\Test@handle');
-
-// Add a Listener Closure to the Event 'test'.
-Event::listen('test', function($data) {
-    return '<pre>Closure : ' .var_export($data, true) .'</pre>';
-});
-
-// Add a Listener Closure to the Event 'nova.framework.booting'.
-Event::listen('nova.framework.booting', function() {
-    Console::logSpeed("Nova Framework booting");
-});
-
 // Add a Listener Closure to the Event 'router.matched'.
 Event::listen('router.matched', function($route, $request) {
     // Share the Views the current URI.
