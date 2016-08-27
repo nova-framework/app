@@ -1,6 +1,6 @@
 <?php
 /**
- * Controller - A base Controller for the demos included.
+ * Controller - A base Controller which use the Templates and auto-rendering.
  *
  * @author Virgil-Adrian Teaca - virgil@giulianaeassociati.com
  * @version 3.0
@@ -50,7 +50,7 @@ class Controller extends BaseController
             // If the response is returned from the controller action is a View instance
             // and it is not marked as Layout, we will assume we want to render it on the
             // default templated environment, setup via the current controller properties.
-            
+
             if (is_string($this->layout) && (! $response instanceof Layout)) {
                 return Template::make($this->layout, $this->template)->with('content', $response);
             }
