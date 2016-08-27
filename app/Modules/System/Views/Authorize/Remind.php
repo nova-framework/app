@@ -36,7 +36,7 @@
                     </div>
                 </fieldset>
 
-                <input type="hidden" name="csrfToken" value="<?= $csrfToken; ?>" />
+                <input type="hidden" name="_token" value="<?= csrf_token(); ?>" />
 
                 </form>
             </div>
@@ -52,4 +52,4 @@ var captchaCallback = function() {
 
 </script>
 
-<script src="//www.google.com/recaptcha/api.js?onload=captchaCallback&render=explicit&hl=<?php echo LANGUAGE_CODE; ?>" async defer></script>
+<script src="//www.google.com/recaptcha/api.js?onload=captchaCallback&render=explicit&hl=<?= Language::code(); ?>" async defer></script>

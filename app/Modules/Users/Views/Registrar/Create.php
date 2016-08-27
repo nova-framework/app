@@ -68,5 +68,5 @@ var captchaCallback = function() {
 
 </script>
 
-<script src="//www.google.com/recaptcha/api.js?onload=captchaCallback&render=explicit&hl=<?= Config::get('app.locale', 'en'); ?>" async defer></script>
+<script src="//www.google.com/recaptcha/api.js?onload=captchaCallback&render=explicit&hl=<?= Language::code(); ?>" async defer></script>
 
