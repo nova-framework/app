@@ -4,7 +4,6 @@ namespace App\Modules\Demos\Controllers;
 
 use App\Core\Controller;
 use App\Models\User;
-
 use Nova\Routing\Route;
 
 use App;
