@@ -4,6 +4,7 @@ return array (
   'ADMINISTRATION' => 'ADMINISTRATION',
   'Control Panel' => 'Kontrolpanel',
   'Dashboard' => 'Skrivebord',
+  'Files' => '',
   'Forgot Password?' => 'Glemt kodeord?',
   'Logout' => 'Log ud',
   'Member since {0}' => 'Medlem siden {0}',
