@@ -11,7 +11,7 @@ namespace App\Modules\Users\Controllers\Admin;
 use Nova\Helpers\ReCaptcha;
 use Nova\Routing\Route;
 
-use App\Core\Controller;
+use App\Core\BackendController;
 use App\Models\Role;
 use App\Models\User;
 
@@ -28,11 +28,8 @@ use Validator;
 use View;
 
 
-class Users extends Controller
+class Users extends BackendController
 {
-    protected $template = 'AdminLte';
-    protected $layout   = 'backend';
-
 
     public function __construct()
     {

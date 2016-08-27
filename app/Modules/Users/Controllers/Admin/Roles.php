@@ -12,7 +12,7 @@ use Nova\Config\Config;
 use Nova\Helpers\ReCaptcha;
 use Nova\Routing\Route;
 
-use App\Core\Controller;
+use App\Core\BackendController;
 use App\Models\Role;
 
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
@@ -28,11 +28,8 @@ use Validator;
 use View;
 
 
-class Roles extends Controller
+class Roles extends BackendController
 {
-    protected $template = 'AdminLte';
-    protected $layout   = 'backend';
-
 
     public function __construct()
     {
