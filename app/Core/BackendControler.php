@@ -13,8 +13,19 @@ use App\Core\Controller as BaseController;
 
 class BackendController extends BaseController
 {
+    /**
+     * The currently used Template.
+     *
+     * @var string
+     */
     protected $template = 'AdminLte';
-    protected $layout   = 'backend';
+
+    /**
+     * The currently used Layout.
+     *
+     * @var string
+     */
+    protected $layout = 'backend';
 
 
     public function __construct()
