@@ -9,7 +9,7 @@
 namespace App\Core;
 
 use Nova\Routing\Controller as BaseController;
-use Nova\Support\Contracts\RenderableInterface;
+use Nova\Support\Contracts\RenderableInterface as Renderable;
 use Nova\Template\Template as Layout;
 
 use Config;
@@ -46,15 +46,14 @@ class Controller extends BaseController
 
     protected function processResponse($response)
     {
-        if (! $response instanceof RenderableInterface) {
-            return $response;
-        }
-
-        // If the response is returned from the controller action is a View instance
-        // and it is not marked as Layout, we will assume we want to render it on the
-        // default templated environment, setup via the current controller properties.
-        if (is_string($this->layout) && (! $response instanceof Layout)) {
-            return Template::make($this->layout, $this->template)->with('content', $response);
+        if ($response instanceof Renderable) {
+            // If the response is returned from the controller action is a View instance
+            // and it is not marked as Layout, we will assume we want to render it on the
+            // default templated environment, setup via the current controller properties.
+            
+            if (is_string($this->layout) && (! $response instanceof Layout)) {
+                return Template::make($this->layout, $this->template)->with('content', $response);
+            }
         }
 
         return $response;
