@@ -8,9 +8,12 @@
 
 namespace App\Core;
 
+use Nova\Http\Response;
 use Nova\Routing\Controller as BaseController;
 use Nova\Support\Contracts\RenderableInterface as Renderable;
 use Nova\Template\Template as Layout;
+
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 use Config;
 use Template;
