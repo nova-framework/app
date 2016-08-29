@@ -10,7 +10,7 @@ namespace App\Modules\Users\Controllers;
 
 use Nova\Helpers\ReCaptcha;
 
-use App\Core\Controller;
+use App\Core\BackendController;
 use App\Models\Role;
 use App\Models\User;
 
@@ -26,10 +26,9 @@ use Validator;
 use View;
 
 
-class Registrar extends Controller
+class Registrar extends BackendController
 {
-    protected $template = 'AdminLte';
-    protected $layout   = 'default';
+    protected $layout = 'default';
 
 
     protected function validate(array $data)
