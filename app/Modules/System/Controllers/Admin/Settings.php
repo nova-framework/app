@@ -9,9 +9,8 @@
 namespace App\Modules\System\Controllers\Admin;
 
 use App\Core\BackendController;
+use Nova\Http\Request;
 use Nova\Routing\Route;
-
-use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 use Auth;
 use Config;
@@ -36,7 +35,7 @@ class Settings extends BackendController
     /**
      * Filter the incoming requests.
      */
-    public function filterRequests(Route $route, SymfonyRequest $request)
+    public function filterRequests(Route $route, Request $request)
     {
         // Check the User Authorization.
         if (! Auth::user()->hasRole('administrator')) {

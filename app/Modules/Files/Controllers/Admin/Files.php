@@ -3,19 +3,20 @@
 namespace App\Modules\Files\Controllers\Admin;
 
 use App\Core\BackendController;
+
+use Nova\Http\Request;
 use Nova\Routing\FileDispatcher;
 use Nova\Routing\Route;
 
-use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
-
 use Auth;
-use Request;
 use Response;
 use View;
 
 
 class Files extends BackendController
 {
+    private $request = null;
+
     private $dispatcher;
 
 
@@ -30,14 +31,26 @@ class Files extends BackendController
     /**
      * Filter the incoming requests.
      */
-    public function filterRequests(Route $route, SymfonyRequest $request)
+    public function filterRequests(Route $route, Request $request)
     {
-        // Check the User Authorization - while using the Extended Auth Driver.
-        if (! Auth::user()->hasRole('administrator')) {
-            $status = __d('users', 'You are not authorized to access this resource.');
+        // Store the Request instance for further processing.
+        $this->request = $request;
 
-            return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
+        // Check the User Authorization.
+        if (Auth::user()->hasRole('administrator')) {
+            // The User is authorized; continue the Execution Flow.
+            return null;
         }
+
+        if ($request->ajax()) {
+            // On an AJAX Request; just return Error 403 (Access denied)
+            return Response::make('', 403);
+        }
+
+        // Redirect the User to his/hers Dashboard with a warning message.
+        $status = __d('files', 'You are not authorized to access this resource.');
+
+        return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
     }
 
     public function index()
@@ -79,12 +92,10 @@ class Files extends BackendController
      */
     protected function serveFile($path)
     {
-        $request = Request::instance();
-
         // Get a File Dispatcher instance.
         $dispatcher = $this->getDispatcher();
 
-        return $dispatcher->serve($path, $request);
+        return $dispatcher->serve($path, $this->request);
     }
 
     /**
