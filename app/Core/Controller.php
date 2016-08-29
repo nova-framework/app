@@ -19,6 +19,8 @@ use Config;
 use Template;
 use View;
 
+use BadMethodCallException;
+
 
 class Controller extends BaseController
 {
