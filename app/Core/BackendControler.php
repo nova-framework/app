@@ -39,7 +39,6 @@ class BackendController extends BaseController
         parent::__construct();
     }
 
-
     /**
      * A Before Filter which permit the access to Administrators.
      */
