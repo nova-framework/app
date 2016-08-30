@@ -10,8 +10,6 @@ namespace App\Modules\Users\Controllers\Admin;
 
 use Nova\Config\Config;
 use Nova\Helpers\ReCaptcha;
-use Nova\Http\Request;
-use Nova\Routing\Route;
 
 use App\Core\BackendController;
 use App\Models\Role;
@@ -35,20 +33,7 @@ class Roles extends BackendController
         parent::__construct();
 
         //
-        $this->beforeFilter('@filterRequests');
-    }
-
-    /**
-     * Filter the incoming requests.
-     */
-    public function filterRequests(Route $route, Request $request)
-    {
-        // Check the User Authorization.
-        if (! Auth::user()->hasRole('administrator')) {
-            $status = __d('users', 'You are not authorized to access this resource.');
-
-            return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
-        }
+        $this->beforeFilter('@adminUsersFilter');
     }
 
     protected function validate(array $data, $id = null)

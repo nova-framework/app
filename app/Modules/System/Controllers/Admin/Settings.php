@@ -9,8 +9,6 @@
 namespace App\Modules\System\Controllers\Admin;
 
 use App\Core\BackendController;
-use Nova\Http\Request;
-use Nova\Routing\Route;
 
 use Auth;
 use Config;
@@ -29,20 +27,7 @@ class Settings extends BackendController
         parent::__construct();
 
         //
-        $this->beforeFilter('@filterRequests');
-    }
-
-    /**
-     * Filter the incoming requests.
-     */
-    public function filterRequests(Route $route, Request $request)
-    {
-        // Check the User Authorization.
-        if (! Auth::user()->hasRole('administrator')) {
-            $status = __d('settings', 'You are not authorized to access this resource.');
-
-            return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
-        }
+        $this->beforeFilter('@adminUsersFilter');
     }
 
     protected function validate(array $data)
