@@ -13,5 +13,6 @@
     ],
     "license": "MIT",
     "slug": "demos",
-    "namespace": "Demos"
+    "namespace": "Demos",
+    "order" : "10001"
 }
