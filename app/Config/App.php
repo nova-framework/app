@@ -79,6 +79,7 @@ Config::set('app', array(
         'Nova\Foundation\Providers\ForgeServiceProvider',
         'Nova\Session\CommandsServiceProvider',
         'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
+        'Nova\Module\ModuleServiceProvider',
         'Nova\Routing\ControllerServiceProvider',
 
         // The Application Providers.
@@ -101,9 +102,8 @@ Config::set('app', array(
         'Nova\Session\SessionServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
         'Nova\Html\HtmlServiceProvider',
-        'Nova\Template\TemplateServiceProvider',
         'Nova\View\ViewServiceProvider',
-        'Nova\Module\ModuleServiceProvider',
+        'Nova\Template\TemplateServiceProvider',
         'Nova\Cron\CronServiceProvider',
     ),
 
