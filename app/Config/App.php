@@ -103,7 +103,7 @@ Config::set('app', array(
         'Nova\Html\HtmlServiceProvider',
         'Nova\Template\TemplateServiceProvider',
         'Nova\View\ViewServiceProvider',
-        'Nova\Module\ModulesServiceProvider',
+        'Nova\Module\ModuleServiceProvider',
         'Nova\Cron\CronServiceProvider',
     ),
 
