@@ -79,8 +79,8 @@ Config::set('app', array(
         'Nova\Foundation\Providers\ForgeServiceProvider',
         'Nova\Session\CommandsServiceProvider',
         'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
-        'Nova\Module\ModuleServiceProvider',
         'Nova\Routing\ControllerServiceProvider',
+        'Nova\Module\ModuleServiceProvider',
 
         // The Application Providers.
         'Nova\Auth\AuthServiceProvider',
