@@ -6,7 +6,7 @@
  * @version 3.0
  */
 
-namespace App\Extensions\Http;
+namespace Shared\Http;
 
 use Nova\Helpers\Profiler;
 use Nova\Forensics\Profiler as QuickProfiler;
