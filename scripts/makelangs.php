@@ -22,6 +22,7 @@ $languages = array(
 );
 
 $workPaths = array(
+    'shared',
     'app'
 );
 
