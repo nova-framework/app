@@ -8,6 +8,7 @@ use Nova\Http\Request;
 use Nova\Routing\FileDispatcher;
 use Nova\Routing\Route;
 
+use App;
 use Auth;
 use Response;
 use View;
