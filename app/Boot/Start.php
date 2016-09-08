@@ -70,6 +70,14 @@ define('VERSION', Application::VERSION);
 defined('ENVIRONMENT') || define('ENVIRONMENT', 'development');
 
 //--------------------------------------------------------------------------
+// Load The Global Configuration
+//--------------------------------------------------------------------------
+
+$path = APPDIR .'Config.php';
+
+if (is_readable($path)) require $path;
+
+//--------------------------------------------------------------------------
 // Create New Application
 //--------------------------------------------------------------------------
 
@@ -131,12 +139,6 @@ with($envVariables = new EnvironmentVariables(
 // Load The Configuration
 //--------------------------------------------------------------------------
 
-// Load first the file constants file.
-$path = app_path() .DS .'Config.php';
-
-if (is_readable($path)) require $path;
-
-// Include all other files located on Config directory.
 foreach (glob(app_path() .DS .'Config/*.php') as $path) {
     if (is_readable($path)) require $path;
 }
