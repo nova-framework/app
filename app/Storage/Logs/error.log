@@ -1,1 +1,25 @@
 
+[2016-09-07 22:04:17] local.ERROR: exception 'Nova\Database\QueryException' with message 'SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'nova_news' already exists (SQL: create table `nova_news` (`id` int unsigned not null auto_increment primary key, `title` varchar(255) not null, `slug` varchar(255) not null, `intro` text not null, `content` text not null, `meta_title` varchar(255) not null, `meta_description` varchar(255) not null, `meta_keys` varchar(255) not null, `created_at` timestamp default CURRENT_TIMESTAMP not null, `updated_at` timestamp default CURRENT_TIMESTAMP not null, `is_active` tinyint(1) not null) default character set utf8 collate utf8_general_ci)' in /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Connection.php:620
+Stack trace:
+#0 /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Connection.php(579): Nova\Database\Connection->runQueryCallback('create table `n...', Array, Object(Closure))
+#1 /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Connection.php(376): Nova\Database\Connection->run('create table `n...', Array, Object(Closure))
+#2 /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Schema/Blueprint.php(67): Nova\Database\Connection->statement('create table `n...')
+#3 /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Schema/Builder.php(172): Nova\Database\Schema\Blueprint->build(Object(Nova\Database\Connections\MySqlConnection), Object(Nova\Database\Schema\Grammars\MySqlGrammar))
+#4 /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Schema/Builder.php(115): Nova\Database\Schema\Builder->build(Object(Nova\Database\Schema\Blueprint))
+#5 [internal function]: Nova\Database\Schema\Builder->create('news', Object(Closure))
+#6 /var/www/sites/novatesting/vendor/nova-framework/system/src/Support/Facades/Facade.php(111): call_user_func_array(Array, Array)
+#7 /var/www/sites/novatesting/app/Modules/News/Database/Migrations/2016_09_05_171851_news.php(29): Nova\Support\Facades\Facade::__callStatic('create', Array)
+#8 /var/www/sites/novatesting/app/Modules/News/Database/Migrations/2016_09_05_171851_news.php(29): Nova\Support\Facades\Schema::create('news', Object(Closure))
+#9 /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Migrations/Migrator.php(135): News->up()
+#10 /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Migrations/Migrator.php(112): Nova\Database\Migrations\Migrator->runUp('2016_09_05_1718...', 1, false)
+#11 /var/www/sites/novatesting/vendor/nova-framework/system/src/Database/Migrations/Migrator.php(85): Nova\Database\Migrations\Migrator->runMigrationList(Array, false)
+#12 /var/www/sites/novatesting/vendor/nova-framework/system/src/Module/Console/Commands/ModuleMigrateCommand.php(110): Nova\Database\Migrations\Migrator->run('/var/www/sites/...', false)
+#13 /var/www/sites/novatesting/vendor/nova-framework/system/src/Module/Console/Commands/ModuleMigrateCommand.php(76): Nova\Module\Console\Commands\ModuleMigrateCommand->migrate('news')
+#14 /var/www/sites/novatesting/vendor/nova-framework/system/src/Console/Command.php(113): Nova\Module\Console\Commands\ModuleMigrateCommand->fire()
+#15 /var/www/sites/novatesting/vendor/symfony/console/Command/Command.php(256): Nova\Console\Command->execute(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#16 /var/www/sites/novatesting/vendor/nova-framework/system/src/Console/Command.php(101): Symfony\Component\Console\Command\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#17 /var/www/sites/novatesting/vendor/symfony/console/Application.php(818): Nova\Console\Command->run(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#18 /var/www/sites/novatesting/vendor/symfony/console/Application.php(186): Symfony\Component\Console\Application->doRunCommand(Object(Nova\Module\Console\Commands\ModuleMigrateCommand), Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#19 /var/www/sites/novatesting/vendor/symfony/console/Application.php(117): Symfony\Component\Console\Application->doRun(Object(Symfony\Component\Console\Input\ArgvInput), Object(Symfony\Component\Console\Output\ConsoleOutput))
+#20 /var/www/sites/novatesting/forge(42): Symfony\Component\Console\Application->run()
+#21 {main} [] []
