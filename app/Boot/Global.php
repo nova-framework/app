@@ -36,6 +36,9 @@ App::missing(function(NotFoundHttpException $exception)
     if (Request::ajax()) {
         // An AJAX request; we'll create a JSON Response.
         $content = array('status' => $status);
+        
+        // Setup propely the Content Type.
+        $headers['Content-Type'] = 'application/json';
 
         return Response::json($content, $status, $headers);
     }
@@ -44,6 +47,9 @@ App::missing(function(NotFoundHttpException $exception)
     $content = Template::make('default')
         ->shares('title', 'Error ' .$status)
         ->nest('content', 'Error/' .$status);
+
+    // Setup propely the Content Type.
+    $headers['Content-Type'] = 'text/html';
 
     return Response::make($content, $status, $headers);
 });

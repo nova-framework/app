@@ -60,11 +60,7 @@ class ContentGuard implements HttpKernelInterface
     {
         $response = $this->app->handle($request, $type, $catch);
 
-        if ($response instanceof Response) {
-            $this->processContent($response);
-        }
-
-        return $response;
+        return $this->processResponseContent($response);
     }
 
     /**
@@ -73,9 +69,11 @@ class ContentGuard implements HttpKernelInterface
      * @param  \Symfony\Component\HttpFoundation\Response $response
      * @return void
      */
-    protected function processContent(SymfonyResponse $response)
+    protected function processResponseContent(SymfonyResponse $response)
     {
-        $content = $response->getContent();
+        $contentType = $response->headers->get('Content-Type');
+
+        if (! str_is('text/html*', $contentType)) return $response;
 
         if($this->debug) {
             // Insert the QuickProfiler Widget in the Response's Content.
@@ -88,7 +86,7 @@ class ContentGuard implements HttpKernelInterface
                     QuickProfiler::process(true),
                     Profiler::getReport(),
                 ),
-                $content
+                $response->getContent()
             );
         } else {
             // Minify the Response's Content.
@@ -100,10 +98,14 @@ class ContentGuard implements HttpKernelInterface
 
             $replace = array('>', '<', '\\1');
 
-            $content = preg_replace($search, $replace, $content);
+            $content = preg_replace($search, $replace, $response->getContent());
         }
 
         $response->setContent($content);
+
+        $response->headers->set('Content-Length', strlen($response->getContent()));
+
+        return $response;
     }
 
 }

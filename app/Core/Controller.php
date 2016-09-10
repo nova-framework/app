@@ -59,6 +59,9 @@ class Controller extends BaseController
             if (is_string($this->layout) && (! $response instanceof Layout)) {
                 $response = Template::make($this->layout, $this->template)->with('content', $response);
             }
+
+            // Create a proper Response instance.
+            $response = new Response($response->render(), 200, array('Content-Type' => 'text/html'));
         }
 
         if (! $response instanceof SymfonyResponse) {
