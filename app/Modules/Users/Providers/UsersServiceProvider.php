@@ -10,10 +10,6 @@ class UsersServiceProvider extends ServiceProvider
     /**
      * Bootstrap the Application Events.
      *
-     * Here you may register any additional middleware provided with your
-     * module with the following addMiddleware() method. You may pass in
-     * either an array or a string.
-     *
      * @return void
      */
     public function boot()
