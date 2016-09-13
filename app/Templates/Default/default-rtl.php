@@ -22,7 +22,7 @@ foreach ($languages as $code => $info) {
 $langMenuLinks = ob_get_clean();
 ?>
 <!DOCTYPE html>
-<html lang="<?= Config::get('app.locale', 'en'); ?>">
+<html lang="<?= $language; ?>">
 <head>
     <meta charset="utf-8">
     <title><?= $title .' - ' .Config::get('app.name', SITETITLE); ?></title>
@@ -36,7 +36,7 @@ Assets::css([
     template_url('css/style-rtl.css', 'Default'),
 ]);
 
-echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
+echo $css; // Place to pass data / plugable hook zone
 ?>
 </head>
 <body style='padding-top: 28px;'>
@@ -51,7 +51,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
     </div>
 </nav>
 
-<?= isset($afterBody) ? $afterBody : ''; // Place to pass data / plugable hook zone ?>
+<?= $afterBody; // Place to pass data / plugable hook zone ?>
 
 <div class="container">
     <p>
@@ -84,7 +84,7 @@ Assets::js([
     template_url('js/bootstrap-rtl.min.js', 'Default'),
 ]);
 
-echo isset($js) ? $js : ''; // Place to pass data / plugable hook zone
+echo $js; // Place to pass data / plugable hook zone
 
 echo isset($footer) ? $footer : ''; // Place to pass data / plugable hook zone
 ?>

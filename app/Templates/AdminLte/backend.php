@@ -26,7 +26,7 @@ foreach ($languages as $code => $info) {
 $langMenuLinks = ob_get_clean();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?= $langCode; ?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,17 +37,17 @@ $langMenuLinks = ob_get_clean();
     <?php
     Assets::css(array(
         // Bootstrap 3.3.5
-        template_url('bootstrap/css/bootstrap.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/bootstrap/css/bootstrap.min.css'),
         // Font Awesome
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css',
         // Ionicons
         'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css',
         // Theme style
-        template_url('dist/css/AdminLTE.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css'),
         // AdminLTE Skins
-        template_url('dist/css/skins/_all-skins.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css'),
         // Select2
-        template_url('plugins/select2/select2.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css'),
         // Custom CSS
         template_url('css/style.css', 'AdminLte'),
     ));
@@ -68,7 +68,7 @@ $langMenuLinks = ob_get_clean();
 <?php
     //Add Controller specific JS files.
     Assets::js(array(
-        template_url('plugins/jQuery/jquery-2.2.3.min.js', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/plugins/jQuery/jquery-2.2.3.min.js'),
     ));
 
     ?>
@@ -118,24 +118,24 @@ $langMenuLinks = ob_get_clean();
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="<?= template_url('dist/img/avatar5.png', 'AdminLte'); ?>" class="user-image" alt="User Image">
+              <img src="<?= site_url('vendor/almasaeed2010/adminlte/dist/img/avatar5.png'); ?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs"><?= $user->username; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="<?= template_url('dist/img/avatar5.png', 'AdminLte'); ?>" class="img-circle" alt="User Image">
+                <img src="<?= site_url('vendor/almasaeed2010/adminlte/dist/img/avatar5.png'); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   <?= $user->realname; ?> - <?= $user->role->name; ?>
-                  <small><?= __d('admin_lte', 'Member since {0}', $user->created_at->formatLocalized('%d %b %Y, %H:%M')); ?></small>
+                  <small><?= __d('admin_lte', 'Member since {0}', $user->created_at->formatLocalized('%d %b %Y, %R')); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= site_url('admin/users/profile'); ?>" class="btn btn-default btn-flat"><?= __d('admin_lte', 'Profile'); ?></a>
+                  <a href="<?= site_url('admin/profile'); ?>" class="btn btn-default btn-flat"><?= __d('admin_lte', 'Profile'); ?></a>
                 </div>
                 <div class="pull-right">
                   <a href="<?= site_url('logout'); ?>" class="btn btn-default btn-flat"><?= __d('admin_lte', 'Sign out'); ?></a>
@@ -184,7 +184,7 @@ $langMenuLinks = ob_get_clean();
             <li <?php if ($baseUri == 'admin/files') { echo "class='active'"; } ?>>
                 <a href="<?= site_url('admin/files'); ?>"><i class="fa fa-file"></i> <span><?= __d('admin_lte', 'Files'); ?></span></a>
             </li>
-            
+
             <?php } ?>
         </ul>
         <!-- /.sidebar-menu -->
@@ -217,14 +217,15 @@ $langMenuLinks = ob_get_clean();
 <?php
 Assets::js(array(
     // Bootstrap 3.3.5
-    template_url('bootstrap/js/bootstrap.min.js', 'AdminLte'),
+    site_url('vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js'),
     // AdminLTE App
-    template_url('dist/js/app.min.js', 'AdminLte'),
+    site_url('vendor/almasaeed2010/adminlte/dist/js/app.min.js'),
     // Select2
-    template_url('plugins/select2/select2.full.min.js', 'AdminLte')
+    site_url('vendor/almasaeed2010/adminlte/plugins/select2/select2.full.min.js')
 ));
 
 echo isset($js) ? $js : ''; // Place to pass data / plugable hook zone
+
 echo isset($footer) ? $footer : ''; // Place to pass data / plugable hook zone
 ?>
 

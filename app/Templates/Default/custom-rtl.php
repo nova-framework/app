@@ -5,7 +5,7 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="<?= Config::get('app.locale', 'en'); ?>">
+<html lang="<?= Language::code(); ?>">
 <head>
     <meta charset="utf-8">
     <title><?= $title .' - ' .Config::get('app.name', SITETITLE); ?></title>
@@ -68,7 +68,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
 <?= isset($afterBody) ? $afterBody : ''; // Place to pass data / plugable hook zone ?>
 
 <div class="container">
-    <p><img src='<?= template_url('images/nova.png', 'Default'); ?>' alt='<?= Config::get('app.name', SITETITLE); ?>' style="max-width: 360px; height: auto;"></p>
+    <p><img src='<?= template_url('images/nova.png', 'Default'); ?>' alt='<?= SITETITLE; ?>' style="max-width: 360px; height: auto;"></p>
 
     <?= $content; ?>
 </div>

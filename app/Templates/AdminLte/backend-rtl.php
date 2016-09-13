@@ -45,30 +45,18 @@ $langMenuLinks = ob_get_clean();
         // Theme style
         template_url('css/AdminLTE-rtl.min.css', 'AdminLte'),
         // AdminLTE Skins
-        template_url('dist/css/skins/_all-skins.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css'),
         // Select2
-        template_url('plugins/select2/select2.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/plugins/select2/select2.min.css'),
         // Custom CSS
         template_url('css/style-rtl.css', 'AdminLte'),
     ));
 
-    echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
-?>
+    echo isset($css) ? $css . ''; // Place to pass data / plugable hook zone
 
-<style>
-.pagination {
-    margin: 0;
-}
-
-.pagination > li > a, .pagination > li > span {
-  padding: 5px 10px;
-}
-</style>
-
-<?php
     //Add Controller specific JS files.
     Assets::js(array(
-        template_url('plugins/jQuery/jquery-2.2.3.min.js', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/plugins/jQuery/jQuery-2.2.0.min.js'),
     ));
 
     ?>
@@ -118,24 +106,24 @@ $langMenuLinks = ob_get_clean();
             <!-- Menu Toggle Button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="<?= template_url('dist/img/avatar5.png', 'AdminLte'); ?>" class="user-image" alt="User Image">
+              <img src="<?= site_url('vendor/almasaeed2010/adminlte/dist/img/avatar5.png'); ?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs"><?= $user->username; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="<?= template_url('dist/img/avatar5.png', 'AdminLte'); ?>" class="img-circle" alt="User Image">
+                <img src="<?= site_url('vendor/almasaeed2010/adminlte/dist/img/avatar5.png'); ?>" class="img-circle" alt="User Image">
 
                 <p>
                   <?= $user->realname; ?> - <?= $user->role->name; ?>
-                  <small><?= __d('admin_lte', 'Member since {0}', $user->created_at->formatLocalized('%d %b %Y, %H:%M')); ?></small>
+                  <small><?= __d('admin_lte', 'Member since {0}', $user->created_at->formatLocalized('%d %b %Y, %R')); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?= site_url('admin/users/profile'); ?>" class="btn btn-default btn-flat"><?= __d('admin_lte', 'Profile'); ?></a>
+                  <a href="<?= site_url('admin/profile'); ?>" class="btn btn-default btn-flat"><?= __d('admin_lte', 'Profile'); ?></a>
                 </div>
                 <div class="pull-right">
                   <a href="<?= site_url('logout'); ?>" class="btn btn-default btn-flat"><?= __d('admin_lte', 'Sign out'); ?></a>
@@ -181,10 +169,7 @@ $langMenuLinks = ob_get_clean();
             <li <?php if ($baseUri == 'admin/roles') { echo "class='active'"; } ?>>
                 <a href="<?= site_url('admin/roles'); ?>"><i class="fa fa-book"></i> <span><?= __d('admin_lte', 'Roles'); ?></span></a>
             </li>
-            <li <?php if ($baseUri == 'admin/files') { echo "class='active'"; } ?>>
-                <a href="<?= site_url('admin/files'); ?>"><i class="fa fa-file"></i> <span><?= __d('admin_lte', 'Files'); ?></span></a>
-            </li>
-            
+
             <?php } ?>
         </ul>
         <!-- /.sidebar-menu -->
@@ -219,12 +204,13 @@ Assets::js(array(
     // Bootstrap 3.3.5
     template_url('js/bootstrap-rtl.min.js', 'Default'),
     // AdminLTE App
-    template_url('dist/js/app.min.js', 'AdminLte'),
+    site_url('vendor/almasaeed2010/adminlte/dist/js/app.min.js'),
     // Select2
-    template_url('plugins/select2/select2.full.min.js', 'AdminLte')
+    site_url('vendor/almasaeed2010/adminlte/plugins/select2/select2.full.min.js')
 ));
 
 echo isset($js) ? $js : ''; // Place to pass data / plugable hook zone
+
 echo isset($footer) ? $footer : ''; // Place to pass data / plugable hook zone
 ?>
 

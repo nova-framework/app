@@ -5,21 +5,21 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="<?= Config::get('app.locale', 'en'); ?>">
+<html lang="<?= Language::code(); ?>">
 <head>
     <meta charset="utf-8">
     <title><?= $title .' - ' .Config::get('app.name', SITETITLE); ?></title>
 <?php
-echo isset($meta) ? $meta : ''; // Place to pass data / plugable hook zone
+echo $meta; // Place to pass data / plugable hook zone
 
 Assets::css([
-    template_url('dist/css/bootstrap.min.css', 'Default'),
-    template_url('dist/css/bootstrap-theme.min.css', 'Default'),
+    site_url('vendor/twbs/bootstrap/dist/css/bootstrap.min.css'),
+    site_url('vendor/twbs/bootstrap/dist/css/bootstrap-theme.min.css'),
     'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',
     template_url('css/style.css', 'Default'),
 ]);
 
-echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
+echo $css; // Place to pass data / plugable hook zone
 ?>
 </head>
 <body>
@@ -65,7 +65,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
     </div>
 </nav>
 
-<?= isset($afterBody) ? $afterBody : ''; // Place to pass data / plugable hook zone ?>
+<?= $afterBody; // Place to pass data / plugable hook zone ?>
 
 <div class="container">
     <p><img src='<?= template_url('images/nova.png', 'Default'); ?>' alt='<?= Config::get('app.name', SITETITLE); ?>' style="max-width: 360px; height: auto;"></p>
@@ -93,7 +93,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
 <?php
 Assets::js([
     'https://code.jquery.com/jquery-1.12.4.min.js',
-    template_url('dist/js/bootstrap.min.js', 'Default'),
+    site_url('vendor/twbs/bootstrap/dist/js/bootstrap.min.js'),
 ]);
 
 echo isset($js) ? $js : ''; // Place to pass data / plugable hook zone

@@ -23,37 +23,37 @@ foreach ($languages as $code => $info) {
 $langMenuLinks = ob_get_clean();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="<?= $langCode; ?>">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?= $title; ?> | <?= Config::get('app.name', SITETITLE); ?></title>
-    <?= isset($meta) ? $meta : ''; // Place to pass data / plugable hook zone ?>
+    <?= $meta; // Place to pass data / plugable hook zone ?>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <?php
     Assets::css(array(
         // Bootstrap 3.3.5
-        template_url('bootstrap/css/bootstrap.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/bootstrap/css/bootstrap.min.css'),
         // Font Awesome
         'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css',
         // Ionicons
         'https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css',
         // Theme style
-        template_url('dist/css/AdminLTE.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css'),
         // AdminLTE Skins
-        template_url('dist/css/skins/_all-skins.min.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/dist/css/skins/_all-skins.min.css'),
         // iCheck
-        template_url('plugins/iCheck/square/blue.css', 'AdminLte'),
+        site_url('vendor/almasaeed2010/adminlte/plugins/iCheck/square/blue.css'),
         // Custom CSS
         template_url('css/style.css', 'AdminLte'),
     ));
 
-    echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
+    echo $css; // Place to pass data / plugable hook zone
 
     //Add Controller specific JS files.
     Assets::js(array(
-            template_url('plugins/jQuery/jquery-2.2.3.min.js', 'AdminLte'),
+            site_url('vendor/almasaeed2010/adminlte/plugins/jQuery/jquery-2.2.3.min.js'),
         )
     );
 
@@ -141,15 +141,15 @@ $langMenuLinks = ob_get_clean();
 <?php
 Assets::js(array(
     // Bootstrap 3.3.5
-    template_url('bootstrap/js/bootstrap.min.js', 'AdminLte'),
+    site_url('vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js'),
     // AdminLTE App
-    template_url('dist/js/app.min.js', 'AdminLte'),
+    site_url('vendor/almasaeed2010/adminlte/dist/js/app.min.js'),
     // iCheck
-    template_url('plugins/iCheck/icheck.min.js', 'AdminLte'),
+    site_url('vendor/almasaeed2010/adminlte/plugins/iCheck/icheck.min.js'),
 ));
 
-echo isset($js) ? $js : ''; // Place to pass data / plugable hook zone
-echo isset($footer) ? $footer : ''; // Place to pass data / plugable hook zone
+echo $js; // Place to pass data / plugable hook zone
+echo $footer; // Place to pass data / plugable hook zone
 ?>
 
 <script>
