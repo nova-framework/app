@@ -84,6 +84,5 @@ return array (
   'Username' => 'Brugernavn',
   'Users' => 'Brugere',
   'We could not activate your Account. Try again later.' => 'Vi kunne ikke aktivere din brugerkonto. Prøv igen senere.',
-  'You are not authorized to access this resource.' => '',
   'Your Account has been created. We have sent you an E-mail to activate your Account.' => 'Din konto er nu oprettet. Der er sendt en aktiveringsmail til dig.',
 );

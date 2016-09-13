@@ -84,6 +84,5 @@ return array (
   'Username' => 'نام کاربری',
   'Users' => 'کاربران',
   'We could not activate your Account. Try again later.' => 'ما نتوانستیم حساب شما را فعال کنیم. لطفا بعدا تلاش کنید.',
-  'You are not authorized to access this resource.' => '',
   'Your Account has been created. We have sent you an E-mail to activate your Account.' => 'حساب شما با موفقیت ساخته شد. ما یک ایمیل برای فعال سازی حساب شما برایتان ارسال کردیم.',
 );

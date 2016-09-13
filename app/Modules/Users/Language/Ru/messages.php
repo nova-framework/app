@@ -84,6 +84,5 @@ return array (
   'Username' => 'Логин пользователя',
   'Users' => 'Пользователи',
   'We could not activate your Account. Try again later.' => 'Мы не смогли активировать ваш аккаунт. Попробуйте позже.',
-  'You are not authorized to access this resource.' => '',
   'Your Account has been created. We have sent you an E-mail to activate your Account.' => 'Ваш аккаунт был создан. Мы отправили вам email для его активации.',
 );

@@ -84,6 +84,5 @@ return array (
   'Username' => '',
   'Users' => '',
   'We could not activate your Account. Try again later.' => '',
-  'You are not authorized to access this resource.' => '',
   'Your Account has been created. We have sent you an E-mail to activate your Account.' => '',
 );
