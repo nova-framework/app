@@ -101,7 +101,7 @@ class Demos extends Controller
 
             //
             $content = '<table class="table table-striped table-hover responsive">
-                            <tr><th>Alias</th><th>Class</th></tr>';
+                            <tr><th>Class</th><th>Alias</th></tr>';
 
             $aliases = array();
 
@@ -111,7 +111,7 @@ class Demos extends Controller
 
                 $aliases[$alias] = $value;
 
-                $content .= '<tr><td>' .$alias .'</td><td>' .$value .'</td></tr>';
+                $content .= '<tr><td>' .$value .'</td><td>' .$alias .'</td></tr>';
             }
 
             $content .= '</table>';
