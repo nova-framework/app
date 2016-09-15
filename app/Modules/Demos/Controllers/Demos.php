@@ -71,6 +71,7 @@ class Demos extends Controller
     {
         $uri = 'demo/test/{param1?}/{param2?}/{param3?}/{slug?}';
 
+        /*
         //
         $route = new Route('GET', $uri, function() {
             //
@@ -85,6 +86,37 @@ class Demos extends Controller
             $content = '<pre>' .htmlspecialchars(var_export($route, true)) .'</pre>';
         } else {
             $content = '<pre>' .htmlspecialchars($uri) .'</pre>';
+        }
+        */
+
+        $filePath = ROOTDIR .'vendor/composer/autoload_classmap.php';
+
+        if (is_readable($filePath)) {
+            $data = include $filePath;
+
+            $classes = array_filter(array_keys($data), function($value)
+            {
+                return starts_with($value, 'Nova\\');
+            });
+
+            //
+            $content = '<table class="table table-striped table-hover responsive">
+                            <tr><th>Alias</th><th>Class</th></tr>';
+
+            $aliases = array();
+
+            foreach ($classes as $value) {
+                $alias = preg_replace('/^Nova\\\/s', '', $value);
+                //$alias = str_replace('Nova\\', '', $value);
+
+                $aliases[$alias] = $value;
+
+                $content .= '<tr><td>' .$alias .'</td><td>' .$value .'</td></tr>';
+            }
+
+            $content .= '</table>';
+        } else {
+            $content .= __('<b>{1}</b> is not readable or does not exists!', str_replace(ROOTDIR, '', $filePath));
         }
 
         return View::make('Default')
