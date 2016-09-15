@@ -100,7 +100,7 @@ class Demos extends Controller
             });
 
             //
-            $content = '<table class="table table-striped table-hover responsive">
+            $content = '<table class="table table-striped table-hover table-condensed responsive">
                             <tr><th>Class</th><th>Alias</th></tr>';
 
             $aliases = array();
