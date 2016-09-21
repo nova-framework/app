@@ -30,13 +30,21 @@ App::after(function($request, $response)
 
 /** Define Route Filters. */
 
-// A simple CSRF Filter.
+// The CSRF Filter.
 Route::filter('csrf', function($route, $request) {
-    $token = $request->ajax() ? $request->header('X-CSRF-Token') : $request->input('_token');
+    $ajaxRequest = $request->ajax();
 
-    if ($request->session()->token() != $token) {
-        // When CSRF Token is invalid, respond with Error 400 Page (Bad Request)
+    $token = $ajaxRequest ? $request->header('X-CSRF-Token') : $request->input('_token');
+
+    if ($request->session()->token() == $token) {
+        //
+    }
+
+    // The CSRF Token is invalid, respond with Error 400 (Bad Request)
+    else if (! $request->ajax()) {
         return Response::error(400);
+    } else {
+        return Response::make('Bad Request', 400);
     }
 });
 
@@ -45,9 +53,15 @@ Route::filter('referer', function($route, $request) {
     // Check if the visitor come to this Route from another site.
     $referer = $request->header('referer');
 
-    if(! starts_with($referer, Config::get('app.url'))) {
-        // When Referrer is invalid, respond with Error 400 Page (Bad Request)
+    if(starts_with($referer, Config::get('app.url'))) {
+        //
+    }
+
+    // When Referrer is invalid, respond with Error 400 (Bad Request)
+    else if (! $request->ajax()) {
         return Response::error(400);
+    } else {
+        return Response::make('Bad Request', 400);
     }
 });
 
