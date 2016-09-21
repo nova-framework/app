@@ -53,9 +53,15 @@ Route::filter('referer', function($route, $request) {
 
 // Authentication Filters.
 Route::filter('auth', function($route, $request) {
-    if (! Auth::check()) {
-         // User is not logged in, redirect him to Login Page.
+    if (Auth::check()) {
+        //
+    }
+
+    // User is not authenticated.
+    else if (! $request->ajax()) {
          return Redirect::guest('login');
+    } else {
+        return Response::make('Unauthorized Access', 403);
     }
 });
 
@@ -65,9 +71,15 @@ Route::filter('auth.basic', function()
 });
 
 Route::filter('guest', function($route, $request) {
-    if (! Auth::guest()) {
-        // User is authenticated, redirect him to Dashboard Page.
-        return Redirect::to('admin/dashboard');
+    if (Auth::guest()) {
+        //
+    }
+
+    // User is authenticated.
+    else if (! $request->ajax()) {
+         return Redirect::guest('admin/dashboard');
+    } else {
+        return Response::make('Unauthorized Access', 403);
     }
 });
 
