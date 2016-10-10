@@ -1,6 +1,7 @@
 <?php
 
 return array (
+  '<b>{1}</b> is not readable or does not exists!' => '',
   'Hello, welcome from the welcome controller and subpage method! <br/>
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => '',
   'Hello, welcome from the welcome controller! <br/>
