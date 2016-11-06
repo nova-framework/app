@@ -2,8 +2,8 @@
 
 return array (
   '%d %b %Y, %R' => '',
-  '<b>{0}</b>, you have successfully logged in.' => '',
-  'All tasks successfully executed.' => '',
+  '<b>{0}</b>, you have successfully logged in.' => '<b>{0}</b>, вы успешно вошли',
+  'All tasks successfully executed.' => 'Все задачи успешно выполнены',
   'Apply the changes' => 'Применить изменения',
   'Backend Skin' => 'Внешний вид админки',
   'Black' => 'Чёрный',
@@ -14,7 +14,7 @@ return array (
   'Confirm Password' => 'Подтвердить пароль',
   'Current Password' => 'Текущий пароль',
   'Dashboard' => 'Рабочий стол',
-  'E-mail' => '',
+  'E-mail' => 'E-mail',
   'E-mail From Address' => 'E-mail адрес отправителя',
   'E-mail From Name' => 'E-mail от имени',
   'Encryption' => 'Шифрование',
@@ -95,5 +95,5 @@ return array (
   'executed.' => 'выполнено',
   'execution failed.' => 'не выполнено',
   'successfully executed.' => 'успешно выполнено',
-  '{0} - Cron executed on {1}' => 'Задание крона выполнено {1}',
+  '{0} - Cron executed on {1}' => 'Выполнено задание крона {1}',
 );
