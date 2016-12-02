@@ -70,7 +70,7 @@ class Demos extends Controller
     public function test()
     {
         $uri = 'demo/test/{param1?}/{param2?}/{param3?}/{slug?}';
-
+        $content = '';
         /*
         //
         $route = new Route('GET', $uri, function() {
