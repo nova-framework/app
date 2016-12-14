@@ -52,7 +52,7 @@ $langMenuLinks = ob_get_clean();
         template_url('css/style-rtl.css', 'AdminLte'),
     ));
 
-    echo isset($css) ? $css . ''; // Place to pass data / plugable hook zone
+    echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
 
     //Add Controller specific JS files.
     Assets::js(array(
