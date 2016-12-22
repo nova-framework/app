@@ -37,7 +37,7 @@ Config::set('app', array(
     /**
      * Website Name.
      */
-    'name' => 'Nova 4.0-dev',
+    'name' => 'Nova 4.0',
 
     /**
      * The default Template.
