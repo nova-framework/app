@@ -19,6 +19,11 @@ define('PREFIX', 'nova_');
  */
 define('CONFIG_STORE', 'files'); // Supported: "files", "database"
 
+/**
+ * Wheter or not the configuration items are cached, while on Database Mode.
+ */
+define('CONFIG_CACHE', true);
+
 
 /**
  * Routing configuration
@@ -34,8 +39,15 @@ Config::set('routing', array(
         // The name of Assets Dispatcher used as 'custom' driver.
         'dispatcher' => 'Shared\Routing\Assets\CustomDispatcher',
 
-        // The served file Cache Time.
-        'cacheTime' => 10800,
+        // Wheter or not the CSS and JS files are automatically compressed.
+        'compress' => true,
+
+        // The browser Cache Control options.
+        'cache' => array(
+            'ttl'          => 600,
+            'maxAge'       => 10800,
+            'sharedMaxAge' => 600,
+        ),
 
         // The Valid Vendor Paths - be aware that improper configuration of the Valid Vendor Paths could introduce
         // severe security issues, try to limit the access to a precise area, where aren't present "unsafe" files.

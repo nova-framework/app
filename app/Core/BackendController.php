@@ -10,30 +10,31 @@ namespace App\Core;
 
 use Nova\Http\Request;
 use Nova\Routing\Route;
+use Nova\Support\Facades\Auth;
+use Nova\Support\Facades\Redirect;
 
 use App\Core\Controller as BaseController;
 
-use Auth;
-use Redirect;
 
-
-class BackendController extends BaseController
+abstract class BackendController extends BaseController
 {
     /**
      * The currently used Template.
      *
      * @var string
      */
-    protected $template = 'AdminLte';
+    protected $template = 'AdminLTE';
 
     /**
      * The currently used Layout.
      *
-     * @var string
+     * @var mixed
      */
     protected $layout = 'backend';
 
-
+    /**
+     * Create a new BackendController instance.
+     */
     public function __construct()
     {
         parent::__construct();
@@ -46,10 +47,9 @@ class BackendController extends BaseController
     {
         // Check the User Authorization - while using the Extended Auth Driver.
         if (! Auth::user()->hasRole('administrator')) {
-            $status = __d('users', 'You are not authorized to access this resource.');
+            $status = __('You are not authorized to access this resource.');
 
             return Redirect::to('admin/dashboard')->withStatus($status, 'warning');
         }
     }
-
 }

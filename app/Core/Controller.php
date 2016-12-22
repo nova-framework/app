@@ -1,6 +1,6 @@
 <?php
 /**
- * Controller - A base Controller which use the Templates and auto-rendering.
+ * Controller - base controller
  *
  * @author Virgil-Adrian Teaca - virgil@giulianaeassociati.com
  * @version 3.0
@@ -8,62 +8,70 @@
 
 namespace App\Core;
 
+use Nova\Config\Config;
 use Nova\Http\Response;
 use Nova\Routing\Controller as BaseController;
 use Nova\Support\Contracts\RenderableInterface as Renderable;
-use Nova\Template\Template as Layout;
+use Nova\Support\Facades\Layout as LayoutFactory;
+use Nova\Support\Facades\View as ViewFactory;
+use Nova\Layout\Layout;
 
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
-
-use Config;
-use Template;
-use View;
 
 use BadMethodCallException;
 
 
-class Controller extends BaseController
+abstract class Controller extends BaseController
 {
     /**
      * The currently used Template.
      *
      * @var string
      */
-    protected $template;
+    protected $template = null;
 
     /**
      * The currently used Layout.
      *
-     * @var mixed
+     * @var string
      */
     protected $layout = 'default';
 
 
     /**
-     * Create a new Controller instance
+     * Create a new Controller instance.
      */
     public function __construct()
     {
-        if(! isset($this->template)) {
+        // Setup the used Template to default, if it is not already defined.
+        if (! isset($this->template)) {
             $this->template = Config::get('app.template');
         }
     }
 
+    /**
+     * Create from the given result a Response instance and send it.
+     *
+     * @param mixed  $response
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     protected function processResponse($response)
     {
         if ($response instanceof Renderable) {
-            // If the response is returned from the controller action is a View instance
-            // and it is not marked as Layout, we will assume we want to render it on the
-            // default templated environment, setup via the current controller properties.
+            // If the response which is returned from the called Action is a Renderable instance,
+            // we will assume we want to render it using the Controller's templated environment.
 
-            if (is_string($this->layout) && (! $response instanceof Layout)) {
-                $response = Template::make($this->layout, $this->template)->with('content', $response);
+            if (is_string($this->layout) && ! empty($this->layout) && (! $response instanceof Layout)) {
+                $response = LayoutFactory::make($this->layout, array(), $this->template)
+                    ->with('content', $response);
             }
 
             // Create a proper Response instance.
             $response = new Response($response->render(), 200, array('Content-Type' => 'text/html'));
         }
 
+        // If the response is not a instance of Symfony Response, create a proper one.
         if (! $response instanceof SymfonyResponse) {
             $response = new Response($response);
         }
@@ -75,33 +83,46 @@ class Controller extends BaseController
      * Return a default View instance.
      *
      * @return \Nova\View\View
-     *
-     * @throw \BadMethodCallException
+     * @throws \BadMethodCallException
      */
     protected function getView(array $data = array())
     {
         list(, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
 
+        // Retrieve the called Controller method from the caller.
         $method = $caller['function'];
 
-        //
+         // Transform the complete class name on a path like variable.
         $path = str_replace('\\', '/', static::class);
 
+        // Check for a valid controller on Application.
         if (preg_match('#^App/Controllers/(.*)$#i', $path, $matches)) {
             $view = $matches[1] .'/' .ucfirst($method);
 
-            return View::make($view, $data);
-        } else if (preg_match('#^App/Modules/(.+)/Controllers/(.*)$#i', $path, $matches)) {
-            $view = $matches[2] .'/' .ucfirst($method);
-
-            return View::make($view, $data, $matches[1]);
+            return ViewFactory::make($view, $data);
         }
 
+        // Retrieve the Modules namespace from their configuration.
+        $namespace = Config::get('modules.namespace', 'App\Modules\\');
+
+        // Transform the Modules namespace on a path like variable.
+        $basePath = str_replace('\\', '/', rtrim($namespace, '\\'));
+
+        // Check for a valid controller on Modules.
+        if (preg_match('#^'. $basePath .'/(.+)/Controllers/(.*)$#i', $path, $matches)) {
+            $view = $matches[2] .'/' .ucfirst($method);
+
+            return ViewFactory::make($view, $data, $matches[1]);
+        }
+
+        // If we arrived there, the called class is not a Controller; go Exception.
         throw new BadMethodCallException('Invalid Controller namespace: ' .static::class);
     }
 
     /**
-     * @return mixed
+     * Return the current Template name.
+     *
+     * @return string
      */
     public function getTemplate()
     {
@@ -109,11 +130,40 @@ class Controller extends BaseController
     }
 
     /**
-     * @return mixed
+     * Return a Layout instance.
+     *
+     * @param string|null $layout
+     * @param array $data
+     *
+     * @return \Template\Template|\View\View
+     * @throws \BadMethodCallException
      */
-    public function getLayout()
+    public function getLayout($layout = null, array $data = array())
     {
-        return $this->layout;
+        // Adjust the current used Layout.
+        $layout = $layout ?: $this->layout;
+
+        if ($layout instanceof View) {
+            return $layout->with($data);
+        } else if (is_string($layout)) {
+            return LayoutFactory::make($layout, $data, $this->template);
+        }
+
+        throw new BadMethodCallException('Method not available for the current Layout');
+    }
+
+    /**
+     * Return the current Layout (class) name.
+     *
+     * @return string
+     */
+    public function getLayoutName()
+    {
+        if ($this->layout instanceof View) {
+            return class_name($this->layout);
+        } else if (is_string($this->layout)) {
+            return $this->layout;
+        }
     }
 
 }

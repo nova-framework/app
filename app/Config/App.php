@@ -103,14 +103,14 @@ Config::set('app', array(
         'Nova\Validation\ValidationServiceProvider',
         'Nova\Html\HtmlServiceProvider',
         'Nova\View\ViewServiceProvider',
-        'Nova\Template\TemplateServiceProvider',
+        'Nova\Layout\LayoutServiceProvider',
         'Nova\Cron\CronServiceProvider',
     ),
 
     /**
      * The Service Providers Manifest path.
      */
-    'manifest' => storage_path(),
+    'manifest' => APPDIR .'Boot' .DS .'Cache',
 
     /**
      * The registered Class Aliases.
@@ -169,7 +169,7 @@ Config::set('app', array(
         'URL'           => 'Nova\Support\Facades\URL',
         'Form'          => 'Nova\Support\Facades\Form',
         'HTML'          => 'Nova\Support\Facades\HTML',
-        'Template'      => 'Nova\Support\Facades\Template',
+        'Layout'        => 'Nova\Support\Facades\Layout',
         'View'          => 'Nova\Support\Facades\View',
         'Module'        => 'Nova\Support\Facades\Module',
         'Cron'          => 'Nova\Support\Facades\Cron',
