@@ -21,7 +21,7 @@ Route::group(array('prefix' => '', 'namespace' => 'App\Modules\Users\Controllers
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Modules\Users\Controllers\Admin'), function() {
 
     // The Users Search.
-    Route::post( 'users/search', array('before' => 'auth', 'uses' => 'Users@search'));
+    Route::post('users/search', array('before' => 'auth', 'uses' => 'Users@search'));
 
     // The Users CRUD.
     Route::get( 'users',              array('before' => 'auth',      'uses' => 'Users@index'));
