@@ -5,8 +5,7 @@ return array (
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => 'Bună, bun venit la controlerul <code>Welcome</code>! <br/>
 Acest conținut poate fi modificat în <code>/app/Views/Welcome/Welcome.php</code>',
   'Hello, welcome from the welcome controller! <br/>
-This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => 'Bună, bun venit la controlerul <code>Welcome</code> și metoda <code>subPage</code>! <br/>
-Acest conținut poate fi modificat în <code>/app/Views/Welcome/SubPage.php</code>',
+this content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => '',
   'Home' => 'Acasă',
   'If you have problems, please paste the above URL into your web browser.' => '',
   'Open subpage' => 'Deschide subpagina',

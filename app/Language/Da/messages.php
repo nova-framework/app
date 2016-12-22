@@ -4,7 +4,7 @@ return array (
   'Hello, welcome from the welcome controller and subpage method! <br/>
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => 'Hej. Velkommen fra "Welcome" controlleren og "Subpage" funktionen!<br/>Dette indhold kan ændres i <code>/app/Views/Welcome/SubPage.php</code>.',
   'Hello, welcome from the welcome controller! <br/>
-This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => '',
+this content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => '',
   'Home' => 'Hjem',
   'If you have problems, please paste the above URL into your web browser.' => 'Hvis du har problemer skal du indsætte den ovenstående URL ind i din webbrowser.',
   'Open subpage' => 'Åben underside',

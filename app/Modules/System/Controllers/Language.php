@@ -3,7 +3,7 @@
 namespace App\Modules\System\Controllers;
 
 use Nova\Config\Config;
-use Nova\Routing\Controller;
+use App\Core\Controller;
 
 use Cookie;
 use Redirect;

@@ -5,8 +5,7 @@ return array (
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => 'Здравствуйте, добро пожаловать в метод вызова страницы стартового контролера ! <br/>
     Содержимое этого файла можеть быть изменено в <code>app/Views/Welcome/SubPage.php</code>',
   'Hello, welcome from the welcome controller! <br/>
-This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => 'Здравствуйте, добро пожаловать в стартовый контролер! <br/>
-    Содержимое этого файла может быть изменено в <code>app/Views/Welcome/Welcome.php</code>',
+this content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => '',
   'Home' => 'Домой',
   'If you have problems, please paste the above URL into your web browser.' => 'Если у вас есть проблемы, пожалуйста, вставьте URL в адресную строку браузера.',
   'Open subpage' => 'Открыть подстраницу',

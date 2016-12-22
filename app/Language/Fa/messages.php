@@ -5,8 +5,7 @@ return array (
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => 'درود, به کنترل‎گر صفحه خوش آمد گویی و متد زیر‎صفحه خوش آمدید! <br/>
     محتوای این صفحه میتواند در فایل <code>/app/Views/Welcome/SubPage.php</code> ویرایش شود.',
   'Hello, welcome from the welcome controller! <br/>
-This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => 'درود, به کنترل‎‎گر صفحه خوش آمد گویی خوش آمدید! <br/>
-    محتوای این صفحه میتواند در فایل <code>/app/Views/Welcome/Welcome.php</code> ویرایش شود.',
+this content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => '',
   'Home' => 'خانه',
   'If you have problems, please paste the above URL into your web browser.' => 'اگر مشکلی دارید، لطفا URL بالا را در داخل مرورگر خود پیست کنید.',
   'Open subpage' => 'بازکردن زیر‎صفحه',

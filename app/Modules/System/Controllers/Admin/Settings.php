@@ -10,10 +10,8 @@ namespace App\Modules\System\Controllers\Admin;
 
 use App\Core\BackendController;
 
-use Auth;
 use Config;
 use Input;
-use Session;
 use Redirect;
 use Validator;
 use View;
@@ -39,6 +37,7 @@ class Settings extends BackendController
             'siteSkin'        => 'required|alpha_dash',
 
             // The Mailer
+            'pretend'         => 'required',
             'mailDriver'      => 'required|alpha',
             'mailHost'        => 'url',
             'mailPort'        => 'numeric',
@@ -55,6 +54,7 @@ class Settings extends BackendController
             'siteSkin'        => __d('system', 'Site Skin'),
 
             // The Mailer
+            'pretend'         => __d('system', 'Pretend'),
             'mailDriver'      => __d('system', 'Mail Driver'),
             'mailHost'        => __d('system', 'Server Name'),
             'mailPort'        => __d('system', 'Server Port'),
@@ -70,22 +70,22 @@ class Settings extends BackendController
 
     public function index()
     {
-        // Load the options from database.
+        // Load the Options from database.
         $options = array(
             // The Application.
-            'siteName'        => Config::get('app.name'),
-            'siteSkin'        => Config::get('app.color_scheme'),
-            'cronToken'       => Config::get('app.cronToken'),
+            'siteName'        => Input::old('siteName', Config::get('app.name')),
+            'siteSkin'        => Input::old('siteSkin', Config::get('app.color_scheme')),
 
             // The Mailer
-            'mailDriver'      => Config::get('mail.driver'),
-            'mailHost'        => Config::get('mail.host'),
-            'mailPort'        => Config::get('mail.port'),
-            'mailFromAddress' => Config::get('mail.from.address'),
-            'mailFromName'    => Config::get('mail.from.name'),
-            'mailEncryption'  => Config::get('mail.encryption'),
-            'mailUsername'    => Config::get('mail.username'),
-            'mailPassword'    => Config::get('mail.password'),
+            'pretend'         => Input::old('pretend',         Config::get('mail.pretend')),
+            'mailDriver'      => Input::old('mailDriver',      Config::get('mail.driver')),
+            'mailHost'        => Input::old('mailHost',        Config::get('mail.host')),
+            'mailPort'        => Input::old('mailPort',        Config::get('mail.port')),
+            'mailFromAddress' => Input::old('mailFromAddress', Config::get('mail.from.address')),
+            'mailFromName'    => Input::old('mailFromName',    Config::get('mail.from.name')),
+            'mailEncryption'  => Input::old('mailEncryption',  Config::get('mail.encryption')),
+            'mailUsername'    => Input::old('mailUsername',    Config::get('mail.username')),
+            'mailPassword'    => Input::old('mailPassword',    Config::get('mail.password')),
         );
 
         return $this->getView()
@@ -106,6 +106,7 @@ class Settings extends BackendController
             Config::set('app.color_scheme',  $input['siteSkin']);
 
             // The Mailer
+            Config::set('mail.pretend',      $input['pretend']);
             Config::set('mail.driver',       $input['mailDriver']);
             Config::set('mail.host',         $input['mailHost']);
             Config::set('mail.port',         $input['mailPort']);

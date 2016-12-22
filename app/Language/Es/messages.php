@@ -5,8 +5,7 @@ return array (
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => 'Hola, bienvenido desde el controlador welcome y el método subpage! <br/>
     Este contenido puede ser cambiado en <code>/app/Views/Welcome/SubPage.php</code>',
   'Hello, welcome from the welcome controller! <br/>
-This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => 'Hola, bienvenido desde el controlador welcome!! <br/>
-    Este contenido puede ser cambiado en <code>/app/Views/Welcome/Welcome.php</code>',
+this content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => '',
   'Home' => 'Inicio',
   'If you have problems, please paste the above URL into your web browser.' => '',
   'Open subpage' => 'Abrir Subpágina',

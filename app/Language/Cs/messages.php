@@ -5,8 +5,7 @@ return array (
 This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>' => 'Dobrý den, vítá Vás úvodní kontroler a metoda podstránka! <br/>
     Tento obsah lze změnit v <code>/app/Views/Welcome/SubPage.php</code>',
   'Hello, welcome from the welcome controller! <br/>
-This content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => 'Dobrý den, vítá Vás úvodní kontroler! <br/>
-    Tento obsah lze změnit v <code>/app/Views/Welcome/Welcome.php</code>',
+this content can be changed in <code>/app/Views/Welcome/Welcome.php</code>' => '',
   'Home' => 'Domů',
   'If you have problems, please paste the above URL into your web browser.' => '',
   'Open subpage' => 'Otevřít podstránku',

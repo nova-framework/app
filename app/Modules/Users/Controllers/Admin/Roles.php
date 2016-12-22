@@ -51,7 +51,7 @@ class Roles extends BackendController
         );
 
         $messages = array(
-            'valid_name' => __d('users', 'The :attribute field is not a valid Name.'),
+            'valid_name' => __d('users', 'The :attribute field is not a valid name.'),
         );
 
         $attributes = array(

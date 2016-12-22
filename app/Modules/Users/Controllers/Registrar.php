@@ -87,7 +87,7 @@ class Registrar extends BackendController
      *
      * @return Response
      *
-     * @thow \RuntimeException
+     * @thows \RuntimeException
      */
     public function store()
     {
