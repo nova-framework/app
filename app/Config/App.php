@@ -22,7 +22,7 @@ Config::set('app', array(
     /**
      * The Website URL.
      */
-    'url' => 'http://www.novabasic.dev/',
+    'url' => 'http://www.novaframework.dev/',
 
     /**
     * The Administrator's E-mail Address.
@@ -45,6 +45,11 @@ Config::set('app', array(
     'template' => 'Default',
 
     /**
+     * The Backend's Color Scheme.
+     */
+    'color_scheme' => 'blue',
+
+    /**
      * The default locale that will be used by the translation.
      */
     'locale' => 'en',
@@ -57,7 +62,7 @@ Config::set('app', array(
 
     /**
      * The Encryption Key.
-     * This tool can be used to generate key - http://jeffreybarke.net/tools/codeigniter-encryption-key-generator
+     * This page can be used to generate key - http://novaframework.com/token-generator
      */
     'key' => 'SomeRandomStringThere_1234567890',
 
@@ -70,31 +75,22 @@ Config::set('app', array(
      * The registered Service Providers.
      */
     'providers' => array(
-        // The Forge Console Providers.
-        'Nova\Foundation\Providers\ForgeServiceProvider',
-        'Nova\Session\CommandsServiceProvider',
-        'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
-        'Nova\Routing\ControllerServiceProvider',
-        'Nova\Module\ModuleServiceProvider',
-
-        // The Application Providers.
         'Nova\Auth\AuthServiceProvider',
         'Nova\Cache\CacheServiceProvider',
         'Nova\Routing\RoutingServiceProvider',
         'Nova\Cookie\CookieServiceProvider',
+        'Nova\Module\ModuleServiceProvider',
         'Nova\Database\DatabaseServiceProvider',
         'Nova\Encryption\EncryptionServiceProvider',
         'Nova\Filesystem\FilesystemServiceProvider',
         'Nova\Hashing\HashServiceProvider',
-        'Nova\Language\LanguageServiceProvider',
         'Nova\Log\LogServiceProvider',
         'Nova\Mail\MailServiceProvider',
-        'Nova\Database\MigrationServiceProvider',
         'Nova\Pagination\PaginationServiceProvider',
         'Nova\Redis\RedisServiceProvider',
         'Nova\Auth\Reminders\ReminderServiceProvider',
-        'Nova\Database\SeedServiceProvider',
         'Nova\Session\SessionServiceProvider',
+        'Nova\Language\LanguageServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
         'Nova\Html\HtmlServiceProvider',
         'Nova\View\ViewServiceProvider',
@@ -105,7 +101,7 @@ Config::set('app', array(
     /**
      * The Service Providers Manifest path.
      */
-    'manifest' => storage_path(),
+    'manifest' => APPDIR .'Boot' .DS .'Cache',
 
     /**
      * The registered Class Aliases.
@@ -132,12 +128,8 @@ Config::set('app', array(
         'Arr'           => 'Nova\Support\Arr',
         'Str'           => 'Nova\Support\Str',
 
-        // The Database Seeder.
-        'Seeder'        => 'Nova\Database\Seeder',
-
         // The Support Facades.
         'App'           => 'Nova\Support\Facades\App',
-        'Forge'         => 'Nova\Support\Facades\Forge',
         'Auth'          => 'Nova\Support\Facades\Auth',
         'Cache'         => 'Nova\Support\Facades\Cache',
         'Config'        => 'Nova\Support\Facades\Config',
@@ -149,7 +141,7 @@ Config::set('app', array(
         'Hash'          => 'Nova\Support\Facades\Hash',
         'Input'         => 'Nova\Support\Facades\Input',
         'Language'      => 'Nova\Support\Facades\Language',
-        'Mail'          => 'Nova\Support\Facades\Mail',
+        'Mailer'        => 'Nova\Support\Facades\Mailer',
         'Paginator'     => 'Nova\Support\Facades\Paginator',
         'Password'      => 'Nova\Support\Facades\Password',
         'Redirect'      => 'Nova\Support\Facades\Redirect',
@@ -157,7 +149,6 @@ Config::set('app', array(
         'Request'       => 'Nova\Support\Facades\Request',
         'Response'      => 'Nova\Support\Facades\Response',
         'Route'         => 'Nova\Support\Facades\Route',
-        'Schema'        => 'Nova\Support\Facades\Schema',
         'Session'       => 'Nova\Support\Facades\Session',
         'Validator'     => 'Nova\Support\Facades\Validator',
         'Log'           => 'Nova\Support\Facades\Log',
@@ -166,7 +157,7 @@ Config::set('app', array(
         'HTML'          => 'Nova\Support\Facades\HTML',
         'Layout'        => 'Nova\Support\Facades\Layout',
         'View'          => 'Nova\Support\Facades\View',
-        'Module'        => 'Nova\Support\Facades\Module',
         'Cron'          => 'Nova\Support\Facades\Cron',
+        'Module'        => 'Nova\Support\Facades\Module',
     ),
 ));

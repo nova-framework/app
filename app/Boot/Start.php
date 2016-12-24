@@ -6,7 +6,13 @@
  * @version 3.0
  */
 
-use Nova\Config\EnvironmentVariables;
+//--------------------------------------------------------------------------
+// Load The Composer Autoloader
+//--------------------------------------------------------------------------
+
+require ROOTDIR .'vendor/autoload.php';
+
+// The used Classes.
 use Nova\Config\Config;
 use Nova\Config\Repository as ConfigRepository;
 use Nova\Foundation\AliasLoader;
@@ -23,6 +29,12 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 error_reporting(-1);
 
 //--------------------------------------------------------------------------
+// Set PHP Session Cache Limiter
+//--------------------------------------------------------------------------
+
+session_cache_limiter('');
+
+//--------------------------------------------------------------------------
 // Use Internally The UTF-8 Encoding
 //--------------------------------------------------------------------------
 
@@ -31,24 +43,10 @@ if (function_exists('mb_internal_encoding')) {
 }
 
 //--------------------------------------------------------------------------
-// Include The Compiled Class File
-//--------------------------------------------------------------------------
-
-if (file_exists($compiled = __DIR__ .DS .'Compiled.php')) {
-    require $compiled;
-}
-
-//--------------------------------------------------------------------------
 // Setup Patchwork UTF-8 Handling
 //--------------------------------------------------------------------------
 
 Patchwork\Utf8\Bootup::initMbstring();
-
-//--------------------------------------------------------------------------
-// Set The System Path
-//--------------------------------------------------------------------------
-
-define('SYSTEMDIR', ROOTDIR .str_replace('/', DS, 'vendor/nova-framework/system/'));
 
 //--------------------------------------------------------------------------
 // Set The Storage Path
@@ -63,13 +61,7 @@ define('STORAGE_PATH', APPDIR .'Storage' .DS);
 define('VERSION', Application::VERSION);
 
 //--------------------------------------------------------------------------
-// Setup The Framework Environment
-//--------------------------------------------------------------------------
-
-defined('ENVIRONMENT') || define('ENVIRONMENT', 'development');
-
-//--------------------------------------------------------------------------
-// Load The Global Configuration
+// Load Global Configuration
 //--------------------------------------------------------------------------
 
 $path = APPDIR .'Config.php';
@@ -126,13 +118,6 @@ $app->registerCoreContainerAliases();
 $app->startExceptionHandling();
 
 if ($env != 'testing') ini_set('display_errors', 'Off');
-
-//--------------------------------------------------------------------------
-// Register The Environment Variables
-//--------------------------------------------------------------------------
-
-with($envVariables = new EnvironmentVariables(
-        $app->getEnvironmentVariablesLoader()))->load($env);
 
 //--------------------------------------------------------------------------
 // Load The Configuration
@@ -218,29 +203,6 @@ $path = $app['path'] .DS .'Boot' .DS .'Environment' .DS .ucfirst($env) .'.php';
 if (is_readable($path)) require $path;
 
 //--------------------------------------------------------------------------
-// Try To Register Again The Config Manager
-//--------------------------------------------------------------------------
-
-if(CONFIG_STORE == 'database') {
-    // Get the Database Connection instance.
-    $connection = $app['db']->connection();
-
-    // Get a fresh Config Loader instance.
-    $loader = $app->getConfigLoader();
-
-    // Setup Database Connection instance.
-    $loader->setConnection($connection);
-
-    // Refresh the Application's Config instance.
-    $app->instance('config', $config = new ConfigRepository($loader));
-
-    // Make the Facade to refresh its information.
-    Facade::clearResolvedInstance('config');
-} else if(CONFIG_STORE != 'files') {
-    throw new \InvalidArgumentException('Invalid Config Store type.');
-}
-
-//--------------------------------------------------------------------------
 // Load The Application Events
 //--------------------------------------------------------------------------
 
@@ -268,14 +230,14 @@ if (is_readable($path)) require $path;
 // Load The Application Bootstrap
 //--------------------------------------------------------------------------
 
-$path = $app['path'] .'Bootstrap.php';
+$path = $app['path'] .DS .'Bootstrap.php';
 
 if (is_readable($path)) require $path;
 
 });
 
 //--------------------------------------------------------------------------
-// Return The Application
+// Execute The Application
 //--------------------------------------------------------------------------
 
-return $app;
+$app->run();

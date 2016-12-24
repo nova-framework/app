@@ -6,20 +6,14 @@
 
 Log::useFiles(storage_path() .DS .'Logs' .DS .'error.log');
 
-
 //--------------------------------------------------------------------------
 // Application Error Handler
 //--------------------------------------------------------------------------
 
-App::error(function(Exception $exception, $code, $fromConsole)
+// The standard handling of the Exceptions.
+App::error(function(Exception $exception, $code)
 {
     Log::error($exception);
-
-    if ($fromConsole) {
-        return 'Error ' .$code .': ' .$e->getMessage()."\n";
-    }
-
-    //return '<h1>Error ' .$code .'</h1><p>' .$e->getMessage() .'</p>';
 });
 
 // Special handling for the HTTP Exceptions.
@@ -57,18 +51,31 @@ App::error(function(HttpException $exception)
     return Response::make($response, $code, $headers);
 });
 
-
 //--------------------------------------------------------------------------
-// Application Missing Route Handler
+// Try To Register Again The Config Manager
 //--------------------------------------------------------------------------
-/*
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-App::missing(function(NotFoundHttpException $exception)
-{
-    //
-});
-*/
+use Nova\Config\Repository as ConfigRepository;
+use Nova\Support\Facades\Facade;
+
+if(CONFIG_STORE == 'database') {
+    // Get the Database Connection instance.
+    $connection = $app['db']->connection();
+
+    // Get a fresh Config Loader instance.
+    $loader = $app->getConfigLoader();
+
+    // Setup Database Connection instance.
+    $loader->setConnection($connection);
+
+    // Refresh the Application's Config instance.
+    $app->instance('config', $config = new ConfigRepository($loader));
+
+    // Make the Facade to refresh its information.
+    Facade::clearResolvedInstance('config');
+} else if(CONFIG_STORE != 'files') {
+    throw new \InvalidArgumentException('Invalid Config Store type.');
+}
 
 //--------------------------------------------------------------------------
 // Boot Stage Customization
@@ -80,9 +87,24 @@ App::missing(function(NotFoundHttpException $exception)
 define('SITEURL', $app['config']['app.url']);
 
 /**
+ * Define relative base path.
+ */
+define('DIR', $app['config']['app.path']);
+
+/**
  * Create a constant for the name of the site.
  */
 define('SITETITLE', $app['config']['app.name']);
+
+/**
+ * Set a default language.
+ */
+define('LANGUAGE_CODE', $app['config']['app.locale']);
+
+/**
+ * Set the default template.
+ */
+define('TEMPLATE', $app['config']['app.template']);
 
 /**
  * Set a Site administrator email address.
