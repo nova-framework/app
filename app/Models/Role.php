@@ -9,6 +9,8 @@ class Role extends BaseModel
 {
     protected $table = 'roles';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = array('name', 'slug', 'description');
 
 
