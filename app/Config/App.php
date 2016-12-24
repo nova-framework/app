@@ -22,7 +22,7 @@ Config::set('app', array(
     /**
      * The Website URL.
      */
-    'url' => 'http://www.novatesting.dev/',
+    'url' => 'http://www.novabasic.dev/',
 
     /**
     * The Administrator's E-mail Address.
@@ -45,11 +45,6 @@ Config::set('app', array(
     'template' => 'Default',
 
     /**
-     * The Backend's Color Scheme.
-     */
-    'color_scheme' => 'blue',
-
-    /**
      * The default locale that will be used by the translation.
      */
     'locale' => 'en',
@@ -62,7 +57,7 @@ Config::set('app', array(
 
     /**
      * The Encryption Key.
-     * This page can be used to generate key - http://novaframework.com/token-generator
+     * This tool can be used to generate key - http://jeffreybarke.net/tools/codeigniter-encryption-key-generator
      */
     'key' => 'SomeRandomStringThere_1234567890',
 
@@ -110,7 +105,7 @@ Config::set('app', array(
     /**
      * The Service Providers Manifest path.
      */
-    'manifest' => APPDIR .'Boot' .DS .'Cache',
+    'manifest' => storage_path(),
 
     /**
      * The registered Class Aliases.

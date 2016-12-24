@@ -24,7 +24,7 @@ foreach ($languages as $code => $info) {
 $langMenuLinks = ob_get_clean();
 ?>
 <!DOCTYPE html>
-<html lang="<?= $language; ?>">
+<html lang="<?php echo Config::get('app.locale'); ?>">
 <head>
     <meta charset="utf-8">
     <title><?= $title .' - ' .Config::get('app.name', SITETITLE); ?></title>
@@ -32,8 +32,8 @@ $langMenuLinks = ob_get_clean();
 echo isset($meta) ? $meta : ''; // Place to pass data / plugable hook zone
 
 Assets::css([
-    vendor_url('dist/css/bootstrap.min.css', 'twbs/bootstrap'),
-    vendor_url('dist/css/bootstrap-theme.min.css', 'twbs/bootstrap'),
+    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',
+    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css',
     'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',
     template_url('css/style.css', 'Default'),
 ]);
@@ -41,7 +41,7 @@ Assets::css([
 echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
 ?>
 </head>
-<body style='padding-top: 28px;'>
+<body>
 
 <nav class="navbar navbar-default navbar-xs navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -83,7 +83,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
 <?php
 Assets::js([
     'https://code.jquery.com/jquery-1.12.4.min.js',
-    vendor_url('dist/js/bootstrap.min.js', 'twbs/bootstrap'),
+    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'
 ]);
 
 echo isset($js) ? $js : ''; // Place to pass data / plugable hook zone
