@@ -10,6 +10,12 @@
             "email": "dave@daveismyname.com",
             "homepage": "http://daveismyname.com",
             "role": "Developer"
+        },
+        {
+            "name": "Virgil-Adrian Teaca",
+            "email": "virgil@giulianaeassociati.com",
+            "homepage": "http://giulianaeassociati.com",
+            "role": "Developer"
         }
     ],
     "repositories": [
@@ -20,30 +26,17 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "nova-framework/system": "~4.0"
+        "nova-framework/system": "~3.0"
     },
     "autoload": {
-        "classmap": [
-            "app/Database/Migrations",
-            "app/Database/Seeds"
-        ],
         "psr-4": {
             "App\\" : "app/",
             "Shared\\" : "shared/"
         }
     },
     "scripts": {
-        "post-install-cmd": [
-            "php forge optimize",
-            "php forge module:optimize"
-        ],
-        "post-update-cmd": [
-            "php forge clear-compiled",
-            "php forge optimize",
-            "php forge module:optimize"
-        ],
         "post-create-project-cmd": [
-            "php forge key:generate"
+            "php nova make:key"
         ]
     },
     "prefer-stable": true,

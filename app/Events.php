@@ -3,7 +3,7 @@
  * Events - all standard Events are defined here.
  *
  * @author Virgil-Adrian Teaca - virgil@giulianaeassociati.com
- * @version 4.0
+ * @version 3.0
  */
 
 /** Define Events. */

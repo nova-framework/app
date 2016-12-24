@@ -3,7 +3,7 @@
  * Config
  *
  * @author Virgil-Adrian Teaca - virgil@giulianaeassociati.com
- * @version 4.0
+ * @version 3.0
  */
 
 use Nova\Config\Config;
