@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "nova-framework/system": "~4.0"
+        "nova-framework/system": "master"
     },
     "autoload": {
         "classmap": [
