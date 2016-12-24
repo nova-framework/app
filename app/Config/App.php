@@ -45,11 +45,6 @@ Config::set('app', array(
     'template' => 'Default',
 
     /**
-     * The Backend's Color Scheme.
-     */
-    'color_scheme' => 'blue',
-
-    /**
      * The default locale that will be used by the translation.
      */
     'locale' => 'en',
