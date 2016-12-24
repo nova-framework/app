@@ -1,1 +1,45 @@
 
+[2016-12-24 07:39:30] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Layout' not found' in /var/www/sites/novabasic/app/Boot/Global.php:50
+Stack trace:
+#0 [internal function]: Nova\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2016-12-24 07:39:30] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Layout' not found' in /var/www/sites/novabasic/app/Boot/Global.php:50
+Stack trace:
+#0 [internal function]: Nova\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2016-12-24 07:39:38] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Layout' not found' in /var/www/sites/novabasic/app/Boot/Global.php:50
+Stack trace:
+#0 [internal function]: Nova\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2016-12-24 07:39:38] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Layout' not found' in /var/www/sites/novabasic/app/Boot/Global.php:50
+Stack trace:
+#0 [internal function]: Nova\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2016-12-24 07:43:05] local.ERROR: exception 'ErrorException' with message 'Class 'Nova\Support\Facades\Template' not found' in /var/www/sites/novabasic/vendor/nova-framework/system/src/Foundation/AliasLoader.php:66
+Stack trace:
+#0 [internal function]: Nova\Exception\Handler->handleError(2, 'Class 'Nova\\Sup...', '/var/www/sites/...', 66, Array)
+#1 /var/www/sites/novabasic/vendor/nova-framework/system/src/Foundation/AliasLoader.php(66): class_alias('Nova\\Support\\Fa...', 'Template')
+#2 [internal function]: Nova\Foundation\AliasLoader->load('Template')
+#3 /var/www/sites/novabasic/app/Routes.php(22): spl_autoload_call('Template')
+#4 [internal function]: {closure}()
+#5 /var/www/sites/novabasic/vendor/nova-framework/system/src/Routing/Route.php(113): call_user_func_array(Object(Closure), Array)
+#6 /var/www/sites/novabasic/vendor/nova-framework/system/src/Routing/Router.php(1031): Nova\Routing\Route->run(Object(Nova\Http\Request))
+#7 /var/www/sites/novabasic/vendor/nova-framework/system/src/Routing/Router.php(1000): Nova\Routing\Router->dispatchToRoute(Object(Nova\Http\Request))
+#8 /var/www/sites/novabasic/vendor/nova-framework/system/src/Foundation/Application.php(774): Nova\Routing\Router->dispatch(Object(Nova\Http\Request))
+#9 /var/www/sites/novabasic/vendor/nova-framework/system/src/Foundation/Application.php(742): Nova\Foundation\Application->dispatch(Object(Nova\Http\Request))
+#10 /var/www/sites/novabasic/shared/Http/ContentGuard.php(61): Nova\Foundation\Application->handle(Object(Nova\Http\Request), 1, true)
+#11 /var/www/sites/novabasic/vendor/nova-framework/system/src/Session/Middleware.php(77): Shared\Http\ContentGuard->handle(Object(Nova\Http\Request), 1, true)
+#12 /var/www/sites/novabasic/vendor/nova-framework/system/src/Cookie/Queue.php(49): Nova\Session\Middleware->handle(Object(Nova\Http\Request), 1, true)
+#13 /var/www/sites/novabasic/vendor/nova-framework/system/src/Cookie/Guard.php(54): Nova\Cookie\Queue->handle(Object(Nova\Http\Request), 1, true)
+#14 /var/www/sites/novabasic/vendor/stack/builder/src/Stack/StackedHttpKernel.php(23): Nova\Cookie\Guard->handle(Object(Nova\Http\Request), 1, true)
+#15 /var/www/sites/novabasic/vendor/nova-framework/system/src/Foundation/Application.php(639): Stack\StackedHttpKernel->handle(Object(Nova\Http\Request))
+#16 /var/www/sites/novabasic/public/index.php(44): Nova\Foundation\Application->run()
+#17 {main} [] []
+[2016-12-24 07:44:30] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Layout' not found' in /var/www/sites/novabasic/app/Routes.php:22
+Stack trace:
+#0 [internal function]: Nova\Exception\Handler->handleShutdown()
+#1 {main} [] []
+[2016-12-24 07:44:32] local.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'Layout' not found' in /var/www/sites/novabasic/app/Routes.php:22
+Stack trace:
+#0 [internal function]: Nova\Exception\Handler->handleShutdown()
+#1 {main} [] []

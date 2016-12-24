@@ -56,16 +56,16 @@ The framework is located on [Packagist](https://packagist.org/packages/nova-fram
 You can install the framework from a terminal by using:
 
 ```
-composer create-project nova-framework/app foldername -s dev
+composer create-project nova-framework/bare-app foldername -s dev
 ```
 
 The foldername is the desired folder to be created.
 
 
-> **Note:** You can install the bare application variant from a terminal by using:
+> **Note:** You can install the full application variant from a terminal by using:
 
 ```
-composer create-project nova-framework/bare-app foldername -s dev
+composer create-project nova-framework/app foldername -s dev
 ```
 
 #### Manual
