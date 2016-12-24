@@ -8,5 +8,4 @@ return array (
   'To reset your password, complete this form: {0}.' => '',
   'Welcome' => 'Bienvenido',
   'Yep! It works.' => '',
-  'You are not authorized to access this resource.' => '',
 );

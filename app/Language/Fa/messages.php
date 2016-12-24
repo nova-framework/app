@@ -8,5 +8,4 @@ return array (
   'To reset your password, complete this form: {0}.' => 'برای بازیابی رمز عبور خود، این فرم را کامل کنید: {0}.',
   'Welcome' => 'خوش آمدید',
   'Yep! It works.' => '',
-  'You are not authorized to access this resource.' => '',
 );

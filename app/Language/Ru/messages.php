@@ -8,5 +8,4 @@ return array (
   'To reset your password, complete this form: {0}.' => 'Чтобы сбросить пароль, заполните эту форму: {0}',
   'Welcome' => 'Добро пожаловать!',
   'Yep! It works.' => 'Ага! Это работает.',
-  'You are not authorized to access this resource.' => 'Вы не имеете права доступа к данному ресурсу.',
 );
