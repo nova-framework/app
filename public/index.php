@@ -32,13 +32,7 @@ define('ENVIRONMENT', 'development');
 require ROOTDIR .'vendor/autoload.php';
 
 //--------------------------------------------------------------------------
-// Bootstrap the Framework and get the Application instance
+// Bootstrap the Framework
 //--------------------------------------------------------------------------
 
-$app = require_once APPDIR .'Boot' .DS .'Start.php';
-
-//--------------------------------------------------------------------------
-// Run the Application
-//--------------------------------------------------------------------------
-
-$app->run();
+require_once APPDIR .'Boot' .DS .'Start.php';
