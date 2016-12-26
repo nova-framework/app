@@ -1,9 +1,7 @@
 <?php
 /**
- * Default Layout - a Layout similar with the classic Header and Footer files.
+ * Default Layout.
  */
-
-$version = trim(file_get_contents(ROOTDIR .'VERSION.txt'));
 
 // Generate the Language Changer menu.
 $language = Language::code();
@@ -27,7 +25,7 @@ $langMenuLinks = ob_get_clean();
 <html lang="<?php echo Config::get('app.locale'); ?>">
 <head>
     <meta charset="utf-8">
-    <title><?= $title .' - ' .Config::get('app.name', SITETITLE); ?></title>
+    <title><?= $title .' - ' .Config::get('app.name', SITE_TITLE); ?></title>
 <?php
 echo isset($meta) ? $meta : ''; // Place to pass data / plugable hook zone
 
@@ -57,7 +55,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
 
 <div class="container">
     <p>
-        <img src='<?= template_url('images/nova.png', 'Default'); ?>' alt='<?= Config::get('app.name', SITETITLE); ?>'>
+        <img src='<?= template_url('images/nova.png', 'Default'); ?>' alt='<?= Config::get('app.name', SITE_TITLE); ?>'>
     </p>
 
     <?= $content; ?>
