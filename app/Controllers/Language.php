@@ -11,13 +11,6 @@ use Session;
 
 class Language extends Controller
 {
-    /**
-     * Create a new Controller instance.
-     */
-    public function __construct()
-    {
-        //
-    }
 
     /**
      * Change the Framework Language.
