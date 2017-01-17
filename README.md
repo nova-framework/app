@@ -51,7 +51,7 @@ This framework was designed and is **strongly recommended** to be installed abov
 Additionally, installing in a sub-directory, on a production server, will introduce severe security issues.
 
 #### Recommended
-The framework is located on [Packagist](https://packagist.org/packages/nova-framework/framework).
+The framework is located on [Packagist](https://packagist.org/packages/nova-framework/app).
 
 You can install the framework from a terminal by using:
 
