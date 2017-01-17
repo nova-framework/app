@@ -3,10 +3,10 @@ namespace App\Controllers;
 
 use Nova\Routing\Controller;
 
-use Config;
-use Cookie;
-use Redirect;
-use Session;
+use Nova\Support\Facades\Config;
+use Nova\Support\Facades\Cookie;
+use Nova\Support\Facades\Redirect;
+use Nova\Support\Facades\Session;
 
 
 class Language extends Controller

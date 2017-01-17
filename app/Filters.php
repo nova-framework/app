@@ -19,7 +19,9 @@
 
 App::before(function($request)
 {
-    //
+    $dispatcher = App::make('Nova\Assets\DispatcherInterface');
+
+    return $dispatcher->dispatch($request);
 });
 
 
@@ -31,7 +33,8 @@ App::after(function($request, $response)
 /** Define Route Filters. */
 
 // The CSRF Filter.
-Route::filter('csrf', function($route, $request) {
+Route::filter('csrf', function($route, $request)
+{
     $session = $request->session();
 
     $ajaxRequest = $request->ajax();
@@ -46,30 +49,32 @@ Route::filter('csrf', function($route, $request) {
     else if ($ajaxRequest) {
         return Response::make('Bad Request', 400);
     } else {
-	return Response::error(400);
+        App::abort(400, 'Bad Request');
     }
 });
 
 // Referer checking Filter.
-Route::filter('referer', function($route, $request) {
+Route::filter('referer', function($route, $request)
+{
     // Check if the visitor come to this Route from another site.
     $referer = $request->header('referer');
 
     if(! starts_with($referer, Config::get('app.url'))) {
-        // When Referrer is invalid, respond with Error 400 Page (Bad Request)
-        return Response::error(400);
+        // When Referrer is invalid, respond with Error 400 (Bad Request)
+        App::abort(400, 'Bad Request');
     }
 });
 
 // Authentication Filters.
-Route::filter('auth', function($route, $request) {
+Route::filter('auth', function($route, $request)
+{
     if (Auth::check()) {
         //
     }
 
     // User is not authenticated.
     else if (! $request->ajax()) {
-         return Redirect::guest('login');
+        return Redirect::guest('login');
     } else {
         return Response::make('Unauthorized Access', 403);
     }
@@ -80,14 +85,15 @@ Route::filter('auth.basic', function()
     return Auth::basic();
 });
 
-Route::filter('guest', function($route, $request) {
+Route::filter('guest', function($route, $request)
+{
     if (Auth::guest()) {
         //
     }
 
     // User is authenticated.
     else if (! $request->ajax()) {
-         return Redirect::guest('admin/dashboard');
+        return Redirect::to('admin/dashboard');
     } else {
         return Response::make('Unauthorized Access', 403);
     }

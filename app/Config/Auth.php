@@ -1,22 +1,53 @@
 <?php
 /**
- * Auth configuration
+ * Auth Configuration.
  *
  * @author Virgil-Adrian Teaca - virgil@giulianaeassociati.com
- * @version 3.0
+ * @version 4.0
  */
 
-use Nova\Config\Config;
 
+return array(
 
-Config::set('auth', array(
-    // The default Authentication Driver
-    'driver' => 'extended',               // Supported: "database", "extended"
+    /*
+    |--------------------------------------------------------------------------
+    | Default Authentication Driver
+    |--------------------------------------------------------------------------
+    |
+    | This option controls the authentication driver that will be utilized.
+    | This driver manages the retrieval and authentication of the users
+    | attempting to get access to protected areas of your application.
+    |
+    | Supported: "database", "extended"
+    |
+    */
 
-    // The Authentication Model, for the Extended Driver.
-    'model' => 'App\Models\User',
+    'driver' => 'extended',
 
-    // The Authentication Table, for the Database Driver.
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Model
+    |--------------------------------------------------------------------------
+    |
+    | When using the "extended" authentication driver, we need to know which
+    | extended model should be used to retrieve your users. Of course, it
+    | is often just the "User" model but you may use whatever you like.
+    |
+    */
+
+    'model' => 'App\Modules\Users\Models\User',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Table
+    |--------------------------------------------------------------------------
+    |
+    | When using the "Database" authentication driver, we need to know which
+    | table should be used to retrieve your users. We have chosen a basic
+    | default value but you may easily change it to any table you like.
+    |
+    */
+
     'table' => 'users',
 
     /*
@@ -33,9 +64,10 @@ Config::set('auth', array(
     | they have less time to be guessed. You may change this as needed.
     |
     */
+
     'reminder' => array(
         'email'  => 'Emails/Auth/Reminder',
         'table'  => 'password_reminders',
         'expire' => 60,
     )
-));
+);
