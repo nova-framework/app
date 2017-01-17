@@ -16,13 +16,5 @@
             "role": "Developer"
         }
     ],
-    "license" : "MIT",
-    "assets" : {
-        "default" : "local",
-        "paths" : {
-            "css" : "local",
-            "images" : "local",
-            "js" : "local"
-        }
-    }
+    "license" : "MIT"
 }
