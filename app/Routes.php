@@ -29,7 +29,7 @@ Route::any('', function() {
 });
 
 // The Framework's Language Changer.
-Route::any('language/{locale}', array('before' => 'referer', function($language)
+Route::any('language/{language}', array('before' => 'referer', function($language)
 {
     $languages = Config::get('languages');
 
