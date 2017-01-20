@@ -43,7 +43,7 @@ Route::any('language/{language}', array('before' => 'referer', function($languag
 
     return Redirect::back();
 
-}))->where('language', '([a-z]+)');
+}))->where('language', '([a-z]{2})');
 
 /** End default Routes */
 
