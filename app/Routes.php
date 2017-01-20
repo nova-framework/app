@@ -2,38 +2,29 @@
 /**
  * Routes - all standard Routes are defined here.
  *
- * @author David Carr - dave@daveismyname.com
+ * @author Virgil-Adrian Teaca - virgil@giulianaeassociati.com
  * @version 4.0
  */
 
 
-/** Define static routes. */
-
-// Default Routing
+// The Default Route.
 Route::any('', function() {
-    $content = __('Yep! It works.');
-
-    /*
+    // Create a View instance.
     $view = View::make('Default')
         ->shares('title', __('Welcome'))
-        ->withContent($content);
+        ->with('content', __('Yep! It works.'));
 
-    $template = View::makeLayout('default')->withContent($view);
-    */
+    // Create a Layout instance.
+    $layout = View::makeLayout('default')->with('content', $view);
 
-    $template = View::makeLayout('default')
-        ->shares('title', __('Welcome'))
-        ->nest('content', 'Default', array('content' => $content));
-
-    return Response::make($template);
+    return Response::make($layout);
 });
 
-// The Framework's Language Changer.
+// The Language Changer.
 Route::any('language/{language}', array('before' => 'referer', function($language)
 {
     $languages = Config::get('languages');
 
-    // Only set language if it's in the Languages array.
     if (in_array($language, array_keys($languages))) {
         Session::set('language', $language);
 
@@ -44,6 +35,4 @@ Route::any('language/{language}', array('before' => 'referer', function($languag
     return Redirect::back();
 
 }))->where('language', '([a-z]{2})');
-
-/** End default Routes */
 
