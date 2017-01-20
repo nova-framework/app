@@ -14,10 +14,8 @@ Route::any('', function() {
         ->shares('title', __('Welcome'))
         ->with('content', __('Yep! It works.'));
 
-    // Create a Layout instance.
-    $layout = View::makeLayout('default')->with('content', $view);
-
-    return Response::make($layout);
+    // Create a Layout instance and return it.
+    return View::makeLayout('default')->with('content', $view);
 });
 
 // The Language Changer.
