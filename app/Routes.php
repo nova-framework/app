@@ -18,10 +18,10 @@ Route::any('', function() {
         ->shares('title', __('Welcome'))
         ->withContent($content);
 
-    $template = Layout::make('default')->withContent($view);
+    $template = View::makeLayout('default')->withContent($view);
     */
 
-    $template = Layout::make('default')
+    $template = View::makeLayout('default')
         ->shares('title', __('Welcome'))
         ->nest('content', 'Default', array('content' => $content));
 
