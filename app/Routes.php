@@ -29,10 +29,20 @@ Route::any('', function() {
 });
 
 // The Framework's Language Changer.
-Route::any('language/{locale}', array(
-    'before' => 'referer',
-    'uses'   => 'App\Controllers\Language@change'
-));
+Route::any('language/{locale}', array('before' => 'referer', function($language)
+{
+    $languages = Config::get('languages');
+
+    // Only set language if it's in the Languages array
+    if (preg_match ('/[a-z]/', $language) && in_array($language, array_keys($languages))) {
+        Session::set('language', $language);
+
+        // Store the current Language in a Cookie lasting five years.
+        Cookie::queue(PREFIX .'language', $language, Cookie::FIVEYEARS);
+    }
+
+    return Redirect::back();
+}));
 
 /** End default Routes */
 
