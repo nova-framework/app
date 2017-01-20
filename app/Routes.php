@@ -8,7 +8,8 @@
 
 
 // The Default Route.
-Route::any('', function() {
+Route::any('/', function()
+{
     // Create a View instance.
     $view = View::make('Default')
         ->shares('title', __('Welcome'))
