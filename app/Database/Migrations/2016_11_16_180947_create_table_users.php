@@ -16,13 +16,8 @@ class CreateTableUsers extends Migration
         Schema::create('users', function($table)
         {
             $table->increments('id');
-            $table->integer('role_id')->unsigned();
             $table->string('username', 100)->unique();
             $table->string('password');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('location')->nullable();
-            $table->string('image')->nullable();
             $table->string('email', 100)->unique();
             $table->tinyInteger('active')->unsigned()->default(0);
             $table->string('activation_code')->nullable();
