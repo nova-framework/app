@@ -16,7 +16,7 @@ Route::any('/', function()
         ->with('content', __('Yep! It works.'));
 
     // Create a Layout instance and return it.
-    return View::makeLayout('default')->with('content', $view);
+    return View::makeLayout('Default')->with('content', $view);
 });
 
 // The Language Changer.
