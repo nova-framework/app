@@ -45,8 +45,8 @@
         ],
         "psr-4": {
             "App\\" : "app/",
-            "Modules\\" : "modules/",
             "Shared\\" : "shared/",
+            "Modules\\" : "modules/",
             "Themes\\" : "themes/"
         }
     },
