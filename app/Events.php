@@ -20,6 +20,11 @@ Event::listen('router.matched', function($route, $request) {
     }
 
     View::share('version', trim($version));
+
+    // Share on Views the CSRF Token.
+    $session = $request->session();
+
+    View::share('csrfToken', $session->token());
     
     // Share the Views the current URI.
     View::share('currentUri', $request->path());
