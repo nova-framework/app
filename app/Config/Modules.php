@@ -1,7 +1,8 @@
 <?php
 /**
- * Modules Configuration
+ * Active Modules
  *
+ * @author David Carr - dave@daveismyname.com
  * @author Virgil-Adrian Teaca - virgil@giulianaeassociati.com
  * @version 3.0
  */
@@ -10,18 +11,11 @@ use Nova\Config\Config;
 
 
 Config::set('modules', array(
-
     //--------------------------------------------------------------------------
     // Path to Modules
     //--------------------------------------------------------------------------
 
-    'path' => app_path('Modules'),
-
-    //--------------------------------------------------------------------------
-    // Modules Default State
-    //--------------------------------------------------------------------------
-
-    'enabled' => true,
+    'path' => APPDIR .'Modules',
 
     //--------------------------------------------------------------------------
     // Modules Base Namespace
@@ -30,14 +24,9 @@ Config::set('modules', array(
     'namespace' => 'App\Modules\\',
 
     //--------------------------------------------------------------------------
-    // Default Module Driver
+    // Registered Modules
     //--------------------------------------------------------------------------
 
-    'driver' => 'local',
-
-    //--------------------------------------------------------------------------
-    // Custom Module Driver
-    //--------------------------------------------------------------------------
-
-    'custom_driver' => 'App\Repositories\Modules\CustomRepository',
+    'modules' => array(),
+    ),
 ));
