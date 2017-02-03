@@ -22,12 +22,12 @@ Config::set('app', array(
     /**
      * The Website URL.
      */
-    'url' => 'http://www.novabasic.dev/',
+    'url' => 'http://www.novaframework.dev/',
 
     /**
     * The Administrator's E-mail Address.
     */
-    'email' => 'admin@novabasic.dev',
+    'email' => 'admin@novaframework.dev',
 
     /**
      * The Website Path.
