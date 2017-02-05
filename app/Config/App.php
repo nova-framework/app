@@ -73,14 +73,14 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
-    | Default Template
+    | Default Theme
     |--------------------------------------------------------------------------
     |
-    | Used for the applications default template.
+    | Used for the applications default theme.
     |
     */
 
-    'template' => 'Default',
+    'theme' => 'Default',
 
     /*
     |--------------------------------------------------------------------------
