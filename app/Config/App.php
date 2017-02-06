@@ -213,6 +213,7 @@ return array(
         'App\Providers\AppServiceProvider',
         'App\Providers\AuthServiceProvider',
         'App\Providers\EventServiceProvider',
+        'App\Providers\RouteServiceProvider',
     ),
 
     /*

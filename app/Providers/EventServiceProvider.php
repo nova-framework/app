@@ -19,6 +19,7 @@ class EventServiceProvider extends ServiceProvider
         ),
     );
 
+
     /**
      * Register any other events for your application.
      *
@@ -30,5 +31,8 @@ class EventServiceProvider extends ServiceProvider
         parent::boot($events);
 
         //
+        $path = app_path('Events.php');
+
+        $this->loadEventsFrom($path);
     }
 }
