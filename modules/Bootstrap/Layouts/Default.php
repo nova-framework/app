@@ -33,7 +33,7 @@ Assets::css([
     'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',
     'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css',
     'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',
-    theme_url('css/style.css', 'Default'),
+    resource_url('css/style.css', 'Bootstrap'),
 ]);
 
 echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
