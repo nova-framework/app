@@ -40,7 +40,7 @@ abstract class ThemedController extends BaseController
 
 
     /**
-     * Create a new Controller instance.
+     * Create a new ThemedController instance.
      */
     public function __construct()
     {
@@ -99,8 +99,10 @@ abstract class ThemedController extends BaseController
 
             if ($matches[1] == 'App') {
                $module = null;
+            } else  if (starts_with($matches[1], 'Modules/')) {
+               $module = basename($matches[1]);
             } else {
-               $module = $matches[1];
+                throw new BadMethodCallException('Invalid Controller namespace: ' .static::class);
             }
 
             return ViewFactory::make($view, $data, $module, $this->theme);

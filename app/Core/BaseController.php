@@ -26,6 +26,14 @@ abstract class BaseController extends Controller
 {
 
     /**
+     * Create a new BaseController instance.
+     */
+    public function __construct()
+    {
+        //
+    }
+
+    /**
      * Return a default View instance.
      *
      * @return \Nova\View\View
@@ -45,8 +53,10 @@ abstract class BaseController extends Controller
 
             if ($matches[1] == 'App') {
                $module = null;
+            } else if (starts_with($matches[1], 'Modules/')) {
+               $module = basename($matches[1]);
             } else {
-               $module = $matches[1];
+                throw new BadMethodCallException('Invalid Controller namespace: ' .static::class);
             }
 
             return ViewFactory::make($view, $data, $module);
