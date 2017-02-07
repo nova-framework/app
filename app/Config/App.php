@@ -80,32 +80,7 @@ return array(
     |
     */
 
-    'theme' => 'Default',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Application Backend Colour Scheme
-    |--------------------------------------------------------------------------
-    |
-    | Used for the applications Backend AdminLTE template.
-    |
-    | Options:
-    | - blue
-    | - blue-light
-    | - black
-    | - black-light
-    | - purple
-    | - purple-light
-    | - yellow
-    | - yellow-light
-    | - red
-    | - red-light
-    | - green
-    | - green-light
-    |
-    */
-
-    'color_scheme' => 'blue',
+    'theme' => 'Bootstrap',
 
     /*
     |--------------------------------------------------------------------------
