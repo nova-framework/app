@@ -152,7 +152,7 @@ return array(
     'providers' => array(
         // The Framework Providers.
         'Nova\Module\ModuleServiceProvider',
-        'Nova\Assets\AssetsServiceProvider',
+        'Nova\Assets\AssetServiceProvider',
         'Nova\Auth\AuthServiceProvider',
         'Nova\Cache\CacheServiceProvider',
         'Nova\Routing\RoutingServiceProvider',
