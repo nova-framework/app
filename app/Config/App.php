@@ -151,6 +151,7 @@ return array(
 
     'providers' => array(
         // The Framework Providers.
+        'Nova\Plugin\PluginServiceProvider',
         'Nova\Module\ModuleServiceProvider',
         'Nova\Auth\AuthServiceProvider',
         'Nova\Cache\CacheServiceProvider',
