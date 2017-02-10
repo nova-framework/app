@@ -18,7 +18,7 @@ class ThemeServiceProvider extends ServiceProvider
         $path = realpath(__DIR__ .'/../');
 
         // Configure the Package.
-        $this->package('Modules/Bootstrap', 'bootstrap', $path);
+        $this->package('Themes/Bootstrap', 'bootstrap', $path);
     }
 
     /**
