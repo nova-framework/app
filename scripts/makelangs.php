@@ -59,7 +59,17 @@ if(is_dir(BASEPATH .'modules')) {
     $dirs = glob($path , GLOB_ONLYDIR);
 
     foreach($dirs as $module) {
-        $workPaths[] = str_replace('/', DS, 'modules/'.basename($module));
+        $workPaths[] = 'modules' .DS .basename($module);
+    }
+}
+
+if(is_dir(BASEPATH .'plugins')) {
+    $path = str_replace('/', DS, BASEPATH .'plugins/*');
+
+    $dirs = glob($path , GLOB_ONLYDIR);
+
+    foreach($dirs as $template) {
+        $workPaths[] = 'plugins' .DS .basename($template);
     }
 }
 
@@ -69,7 +79,7 @@ if(is_dir(BASEPATH .'themes')) {
     $dirs = glob($path , GLOB_ONLYDIR);
 
     foreach($dirs as $template) {
-        $workPaths[] = str_replace('/', DS, 'themes/'.basename($template));
+        $workPaths[] = 'themes' .DS .basename($template);
     }
 }
 
@@ -92,7 +102,7 @@ foreach($workPaths as $workPath) {
     if(empty($results)) {
         /*
         foreach($languages as $language) {
-            $langFile = BASEPATH .$workPath.'/Language/'.ucfirst($language).'/messages.php';
+            $langFile = BASEPATH .$workPath. DS .'Language' .DS .ucfirst($language) .DS .'messages.php';
 
             $output = "<?php
 
@@ -117,24 +127,14 @@ return " .var_export(array(), true).";\n";
 
     $messages = array();
 
-    foreach($results as $key => $filePath) {
-        $file = substr($filePath, strlen(BASEPATH));
-
-        if($workPath == 'app') {
-            $testPath = substr($filePath, strlen(BASEPATH));
-
-            if(starts_with($testPath, 'app/Modules') || starts_with($testPath, 'app/Templates')) {
-                continue;
-            }
-        }
-
+    foreach ($results as $key => $filePath) {
         $content = file_get_contents($filePath);
 
-        if(preg_match_all($pattern, $content, $matches)) {
-            foreach($matches[1] as $message) {
+        if (preg_match_all($pattern, $content, $matches)) {
+            foreach ($matches[1] as $message) {
                 //$message = trim($message);
 
-                if($message == '$msg, $args = null') {
+                if ($message == '$msg, $args = null') {
                     // This is the function
                     continue;
                 }
@@ -144,36 +144,37 @@ return " .var_export(array(), true).";\n";
         }
     }
 
-    if(!empty($messages)) {
+    if (! empty($messages)) {
         echo 'Messages found on path "'.$workPath.'". Processing...'.PHP_EOL;
 
-        $messages = array_flip($messages);
+        $strings = array_flip($messages);
 
-        foreach($languages as $language) {
-            $langFile = BASEPATH .$workPath.'/Language/'.strtoupper($language).'/messages.php';
+        foreach ($languages as $language) {
+            $langFile = BASEPATH .$workPath .DS .'Language' .DS .strtoupper($language) .DS .'messages.php';
 
-            if(is_readable($langFile)) {
-                $oldData = include($langFile);
+            if (is_readable($langFile)) {
+                $data = include($langFile);
 
-                $oldData = is_array($oldData) ? $oldData : array();
+                $data = is_array($data) ? $data : array();
             } else {
-                $oldData = array();
+                $data = array();
             }
 
-            foreach($messages as $message => $value) {
-                if(array_key_exists($message, $oldData)) {
-                    $value = $oldData[$message];
+            //
+            $messages = array();
 
-                    if(!empty($value) && is_string($value)) {
-                        $messages[$message] = $value;
-                    }
-                    else {
-                        $messages[$message] = '';
+            foreach ($strings as $key => $value) {
+                if (array_key_exists($key, $data)) {
+                    $value = $data[$key];
+
+                    if (! empty($value) && is_string($value)) {
+                        $messages[$key] = $value;
+
+                        continue;
                     }
                 }
-                else {
-                    $messages[$message] = '';
-                }
+
+                $messages[$key] = '';
             }
 
             ksort($messages);
