@@ -7,13 +7,8 @@
  * @version 3.0
  */
 
-use Nova\Config\Config;
 
-
-/**
- * The Application configuration.
- */
-Config::set('app', array(
+return array(
     /**
      * Debug Mode
      */
@@ -22,12 +17,12 @@ Config::set('app', array(
     /**
      * The Website URL.
      */
-    'url' => 'http://www.novabasic.dev/',
+    'url' => 'http://www.novaframework.dev/',
 
     /**
     * The Administrator's E-mail Address.
     */
-    'email' => 'admin@novabasic.dev',
+    'email' => 'admin@novaframework.dev',
 
     /**
      * The Website Path.
@@ -43,6 +38,11 @@ Config::set('app', array(
      * The default Template.
      */
     'template' => 'Default',
+
+    /**
+     * The Backend's Color Scheme.
+     */
+    'color_scheme' => 'blue',
 
     /**
      * The default locale that will be used by the translation.
@@ -160,4 +160,4 @@ Config::set('app', array(
         'Cron'          => 'Nova\Support\Facades\Cron',
         'Module'        => 'Nova\Support\Facades\Module',
     ),
-));
+);
