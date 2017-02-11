@@ -51,30 +51,13 @@ App::error(function(HttpException $exception)
 });
 
 //--------------------------------------------------------------------------
-// Try To Register Again The Config Manager
+// Maintenance Mode Handler
 //--------------------------------------------------------------------------
 
-use Nova\Config\Repository as ConfigRepository;
-use Nova\Support\Facades\Facade;
-
-if(CONFIG_STORE == 'database') {
-    // Get the Database Connection instance.
-    $connection = $app['db']->connection();
-
-    // Get a fresh Config Loader instance.
-    $loader = $app->getConfigLoader();
-
-    // Setup Database Connection instance.
-    $loader->setConnection($connection);
-
-    // Refresh the Application's Config instance.
-    $app->instance('config', $config = new ConfigRepository($loader));
-
-    // Make the Facade to refresh its information.
-    Facade::clearResolvedInstance('config');
-} else if(CONFIG_STORE != 'files') {
-    throw new \InvalidArgumentException('Invalid Config Store type.');
-}
+App::down(function()
+{
+    return Response::make("Be right back!", 503);
+});
 
 //--------------------------------------------------------------------------
 // Boot Stage Customization
