@@ -165,23 +165,15 @@ return array(
         'Nova\Language\LanguageServiceProvider',
         'Nova\Log\LogServiceProvider',
         'Nova\Mail\MailServiceProvider',
-        'Nova\Database\MigrationServiceProvider',
         'Nova\Pagination\PaginationServiceProvider',
         'Nova\Queue\QueueServiceProvider',
         'Nova\Redis\RedisServiceProvider',
         'Nova\Auth\Reminders\ReminderServiceProvider',
-        'Nova\Database\SeedServiceProvider',
         'Nova\Session\SessionServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
         'Nova\View\ViewServiceProvider',
         'Nova\Widget\WidgetServiceProvider',
         'Nova\Assets\AssetServiceProvider',
-
-        // The Console Providers.
-        'Nova\Foundation\Providers\ForgeServiceProvider',
-        'Nova\Session\CommandsServiceProvider',
-        'Nova\Foundation\Providers\ConsoleSupportServiceProvider',
-        'Nova\Routing\ControllerServiceProvider',
 
         // The Application Providers.
         'App\Providers\AppServiceProvider',
