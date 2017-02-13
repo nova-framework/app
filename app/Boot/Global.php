@@ -14,9 +14,15 @@ use Nova\Database\ORM\ModelNotFoundException;
 
 App::error(function(Exception $exception, $code, $fromConsole)
 {
-    if ($exception instanceof ModelNotFoundException) {
-        // Do not report this type of exception.
+    if (($exception instanceof ModelNotFoundException) ||
+        ($exception instanceof HttpException)) {
+        // Do not report those types of exception.
         return;
+    }
+
+    // When CSRF mismatch.
+    else if ($exception instanceof TokenMismatchException) {
+        return Redirect::back()->withStatus(__d('Your session expired. Please try again!'), 'danger');
     }
 
     Log::error($exception);
