@@ -9,7 +9,7 @@ use Nova\Support\Str;
 use Closure;
 
 
-class CheckForHttpReferrer
+class CheckForReferer
 {
     /**
      * The Application URL.
