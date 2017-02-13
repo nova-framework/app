@@ -10,28 +10,6 @@
 // The CSRF Filter.
 Route::middleware('csrf', 'App\Http\Middleware\VerifyCsrfToken');
 
-/*
-Route::middleware('csrf', function($request, $next)
-{
-    $session = $request->session();
-
-    $ajaxRequest = $request->ajax();
-
-    $token = $ajaxRequest ? $request->header('X-CSRF-Token') : $request->input('_token');
-
-    if ($session->token() == $token) {
-        return $next($request);
-    }
-
-    // The CSRF Token is invalid, respond with Error 400 (Bad Request)
-    else if ($ajaxRequest) {
-        return Response::make('Bad Request', 400);
-    } else {
-        App::abort(400, 'Bad Request');
-    }
-});
-*/
-
 // Referer checking Filter.
 Route::middleware('referer', function($request, $next)
 {
