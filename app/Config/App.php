@@ -152,6 +152,7 @@ return array(
         'Nova\Session\Middleware\StartSession',
         'Nova\Foundation\Http\Middleware\ServeAssetFile',
         'Nova\View\Middleware\ShareErrorsFromSession',
+        'Nova\Foundation\Http\Middleware\SetupLanguage',
         'App\Http\Middleware\MinifyContent',
     ),
 
