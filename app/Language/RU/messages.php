@@ -8,7 +8,7 @@ return array (
   'Service unavailable' => '',
   'Something has gone wrong on the Web Server.' => '',
   'Thanks for creating an Account with the {0}. Please follow the link below to verify your email address: {1}' => 'Спасибо за создание учетной записи на {0}. Пожалуйста, перейдите по ссылке ниже, чтобы подтвердить свой адрес электронной почты: {1}',
-  'The site is currently under maintenance.' => '',
+  'This site is temporarily unavailable.' => '',
   'To reset your password, complete this form: {0}.' => 'Чтобы сбросить пароль, заполните эту форму: {0}',
   'Welcome' => 'Добро пожаловать!',
   'Yep! It works.' => 'Ага! Это работает.',
