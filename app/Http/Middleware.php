@@ -8,7 +8,14 @@
 
 
 // The CSRF Filter.
-Route::middleware('csrf', 'App\Http\Middleware\VerifyCsrfToken');
+Route::middleware('csrf',  'App\Http\Middleware\VerifyCsrfToken');
+
+// Authentication Filters.
+Route::middleware('auth',  'App\Http\Middleware\Authenticate');
+
+Route::middleware('guest', 'App\Http\Middleware\RedirectIfAuthenticated');
+
+Route::middleware('auth.basic', 'Nova\Auth\Middleware\AuthenticateWithBasicAuth');
 
 // Referer checking Filter.
 Route::middleware('referer', function($request, $next)
@@ -22,42 +29,4 @@ Route::middleware('referer', function($request, $next)
     }
 
     return $next($request);
-});
-
-// Authentication Filters.
-Route::middleware('auth', function($request, $next)
-{
-    if (Auth::check()) {
-        return $next($request);
-    }
-
-    // User is not authenticated.
-    else if ($request->ajax() || $request->wantsJson()) {
-        return Response::make('Unauthorized Access', 403);
-    } else {
-        return Redirect::guest('login');
-    }
-});
-
-Route::middleware('auth.basic', function($request, $next)
-{
-    if (! is_null($response = Auth::basic())) {
-        return $response;
-    }
-
-    return $next($request);
-});
-
-Route::middleware('guest', function($request, $next)
-{
-    if (Auth::guest()) {
-        return $next($request);
-    }
-
-    // User is authenticated.
-    else if ($request->ajax() || $request->wantsJson()) {
-        return Response::make('Unauthorized Access', 403);
-    } else {
-        return Redirect::to('admin/dashboard');
-    }
 });
