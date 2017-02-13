@@ -147,14 +147,14 @@ return array(
 
     'middleware' => array(
         'Nova\Foundation\Http\Middleware\CheckForMaintenanceMode',
-        'Nova\Cookie\Middleware\EncryptCookies',
+        'App\Http\Middleware\EncryptCookies',
         'Nova\Cookie\Middleware\AddQueuedCookiesToResponse',
         'Nova\Session\Middleware\StartSession',
         'Nova\Foundation\Http\Middleware\ServeAssetFile',
         'Nova\View\Middleware\ShareErrorsFromSession',
         'App\Http\Middleware\MinifyContent',
     ),
-    
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
