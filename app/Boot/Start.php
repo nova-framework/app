@@ -102,10 +102,12 @@ $app->bindInstallPaths(array(
 $app->instance('app', $app);
 
 //--------------------------------------------------------------------------
-// Register The Framework Kernel
+// Register The Application Kernel
 //--------------------------------------------------------------------------
 
 $app->singleton('Nova\Http\Contracts\KernelInterface', 'App\Http\Kernel');
+
+$app->singleton('Nova\Console\Contracts\KernelInterface', 'App\Console\Kernel');
 
 //--------------------------------------------------------------------------
 // Check For The Test Environment
