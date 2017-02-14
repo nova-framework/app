@@ -153,6 +153,7 @@ return array(
         // The Framework Providers.
         'Nova\Plugin\PluginServiceProvider',
         'Nova\Module\ModuleServiceProvider',
+        'Nova\Assets\AssetServiceProvider',
         'Nova\Auth\AuthServiceProvider',
         'Nova\Bus\BusServiceProvider',
         'Nova\Cache\CacheServiceProvider',
@@ -174,8 +175,6 @@ return array(
         'Nova\Session\SessionServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
         'Nova\View\ViewServiceProvider',
-        'Nova\Widget\WidgetServiceProvider',
-        'Nova\Assets\AssetServiceProvider',
 
         // The Application Providers.
         'App\Providers\AppServiceProvider',
