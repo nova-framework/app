@@ -8,7 +8,7 @@
 
 
 // The Default Route.
-Route::any('/', function()
+$router->any('/', function()
 {
     // Create a View instance.
     $view = View::make('Default')
@@ -20,7 +20,7 @@ Route::any('/', function()
 });
 
 // The Language Changer.
-Route::any('language/{language}', array('before' => 'referer', function($language)
+$router->any('language/{language}', array('before' => 'referer', function($language)
 {
     $languages = Config::get('languages');
 
