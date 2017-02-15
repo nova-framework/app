@@ -155,6 +155,7 @@ return array(
         'Nova\Module\ModuleServiceProvider',
         'Nova\Assets\AssetServiceProvider',
         'Nova\Auth\AuthServiceProvider',
+        'Nova\Broadcasting\BroadcastServiceProvider',
         'Nova\Bus\BusServiceProvider',
         'Nova\Cache\CacheServiceProvider',
         'Nova\Routing\RoutingServiceProvider',
