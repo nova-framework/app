@@ -36,7 +36,7 @@ Route::filter('csrf', function($route, $request) {
 
     $ajaxRequest = $request->ajax();
 
-    $token = $ajaxRequest ? $request->header('X-CSRF-Token') : $request->input('_token');
+    $token = $ajaxRequest ? $request->header('X-CSRF-Token') : $request->input('csrfToken');
 
     if ($session->token() == $token) {
         //
@@ -46,7 +46,7 @@ Route::filter('csrf', function($route, $request) {
     else if ($ajaxRequest) {
         return Response::make('Bad Request', 400);
     } else {
-        App::abort(400);
+        App::abort(400, 'Bad Request');
     }
 });
 
@@ -86,7 +86,7 @@ Route::filter('guest', function($route, $request) {
 
     // User is authenticated.
     else if (! $request->ajax()) {
-        return Redirect::guest('admin/dashboard');
+        return Redirect::to('admin/dashboard');
     } else {
         return Response::make('Unauthorized Access', 403);
     }
