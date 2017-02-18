@@ -35,14 +35,9 @@ return array(
     'name' => 'Nova 3.0',
 
     /**
-     * The default Template.
+     * The default Theme.
      */
-    'template' => 'Default',
-
-    /**
-     * The Backend's Color Scheme.
-     */
-    'color_scheme' => 'blue',
+    'theme' => 'Bootstrap',
 
     /**
      * The default locale that will be used by the translation.
