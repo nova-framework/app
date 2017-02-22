@@ -86,6 +86,16 @@ return array(
         'Nova\View\ViewServiceProvider',
         'Nova\Cron\CronServiceProvider',
 
+        // The Forge Providers.
+        'Nova\Auth\Reminders\ConsoleServiceProvider',
+        'Nova\Cache\ConsoleServiceProvider',
+        'Nova\Foundation\Providers\ComposerServiceProvider',
+        'Nova\Foundation\Providers\ForgeServiceProvider',
+        'Nova\Module\Providers\ConsoleServiceProvider',
+        'Nova\Module\Providers\GeneratorServiceProvider',
+        'Nova\Routing\Providers\ConsoleServiceProvider',
+        'Nova\Session\ConsoleServiceProvider',
+        
         // The Application Providers.
         'App\Providers\AppServiceProvider',
         'App\Providers\EventServiceProvider',
