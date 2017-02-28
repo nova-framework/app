@@ -12,4 +12,5 @@ return array (
   'To reset your password, complete this form: {0}.' => '',
   'Welcome' => 'ようこそ',
   'Yep! It works.' => '',
+  'Your session expired. Please try again!' => '',
 );

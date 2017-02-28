@@ -12,4 +12,5 @@ return array (
   'To reset your password, complete this form: {0}.' => 'Чтобы сбросить пароль, заполните эту форму: {0}',
   'Welcome' => 'Добро пожаловать!',
   'Yep! It works.' => 'Ага! Это работает.',
+  'Your session expired. Please try again!' => '',
 );
