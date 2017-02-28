@@ -12,4 +12,5 @@ return array (
   'To reset your password, complete this form: {0}.' => 'For at nulstille dit kodeord, skal du udfyld denne formular: {0}.',
   'Welcome' => 'Velkommen',
   'Yep! It works.' => 'Jeps! Det virker.',
+  'Your session expired. Please try again!' => 'Din sesseion er udløbet. Prøv venligst igen.',
 );
