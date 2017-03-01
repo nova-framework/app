@@ -12,7 +12,7 @@ return array(
     /**
      * Debug Mode
      */
-    'debug' => (ENVIRONMENT == 'development'), // When enabled the actual PHP errors will be shown.
+    'debug' => true, // When enabled the actual PHP errors will be shown.
 
     /**
      * The Website URL.
@@ -38,6 +38,11 @@ return array(
      * The default Theme.
      */
     'theme' => 'Bootstrap',
+
+    /**
+     * The Backend's Color Scheme.
+     */
+    'color_scheme' => 'blue',
 
     /**
      * The default locale that will be used by the translation.
