@@ -9,7 +9,8 @@
 /** Define Events. */
 
 // Add a Listener Closure to the Event 'router.matched'.
-Event::listen('router.matched', function($route, $request) {
+Event::listen('router.matched', function($route, $request)
+{
     // Share the Application version.
     $path = ROOTDIR .'VERSION.txt';
 
@@ -25,7 +26,7 @@ Event::listen('router.matched', function($route, $request) {
     $session = $request->session();
 
     View::share('csrfToken', $session->token());
-    
+
     // Share the Views the current URI.
     View::share('currentUri', $request->path());
 
