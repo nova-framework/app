@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use Nova\Foundation\Application;
+use Nova\Support\Facades\Auth;
 use Nova\Support\Facades\Redirect;
 
 use Closure;
@@ -33,12 +33,13 @@ class RedirectIfAuthenticated
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
+     * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $guard = null)
     {
-        if ($this->auth->check()) {
-            return Redirect::to('/');
+        if (Auth::guard($guard)->check()) {
+            return Redirect::to('admin/dashboard');
         }
 
         return $next($request);
