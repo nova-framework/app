@@ -15,10 +15,10 @@ return array(
     |
     */
 
-    'templates' => array(
-        'path' => BASEPATH .'themes',
+    'themes' => array(
+        'path' => base_path('themes'),
     ),
-    
+
     /*
     |--------------------------------------------------------------------------
     | Compiled View Path
