@@ -26,25 +26,12 @@ return array(
     //--------------------------------------------------------------------------
 
     'modules' => array(
-        'demos' => array(
-            'namespace' => 'Demos',
-            'enabled'   => true,
-            'order'     => 10001,
-        ),
-        'files' => array(
-            'namespace' => 'Files',
-            'enabled'   => true,
-            'order'     => 9001,
-        ),
+        /*
         'system' => array(
             'namespace' => 'System',
             'enabled'   => true,
             'order'     => 8001,
         ),
-        'users' => array(
-            'namespace' => 'Users',
-            'enabled'   => true,
-            'order'     => 9001,
-        ),
+        */
     ),
 );
