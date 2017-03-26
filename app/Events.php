@@ -15,33 +15,13 @@ Event::listen('router.matched', function($route, $request)
     $path = ROOTDIR .'VERSION.txt';
 
     if (is_readable($path)) {
-        $version = file_get_contents($path);
+        $version = trim(file_get_contents($path));
     } else {
         $version = VERSION;
     }
 
-    View::share('version', trim($version));
+    View::share('version', $version);
 
     // Share on Views the CSRF Token.
-    $session = $request->session();
-
-    View::share('csrfToken', $session->token());
-
-    // Share the Views the current URI.
-    View::share('currentUri', $request->path());
-
-    // Share the Views the Backend's base URI.
-    $segments = $request->segments();
-
-    if(! empty($segments)) {
-        // Make the path equal with the first part if it exists, i.e. 'admin'
-        $baseUri = array_shift($segments) .'/';
-
-        // Add to path the next part, if it exists, defaulting to 'dashboard'.
-        $baseUri .= ! empty($segments) ? array_shift($segments) : 'dashboard';
-    } else {
-        $baseUri = '';
-    }
-
-    View::share('baseUri', $baseUri);
+    View::share('csrfToken', Session::token());
 });

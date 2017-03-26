@@ -69,9 +69,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
             </div>
             <div class="col-lg-8">
                 <p class="text-muted pull-right">
-                    <?php if(Config::get('app.debug')) { ?>
                     <small><!-- DO NOT DELETE! - Profiler --></small>
-                    <?php } ?>
                 </p>
             </div>
         </div>
