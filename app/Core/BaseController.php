@@ -11,16 +11,8 @@ namespace App\Core;
 use Nova\Foundation\Auth\Access\AuthorizesRequestsTrait;
 use Nova\Foundation\Bus\DispatchesJobsTrait;
 use Nova\Foundation\Validation\ValidatesRequestsTrait;
-use Nova\Http\Response;
 use Nova\Routing\Controller;
-use Nova\Support\Contracts\RenderableInterface as Renderable;
-use Nova\Support\Facades\Config;
-use Nova\Support\Facades\Module;
-use Nova\Support\Facades\View as ViewFactory;
-use Nova\View\Layout;
-use Nova\View\View;
-
-use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+use Nova\Support\Facades\View;
 
 use BadMethodCallException;
 
@@ -29,7 +21,7 @@ abstract class BaseController extends Controller
 {
     use DispatchesJobsTrait, AuthorizesRequestsTrait, ValidatesRequestsTrait;
 
-    
+
     /**
      * Return a default View instance.
      *
@@ -49,17 +41,16 @@ abstract class BaseController extends Controller
             $view = $matches[2] .'/' .ucfirst($method);
 
             if ($matches[1] == 'App') {
-               $module = null;
-            } else if (count($segments = explode('/', $matches[1])) === 2) {
-               $module = last($segments);
-            } else {
-                throw new BadMethodCallException('Invalid Controller namespace: ' .static::class);
+                return View::make($view, $data);
             }
 
-            return ViewFactory::make($view, $data, $module);
+            $segments = explode('/', $matches[1]);
+
+            if (count($segments) === 2) {
+                return View::make($view, $data, last($segments));
+            }
         }
 
-        // If we arrived there, the called class is not a Controller; go Exception.
         throw new BadMethodCallException('Invalid Controller namespace: ' .static::class);
     }
 
