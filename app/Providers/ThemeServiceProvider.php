@@ -7,7 +7,14 @@ use Nova\Support\ServiceProvider;
 
 class ThemeServiceProvider extends ServiceProvider
 {
+    /**
+     * This namespace is applied to all Theme Service Providers.
+     *
+     * @var string
+     */
+    protected $namespace = 'App\\Themes';
 
+    
     /**
      * Bootstrap the Application Events.
      *
@@ -29,39 +36,36 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $themes = $this->getInstalledThemes();
+
+        $themes->each(function ($theme)
+        {
+            $provider = sprintf('%s\\%s\\Providers\\ThemeServiceProvider', $this->namespace, $theme);
+
+            if (class_exists($provider)) {
+                $this->app->register($provider);
+            }
+        });
+    }
+
+    protected function getInstalledThemes()
+    {
         $themesPath = APPDIR .'Themes';
 
         try {
             $paths = $this->app['files']->directories($themesPath);
         }
         catch (InvalidArgumentException $e) {
-            // Do nothing.
             $paths = array();
         }
 
-        foreach ($paths as $path) {
-            $theme = basename($path);
+        $themes = array_map(function ($path)
+        {
+            return basename($path);
 
-            $this->registerServiceProvider($theme);
-        }
+        }, $paths);
+
+        return collect($themes);
     }
 
-    /**
-     * Register the Theme Service Provider.
-     *
-     * @param string $theme
-     *
-     * @return void
-     *
-     * @throws \Nova\Module\FileMissingException
-     */
-    protected function registerServiceProvider($theme)
-    {
-        // Calculate the name of Service Provider, including the namespace.
-        $serviceProvider = "App\\Themes\\{$theme}\\Providers\\ThemeServiceProvider";
-
-        if (class_exists($serviceProvider)) {
-            $this->app->register($serviceProvider);
-        }
-    }
 }
