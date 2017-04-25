@@ -53,22 +53,12 @@ App::error(function(HttpException $exception)
         return Response::json($content, $code, $headers);
     }
 
-    // Retrieve first the Application version.
-    $path = BASEPATH .'VERSION.txt';
-
-    if (is_readable($path)) {
-        $version = file_get_contents($path);
-    } else {
-        $version = VERSION;
-    }
-
     // We'll create the templated Error Page Response.
-    $response = View::makeLayout('Default')
-        ->shares('version', trim($version))
+    $view = View::makeLayout('Default')
         ->shares('title', 'Error ' .$code)
         ->nest('content', 'Error/' .$code);
 
-    return Response::make($response, $code, $headers);
+    return Response::make($view, $code, $headers);
 });
 
 //--------------------------------------------------------------------------
