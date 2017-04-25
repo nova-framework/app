@@ -17,7 +17,7 @@ Route::any('', function() {
         ->shares('title', __('Welcome'))
         ->withContent($content);
 
-    return View::makeLayout('Default')->withContent($view);
+    return View::makeLayout('Welcome')->withContent($view);
 });
 
 // The Language Changer
