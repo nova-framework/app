@@ -1,83 +1,43 @@
 <?php
 
 //--------------------------------------------------------------------------
-// Application Error Logger
+// Load The Options
 //--------------------------------------------------------------------------
 
-Log::useFiles(storage_path() .DS .'logs' .DS .'error.log');
+use Nova\Database\QueryException;
 
-//--------------------------------------------------------------------------
-// Application Error Handler
-//--------------------------------------------------------------------------
-
-use Nova\Database\ORM\ModelNotFoundException;
-use Nova\Session\TokenMismatchException;
-
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Models\Option;
 
 
-App::error(function(Exception $exception, $code, $fromConsole)
-{
-    if (($exception instanceof ModelNotFoundException) || ($exception instanceof HttpException)) {
-        // Do not report those types of exception.
-        return;
-    }
+if (CONFIG_STORE === 'database') {
+	// Retrieve the Option items, caching them for 24 hours.
 
-    // When CSRF mismatch.
-    else if ($exception instanceof TokenMismatchException) {
-        $status = __('Your session expired. Please try again!');
+	try {
+		$options = Cache::remember('system_options', 1440, function ()
+		{
+			return Option::all();
+		});
+	}
+	catch (QueryException $e) {
+		$options = array();
+	}
 
-        return Redirect::back()->withStatus($status, 'danger');
-    }
+	foreach ($options as $option) {
+		$key = $option->group;
 
-    Log::error($exception);
+		if (! empty($option->item)) {
+			$key .= '.' .$option->item;
+		}
 
-    if ($fromConsole) {
-        return 'Error ' .$code .': ' .$e->getMessage()."\n";
-    }
+		Config::set($key, $option->value);
+	}
+}
 
-    //return '<h1>Error ' .$code .'</h1><p>' .$e->getMessage() .'</p>';
-});
-
-// Special handling for the HTTP Exceptions.
-App::error(function(HttpException $exception)
-{
-    $code = $exception->getStatusCode();
-
-    $headers = $exception->getHeaders();
-
-    if (Request::ajax()) {
-        // An AJAX request; we'll create a JSON Response.
-        $content = array('status' => $code);
-
-        return Response::json($content, $code, $headers);
-    }
-
-    // We'll create the templated Error Page Response.
-    $view = View::makeLayout('Default')
-        ->shares('title', 'Error ' .$code)
-        ->nest('content', 'Errors/' .$code);
-
-    return Response::make($view, $code, $headers);
-});
-
-//--------------------------------------------------------------------------
-// Application Missing Route Handler
-//--------------------------------------------------------------------------
-/*
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
-App::missing(function(NotFoundHttpException $exception)
-{
-    //
-});
-*/
+// If the CONFIG_STORE is not in files mode, go Exception.
+else if(CONFIG_STORE !== 'files') {
+	throw new InvalidArgumentException('Invalid Config Store type.');
+}
 
 //--------------------------------------------------------------------------
 // Boot Stage Customization
 //--------------------------------------------------------------------------
-
-/**
- * Create a constant for the name of the site.
- */
-define('SITE_TITLE', $app['config']['app.name']);
