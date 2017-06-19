@@ -69,14 +69,6 @@ return array(
 			'driver'	=> 'redis',
 			'queue'		=> 'default',
 		),
-
-		// Asynchronous execution of database jobs. NOT GOOD FOR A HEAVY LOAD!
-		'async' => array(
-			'driver'	=> 'async',
-			'table'		=> 'jobs',
-			'queue'		=> 'default',
-			'expire'	=> 60,
-		),
 	),
 
 	/*
