@@ -24,7 +24,6 @@ class Kernel extends HttpKernel
 	 */
 	protected $middlewareGroups = array(
 		'web' => array(
-			'App\Http\Middleware\HandleProfilers',
 			'App\Http\Middleware\EncryptCookies',
 			'Nova\Cookie\Middleware\AddQueuedCookiesToResponse',
 			'Nova\Session\Middleware\StartSession',
