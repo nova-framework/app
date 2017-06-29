@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use Nova\Foundation\Auth\Access\AuthorizesRequestsTrait;
 use Nova\Foundation\Validation\ValidatesRequestsTrait;
-use Nova\Http\Response;
 use Nova\Routing\Controller;
 use Nova\Support\Contracts\RenderableInterface;
 use Nova\Support\Facades\App;
@@ -69,13 +68,6 @@ class BaseController extends Controller
 	 */
 	protected $viewData = array();
 
-	/**
-	 * The Response instance used alternatively.
-	 *
-	 * @var \Nova\Http\Response
-	 */
-	protected $response;
-
 
 	/**
 	 * Method executed before any action.
@@ -106,10 +98,6 @@ class BaseController extends Controller
 
 		$response = call_user_func_array(array($this, $method), $parameters);
 
-		if (is_null($response) && isset($this->response)) {
-			$response = $this->response;
-		}
-
 		return $this->processResponse($response);
 	}
 
@@ -123,21 +111,27 @@ class BaseController extends Controller
 	{
 		if (! $this->autoRender()) {
 			return $response;
-		} else if (is_null($response)) {
+		}
+
+		// The auto-rendering is active.
+		else if (is_null($response)) {
 			$response = $this->createView();
 		}
 
-		if ($this->autoLayout() && ($response instanceof RenderableInterface)) {
-			$direction = Language::direction();
+		if (! $response instanceof RenderableInterface) {
+			return $response;
+		}
 
-			if ($direction === 'ltr') {
-				$view = $this->getLayoutName();
-			} else {
-				$layout = 'RTL/' .$this->layout;
+		// The response is a RenderableInterface implementation.
+		else if ($this->autoLayout()) {
+			$view = $this->getQualifiedLayout();
 
-				if (! View::exists($view = $this->getLayoutName($layout))) {
-					$view = $this->getLayoutName();
-				}
+			if ('rtl' == Language::direction()) {
+				$layout = sprintf('RTL/%s', $this->layout);
+
+				$localized = $this->getQualifiedLayout($layout);
+
+				$view = View::exists($localized) ? $localized : $view;
 			}
 
 			return View::make($view, $this->viewData)->with('content', $response);
@@ -147,97 +141,76 @@ class BaseController extends Controller
 	}
 
 	/**
-	 * Create the correct View instance, hands it its data, and uses it to render in a Layout.
+	 * Gets a qualified View name for the implicit or given Layout.
 	 *
-	 * @param string $action Action name to render.
-	 * @param string $layout Layout to use.
-	 * @return string Full output string of view contents.
+	 * @param  string|null  $layout
+	 * @return string
 	 */
-	public function render($view = null, $layout = null)
+	protected function getQualifiedLayout($layout = null)
 	{
-		$this->autoRender = false;
-
-		if (is_null($view)) {
-			$view = $this->getViewName($this->action);
-		} else if (Str::startsWith($view, '/')) {
-			$view = ltrim($view, '/');
-		} else if (! Str::contains($view, '::')) {
-			$view = $this->getViewName($view);
+		if (is_null($layout)) {
+			$layout = $this->layout;
 		}
 
-		$view = View::make($view, $this->viewData);
+		$view = sprintf('Layouts/%s', $layout);
 
-		if ($this->autoLayout()) {
-			$layout = $this->getLayoutName($layout);
-
-			$view = View::make($layout, $this->viewData)->with('content', $view);
+		if (! empty($this->theme)) {
+			return sprintf('%s::%s', $this->theme, $view);
 		}
 
-		return $this->response = new Response($view);
+		return $view;
 	}
 
 	/**
 	 * Create a View instance for the implicit (or specified) View name.
 	 *
 	 * @param  array  $data
-	 * @param  string|null  $custom
+	 * @param  string|null  $view
 	 * @return \Nova\View\View
 	 */
-	protected function createView($data = array(), $custom = null)
+	protected function createView(array $data = array(), $view = null)
 	{
-		$view = $custom ?: ucfirst($this->action);
+		if (is_null($view)) {
+			$view = $this->action;
+		}
 
-		return View::make(
-			$this->getViewName($view), array_merge($this->viewData, $data)
-		);
+		// Compute the qualified View name.
+		$view = sprintf('%s/%s', $this->getViewPath(), ucfirst($view));
+
+		return View::make($view, array_merge($this->viewData, $data));
 	}
 
 	/**
-	 * Gets a qualified View name.
+	 * Gets a qualified View path.
 	 *
 	 * @return string
 	 * @throws \BadMethodCallException
 	 */
-	protected function getViewName($view)
+	protected function getViewPath()
 	{
-		if (! isset($this->viewPath)) {
-			$classPath = str_replace('\\', '/', static::class);
+		if (isset($this->viewPath)) {
+			return $this->viewPath;
+		}
 
-			if (preg_match('#^(.+)/Controllers/(.*)$#s', $classPath, $matches) !== 1) {
-				throw new BadMethodCallException('Invalid controller namespace');
-			}
+		$basePath = trim(str_replace('\\', '/', App::getNamespace()), '/');
 
-			if ($matches[1] !== 'App') {
+		$classPath = str_replace('\\', '/', static::class);
+
+		if (preg_match('#^(.+)/Controllers/(.*)$#', $classPath, $matches) === 1) {
+			$viewPath = $matches[2];
+
+			//
+			$namespace = $matches[1];
+
+			if ($namespace !== $basePath) {
 				// A Controller within a Plugin namespace.
-				$viewPath = $matches[1] .'::' .$matches[2];
-			} else {
-				$viewPath = $matches[2];
+				$viewPath = $namespace .'::' .$viewPath;
 			}
 
-			$this->viewPath = $viewPath;
+			return $this->viewPath = $viewPath;
 		}
 
-		return $this->viewPath .'/' .ucfirst($view);
-	}
-
-	/**
-	 * Gets a qualified View name for a Layout.
-	 *
-	 * @param  string|null  $layout
-	 * @return string
-	 * @throws \BadMethodCallException
-	 */
-	protected function getLayoutName($layout = null)
-	{
-		if (is_null($layout)) {
-			$layout = $this->layout;
-		}
-
-		if (! empty($this->theme)) {
-			return $this->theme .'::Layouts/' .$layout;
-		}
-
-		return 'Layouts/' .$layout;
+		throw new BadMethodCallException('Invalid controller namespace');
 	}
 
 	/**
