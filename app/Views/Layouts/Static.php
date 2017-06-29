@@ -25,7 +25,7 @@
 <footer class="footer">
 	<div class="container-fluid">
 		<div class="row" style="margin: 15px 0 0;">
-			<div class="col-lg-12">
+			<div class="col-lg-12 text-right">
 				Copyright &copy; <?= date('Y') ?> <a href="http://www.novaframework.com/" target="_blank"><strong>Nova Framework <?= VERSION; ?> / Kernel <?= App::version(); ?></strong></a> - All rights reserved.
 			</div>
 		</div>
