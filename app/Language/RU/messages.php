@@ -3,6 +3,9 @@
 return array (
   'Internal Server Error' => 'Внутрення ошибка сервера',
   'Method not allowed' => 'Метод не разрешен',
+  'Password has been reset!' => '',
+  'Password reminder sent!' => '',
+  'Passwords must be at least six characters and match the confirmation.' => '',
   'Service unavailable' => 'Сервис недоступен',
   'Something has gone wrong on the Web Server.' => 'Ошибка на сервере',
   'The :attribute and :other must be different.' => ':attribute и :other должны отличаться',
@@ -50,6 +53,8 @@ return array (
   'The :attribute must have between :min and :max items.' => ':attribute должно быть между значениями: :min и :max .',
   'The selected :attribute is invalid.' => 'Выбранный :attribute недопустим.',
   'This could be the result of an invalid Page request.' => 'Это может быть результатом неверного запроса страницы.',
+  'This password reset token is invalid.' => '',
   'This site is temporarily unavailable.' => 'Сайт временно недоступен.',
   'Unauthorized' => 'Неразрешенный',
+  'We can\'t find a user with that e-mail address.' => '',
 );
