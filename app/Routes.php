@@ -1,5 +1,8 @@
 <?php
 
+use Nova\Http\Request;
+
+
 /**
  * The static Pages.
  */
