@@ -29,6 +29,10 @@
         "nova-framework/system": "~3.0"
     },
     "autoload": {
+        "classmap": [
+            "app/Database/Migrations",
+            "app/Database/Seeds"
+        ],
         "psr-4": {
             "App\\" : "app/",
             "Shared\\" : "shared/"

@@ -94,8 +94,10 @@ abstract class BaseController extends Controller
         $path = str_replace('\\', '/', static::class);
 
         // Check for a valid controller on App and its Modules.
-        if (preg_match('#^App(?:/Modules/(.+))?/Controllers/(.*)$#', $path, $matches) === 1) {
-            $module = ! empty($matches[1]) ? $matches[1] : '';
+        $basePath = trim(str_replace('\\', '/', App::getNamespace()), '/');
+
+        if (preg_match('#^' .$basePath .'(?:/Modules/(.+))?/Controllers/(.*)$#', $path, $matches) === 1) {
+            $module = $matches[1]; // Empty string when a module name is not captured.
 
             $view = sprintf('%s/%s', $matches[2], ucfirst($method));
 
