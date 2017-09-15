@@ -6,6 +6,7 @@ use Nova\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+
     /**
      * Run the database seeds.
      *
@@ -18,5 +19,4 @@ class DatabaseSeeder extends Seeder
         //
         $this->call('App\Database\Seeds\UsersTableSeeder');
     }
-
 }
