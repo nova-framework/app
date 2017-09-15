@@ -21,7 +21,9 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $guard = $guard ?: Config::get('auth.defaults.guard', 'web');
+        if (is_null($guard)) {
+            $guard = Config::get('auth.default', 'web');
+        }
 
         if (Auth::guard($guard)->check()) {
             $uri = Config::get("auth.guards.{$guard}.paths.dashboard", 'admin/dashboard');
