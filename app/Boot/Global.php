@@ -35,7 +35,7 @@ App::error(function(HttpException $exception)
     // We'll create the templated Error Page Response.
     $view = View::makeLayout('Default')
         ->shares('title', 'Error ' .$code)
-        ->nest('content', 'Error/' .$code);
+        ->nest('content', 'Errors/' .$code);
 
     return Response::make($view, $code, $headers);
 });
