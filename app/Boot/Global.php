@@ -11,7 +11,7 @@ Log::useFiles(STORAGE_PATH .'logs' .DS .'error.log');
 //--------------------------------------------------------------------------
 
 // The standard handling of the Exceptions.
-App::error(function(Exception $exception, $code)
+App::error(function (Exception $exception, $code)
 {
     Log::error($exception);
 });
@@ -19,7 +19,7 @@ App::error(function(Exception $exception, $code)
 // Special handling for the HTTP Exceptions.
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
-App::error(function(HttpException $exception)
+App::error(function (HttpException $exception)
 {
     $code = $exception->getStatusCode();
 
@@ -44,7 +44,7 @@ App::error(function(HttpException $exception)
 // Maintenance Mode Handler
 //--------------------------------------------------------------------------
 
-App::down(function()
+App::down(function ()
 {
     return Response::make("Be right back!", 503);
 });
