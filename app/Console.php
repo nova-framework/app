@@ -21,3 +21,8 @@ Forge::resolveCommands(array(
  * Schedule the Mailer Spool queue flushing.
  */
 Schedule::command('mailer:spool:send')->everyMinute();
+
+/**
+ * Schedule the flushing of expired password reminders.
+ */
+Schedule::command('auth:clear-reminders')->daily();
