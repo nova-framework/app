@@ -30,3 +30,4 @@ $router->get('language/{language}', function (Request $request, $language)
     return Redirect::back();
 
 })->where('language', '([a-z]{2})');
+
