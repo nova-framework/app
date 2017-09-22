@@ -7,3 +7,9 @@
  * @version 3.0
  *
  */
+
+
+/**
+ * Schedule the Mailer Spool queue flushing.
+ */
+Schedule::command('mailer:spool:flush')->everyMinute();
