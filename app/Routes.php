@@ -12,7 +12,8 @@
 /** Define static routes. */
 
 // Default Routing
-Route::any('', function() {
+Route::any('', function ()
+{
     $content = __('Yep! It works.');
 
     $view = View::make('Default')
@@ -23,7 +24,7 @@ Route::any('', function() {
 });
 
 // The Language Changer
-Route::any('language/{language}', array('before' => 'referer', function($language)
+Route::any('language/{language}', array('before' => 'referer', function ($language)
 {
     $languages = Config::get('languages');
 
@@ -37,5 +38,15 @@ Route::any('language/{language}', array('before' => 'referer', function($languag
     return Redirect::back();
 
 }))->where('language', '([a-z]{2})');
+
+// Show the PHP information
+Route::get('phpinfo', function ()
+{
+    ob_start();
+
+    phpinfo();
+
+    return Response::make(ob_get_clean(), 200);
+});
 
 /** End default Routes */
