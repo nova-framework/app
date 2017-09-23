@@ -31,3 +31,15 @@ $router->get('language/{language}', function (Request $request, $language)
 
 })->where('language', '([a-z]{2})');
 
+
+/**
+ * Show the PHP information
+ */
+Route::get('phpinfo', function ()
+{
+    ob_start();
+
+    phpinfo();
+
+    return Response::make(ob_get_clean(), 200);
+});
