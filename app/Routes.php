@@ -23,12 +23,15 @@ Route::any('', function ()
     return View::makeLayout('Welcome')->withContent($view);
 });
 
-// The Language Changer
-Route::any('language/{language}', array('before' => 'referer', function ($language)
+
+// The Language Changer.
+Route::get('language/{language}', function (Request $request, $language)
 {
+    $url = Config::get('app.url');
+
     $languages = Config::get('languages');
 
-    if (in_array($language, array_keys($languages))) {
+    if (array_key_exists($language, $languages) && Str::startsWith($request->header('referer'), $url)) {
         Session::set('language', $language);
 
         // Store also the current Language in a Cookie lasting five years.
@@ -37,7 +40,8 @@ Route::any('language/{language}', array('before' => 'referer', function ($langua
 
     return Redirect::back();
 
-}))->where('language', '([a-z]{2})');
+})->where('language', '([a-z]{2})');
+
 
 // Show the PHP information
 Route::get('phpinfo', function ()
