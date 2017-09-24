@@ -26,7 +26,7 @@ Route::any('/', function ()
 });
 
 
-// The Language Changer.
+// The Language Changer
 Route::get('language/{language}', function (Request $request, $language)
 {
     $url = Config::get('app.url');
