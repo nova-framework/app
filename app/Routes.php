@@ -14,7 +14,7 @@ use Nova\Http\Request;
 /** Define static routes. */
 
 // Default Routing
-Route::any('', function ()
+Route::any('/', function ()
 {
     $content = __('Yep! It works.');
 
