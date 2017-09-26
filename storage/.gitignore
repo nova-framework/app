@@ -1,6 +1,5 @@
 *
 !cache/
-!crons/
 !emails/
 !logs/
 !sessions/
