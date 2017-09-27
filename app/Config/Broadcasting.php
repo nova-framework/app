@@ -49,6 +49,10 @@ return array(
             'driver' => 'log',
         ),
 
+        'null' => array(
+            'driver' => 'null',
+        ),
+
     ),
 
 );

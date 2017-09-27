@@ -27,4 +27,14 @@ class Kernel extends ConsoleKernel
          // Schedule the flushing of expired password reminders.
         $schedule->command('auth:clear-reminders')->daily();
     }
+
+    /**
+     * Register the Closure based commands for the application.
+     *
+     * @return void
+     */
+    protected function commands()
+    {
+        require app_path('Console.php');
+    }
 }
