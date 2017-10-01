@@ -16,13 +16,11 @@ use Nova\Http\Request;
 // The Web Routes
 Route::any('/', function ()
 {
-    $content = __('Yep! It works.');
-
     $view = View::make('Default')
         ->shares('title', __('Welcome'))
-        ->withContent($content);
+        ->with('content', __('Yep! It works.'));
 
-    return View::makeLayout('Welcome')->withContent($view);
+    return View::makeLayout('Welcome')->with('content', $view);
 });
 
 
