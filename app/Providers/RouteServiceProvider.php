@@ -39,9 +39,14 @@ class RouteServiceProvider extends ServiceProvider
     {
         $path = realpath(__DIR__ .'/../');
 
+        $router->group(array('prefix' => 'api', 'middleware' => 'api', 'namespace' => $this->namespace), function ($router) use ($path)
+        {
+            require $path .DS .'Api.php';
+        });
+
         $router->group(array('middleware' => 'web', 'namespace' => $this->namespace), function ($router) use ($path)
         {
-            require $path .DS .'Routes.php';
+            require $path .DS .'Web.php';
         });
     }
 }
