@@ -13,7 +13,7 @@ use Nova\Http\Request;
 
 /** Define static routes. */
 
-// Default Routing
+// The Web Routes
 Route::any('/', function ()
 {
     $content = __('Yep! It works.');
@@ -24,6 +24,13 @@ Route::any('/', function ()
 
     return View::makeLayout('Welcome')->withContent($view);
 });
+
+
+// The API Routes
+Route::get('api/user', array('before' => 'auth:api', function (Request $request)
+{
+    return $request->user();
+}));
 
 
 // The Language Changer
