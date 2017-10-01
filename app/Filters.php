@@ -70,7 +70,7 @@ Route::filter('auth', function ($route, $request, $guard = null)
     }
 
     // The User is not authenticated.
-    else if ($request->ajax() || $request->wantsJson()) {
+    else if ($request->ajax() || $request->wantsJson() || $request->is('api/*')) {
         return Response::make('Unauthorized Access', 401);
     }
 
