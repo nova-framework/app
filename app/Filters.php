@@ -63,6 +63,9 @@ Route::filter('auth', function ($route, $request, $guard = null)
     $guard = $guard ?: Config::get('auth.defaults.guard', 'web');
 
     if (Auth::guard($guard)->check()) {
+        // User authenticated with this Guard, then we will use it as default.
+        Auth::shouldUse($guard);
+
         return;
     }
 
