@@ -3,6 +3,7 @@
 use Nova\Database\ORM\Model;
 use Nova\Database\Seeder;
 use Nova\Support\Facades\Hash;
+use Nova\Support\Str;
 
 use App\Models\User;
 
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder
             'realname'       => 'Site Administrator',
             'email'          => 'admin@novaframework.dev',
             'remember_token' => '',
+            'api_token'      => Str::random(60),
         ));
     }
 }
