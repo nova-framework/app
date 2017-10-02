@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console;
+namespace App\Foundation\Console;
 
 use Nova\Console\Scheduling\Schedule;
 use Nova\Foundation\Console\Kernel as ConsoleKernel;
@@ -26,6 +26,9 @@ class Kernel extends ConsoleKernel
     {
          // Schedule the flushing of expired password reminders.
         $schedule->command('auth:clear-reminders')->daily();
+
+        // Schedule the Database Backup.
+        $schedule->command('db:backup')->dailyAt('4:30');
     }
 
     /**
