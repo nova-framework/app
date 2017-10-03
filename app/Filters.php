@@ -37,7 +37,7 @@ App::after(function($request, $response)
  */
 
 // The CSRF Filter.
-Route::filter('csrf', function($route, $request)
+Route::filter('csrf', function ($route, $request)
 {
     // Retrieve the CSRF token from Request instance.
     $token = $request->ajax() ? $request->header('X-CSRF-Token') : $request->input('csrfToken');
@@ -64,9 +64,7 @@ Route::filter('auth', function ($route, $request, $guard = null)
 
     if (Auth::guard($guard)->check()) {
         // User authenticated with this Guard, then we will use it as default.
-        Auth::shouldUse($guard);
-
-        return;
+        return Auth::shouldUse($guard);
     }
 
     // The User is not authenticated.
