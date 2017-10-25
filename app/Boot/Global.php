@@ -1,6 +1,9 @@
 <?php
 
+use App\Modules\Platform\Models\Option;
+
 use Nova\Auth\Access\AuthorizationException;
+use Nova\Auth\Access\AuthenticationException;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
@@ -30,7 +33,7 @@ App::error(function (HttpException $e, $code)
     }
 
     // We'll create and return a themed Error Page as response.
-    $view = View::makeLayout('Default')
+    $view = View::makeLayout('Default', 'Bootstrap')
         ->shares('title', 'Error ' .$code)
         ->nest('content', 'Errors/' .$code, array('exception' => $e));
 
@@ -47,11 +50,26 @@ App::error(function (AuthorizationException $e, $code)
     // Get the Guard's dashboard path from configuration.
     $guard = Config::get('auth.defaults.guard', 'web');
 
-    $uri = Config::get("auth.guards.{$guard}.paths.dashboard", 'admin/dashboard');
+    $uri = Config::get("auth.guards.{$guard}.paths.dashboard", 'dashboard');
 
     $status = __('You are not authorized to access this resource.');
 
     return Redirect::to($uri)->withStatus($status, 'warning');
+});
+
+App::error(function (AuthenticationException $e, $code)
+{
+    if (Request::ajax() || Request::wantsJson() || Request::is('api/*')) {
+        // On an AJAX Request; we return a response: Error 403 (Access denied)
+        return Response::make(array('error' => $e->getMessage()), 403);
+    }
+
+    // Get the Guard's dashboard path from configuration.
+    $guard = Config::get('auth.defaults.guard', 'web');
+
+    $uri = Config::get("auth.guards.{$guard}.paths.authorize", 'login');
+
+    return Redirect::to($uri);
 });
 
 //--------------------------------------------------------------------------
@@ -62,6 +80,30 @@ App::down(function ()
 {
     return Response::make("Be right back!", 503);
 });
+
+//--------------------------------------------------------------------------
+// Load The Options
+//--------------------------------------------------------------------------
+
+if (CONFIG_STORE === 'database') {
+    // Retrieve the Option items, caching them for 24 hours.
+    $options = Cache::remember('system_options', 1440, function ()
+    {
+        return Option::getResults();
+    });
+
+    // Setup the information stored on the Option instances into Configuration.
+    foreach ($options as $option) {
+        list ($key, $value) = $option->getConfigItem();
+
+        Config::set($key, $value);
+    }
+}
+
+// If the CONFIG_STORE is not in 'files' mode, go Exception.
+else if(CONFIG_STORE !== 'files') {
+    throw new InvalidArgumentException('Invalid Config Store type.');
+}
 
 //--------------------------------------------------------------------------
 // Boot Stage Customization
@@ -88,20 +130,11 @@ define('SITETITLE', $app['config']['app.name']);
 define('LANGUAGE_CODE', $app['config']['app.locale']);
 
 /**
- * Set the default template.
+ * Set the default theme.
  */
-define('TEMPLATE', $app['config']['app.template']);
+define('THEME', $app['config']['app.theme']);
 
 /**
  * Set a Site administrator email address.
  */
 define('SITEEMAIL', $app['config']['app.email']);
-
-/**
- * Send a E-Mail to administrator (defined on SITEEMAIL) when a Error is logged.
- */
-/*
-use Shared\Log\Mailer as LogMailer;
-
-LogMailer::initHandler($app);
-*/
