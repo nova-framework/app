@@ -17,8 +17,10 @@ use Nova\Http\Request;
 /**
  * The Default Routes.
  */
-Route::any('/', function ()
+Route::any('/', function (Request $request)
 {
+    Event::fire('base.controller.initialize', array(null, $request));
+
     $view = View::make('Default')
         ->shares('title', __('Welcome'))
         ->with('content', __('Yep! It works.'));
