@@ -25,6 +25,8 @@ Event::listen('base.controller.initialize', function($controller, $request)
 
     View::share('version', $version);
 
-    // Share on Views the CSRF Token.
+    // Share on Views the CSRF Token and the current URI.
     View::share('csrfToken', Session::token());
+
+    View::share('currentUri', $request->path());
 });
