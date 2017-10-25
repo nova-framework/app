@@ -13,6 +13,7 @@
 
 use Nova\Http\Request;
 
+
 // The Default Routes
 Route::any('/', function ()
 {
