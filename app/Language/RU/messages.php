@@ -55,7 +55,8 @@ return array (
   'This could be the result of an invalid Page request.' => 'Это может быть результатом неверного запроса страницы.',
   'To reset your password, complete this form: {0}.' => 'Чтобы сбросить пароль, заполните эту форму: {0}',
   'Unauthorized' => 'Нет доступа',
+  'Validation Token has expired. Please try again!' => '',
   'Welcome' => 'Добро пожаловать!',
   'Yep! It works.' => 'Ага! Это работает.',
-  'Your session expired. Please try again!' => 'Ваша сессия закончилась.Пожалуйста, повторите снова',
+  'You are not authorized to access this resource.' => '',
 );
