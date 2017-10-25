@@ -14,7 +14,9 @@
 use Nova\Http\Request;
 
 
-// The Default Routes
+/**
+ * The Default Routes.
+ */
 Route::any('/', function ()
 {
     $view = View::make('Default')
@@ -22,6 +24,7 @@ Route::any('/', function ()
         ->with('content', __('Yep! It works.'));
     return View::makeLayout('Welcome')->with('content', $view);
 });
+
 
 /**
  * The Language Changer.
