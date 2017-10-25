@@ -14,8 +14,7 @@ use Nova\Routing\Controller;
 use Nova\Support\Contracts\RenderableInterface as Renderable;
 use Nova\Support\Facades\App;
 use Nova\Support\Facades\Config;
-use Nova\Support\Facades\Event;
-use Nova\Support\Facades\Request;
+use Nova\Support\Facades\Session;
 use Nova\Support\Facades\View;
 use Nova\View\Layout;
 
@@ -64,15 +63,8 @@ abstract class BaseController extends Controller
      */
     protected function initialize()
     {
-        $request = Request::instance();
-
-        // Broadcast the event of BaseController's initialization.
-        Event::fire('base.controller.initialize', array($request, $this, $this->action));
-
-        // Setup the used Theme to default, if it is not already defined.
-        if (! isset($this->theme)) {
-            $this->theme = Config::get('app.theme', 'Bootstrap');
-        }
+        // Share on Views the CSRF Token.
+        View::share('csrfToken', Session::token());
     }
 
     /**

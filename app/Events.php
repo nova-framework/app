@@ -14,7 +14,7 @@ use Nova\Http\Request;
 /** Define Events. */
 
 // Add a Listener Closure to the Event 'router.matched'.
-Event::listen('base.controller.initialize', function(Request $request)
+Event::listen('router.matched', function($route, Request $request)
 {
     // Share the Application version.
     $path = ROOTDIR .'VERSION.txt';

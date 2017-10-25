@@ -19,9 +19,6 @@ use Nova\Http\Request;
  */
 Route::any('/', function (Request $request)
 {
-    // We will fire this Event just to initialize the View variables for a themed page.
-    Event::fire('base.controller.initialize', array($request));
-
     $view = View::make('Default')
         ->shares('title', __('Welcome'))
         ->with('content', __('Yep! It works.'));
