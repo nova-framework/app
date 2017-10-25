@@ -37,7 +37,7 @@
     'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
 ))
 
-<!-- DO NOT DELETE! - Forensics Profiler -->
+<!-- DO NOT DELETE! - Profiler -->
 
 </body>
 </html>

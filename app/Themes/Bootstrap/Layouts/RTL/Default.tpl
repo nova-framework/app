@@ -37,7 +37,7 @@
     theme_url('js/bootstrap-rtl.min.js', 'Bootstrap'),
 ))
 
-<!-- DO NOT DELETE! - Forensics Profiler -->
+<!-- DO NOT DELETE! - Profiler -->
 
 </body>
 </html>
