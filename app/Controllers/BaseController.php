@@ -67,7 +67,7 @@ abstract class BaseController extends Controller
         $request = Request::instance();
 
         // Broadcast the event of BaseController's initialization.
-        Event::fire('base.controller.initialize', array($this, $request));
+        Event::fire('base.controller.initialize', array($request, $this, $this->action));
 
         // Setup the used Theme to default, if it is not already defined.
         if (! isset($this->theme)) {
