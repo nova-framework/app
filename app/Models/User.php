@@ -10,15 +10,13 @@ namespace App\Models;
 
 use Nova\Auth\UserTrait;
 use Nova\Auth\UserInterface;
-use Nova\Auth\Reminders\RemindableTrait;
-use Nova\Auth\Reminders\RemindableInterface;
 use Nova\Database\ORM\Model as BaseModel;
 use Nova\Foundation\Auth\Access\AuthorizableTrait;
 
 
 class User extends BaseModel implements UserInterface, RemindableInterface
 {
-    use UserTrait, RemindableTrait, AuthorizableTrait;
+    use UserTrait, AuthorizableTrait;
 
     //
     protected $table = 'users';
