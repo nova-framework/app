@@ -54,5 +54,4 @@ return array (
   'Validation Token has expired. Please try again!' => '',
   'Welcome' => 'Bienvenido',
   'Yep! It works.' => '',
-  'You are not authorized to access this resource.' => '',
 );
