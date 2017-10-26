@@ -1,13 +1,10 @@
 <?php
 
 return array (
-  'If you have problems, please paste the above URL into your web browser.' => '',
   'Internal Server Error' => '',
   'Method not allowed' => '',
-  'Password Reset' => '',
-  'Please verify your E-mail address' => '',
+  'Please login to access this resource.' => '',
   'Something has gone wrong on the Web Server.' => '',
-  'Thanks for creating an Account with the {0}. Please follow the link below to verify your email address: {1}' => '',
   'The :attribute and :other must be different.' => '',
   'The :attribute and :other must match.' => '',
   'The :attribute confirmation does not match.' => '',
@@ -53,7 +50,6 @@ return array (
   'The :attribute must have between :min and :max items.' => '',
   'The selected :attribute is invalid.' => '',
   'This could be the result of an invalid Page request.' => '',
-  'To reset your password, complete this form: {0}.' => '',
   'Unauthorized' => '',
   'Validation Token has expired. Please try again!' => '',
   'Welcome' => 'Willkommen',

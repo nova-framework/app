@@ -1,13 +1,10 @@
 <?php
 
 return array (
-  'If you have problems, please paste the above URL into your web browser.' => '',
   'Internal Server Error' => '',
   'Method not allowed' => '',
-  'Password Reset' => 'بازنشانی رمزعبور',
-  'Please verify your E-mail address' => '',
+  'Please login to access this resource.' => '',
   'Something has gone wrong on the Web Server.' => '',
-  'Thanks for creating an Account with the {0}. Please follow the link below to verify your email address: {1}' => 'بابت ایجاد حساب کاربری با {0} سپاس گذاریم. لطفا لینک زیر را جهت فعال سازی ایمیل خود کلیک کنید: {1}',
   'The :attribute and :other must be different.' => ':attribute و :other باید متفاوت باشد.',
   'The :attribute and :other must match.' => ':attribute و :other باید مطابقت داشته باشد.',
   'The :attribute confirmation does not match.' => 'تایید :attribute مطابقت ندارد.',
@@ -53,7 +50,6 @@ return array (
   'The :attribute must have between :min and :max items.' => ':attribute باید بین :min تا :max مورد باشد.',
   'The selected :attribute is invalid.' => ':attribute انتخابی نامعتبر است.',
   'This could be the result of an invalid Page request.' => '',
-  'To reset your password, complete this form: {0}.' => 'برای بازیابی رمز عبور خود، این فرم را کامل کنید: {0}.',
   'Unauthorized' => '',
   'Validation Token has expired. Please try again!' => '',
   'Welcome' => 'خوش آمدید',
