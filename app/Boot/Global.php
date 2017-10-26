@@ -56,9 +56,9 @@ App::error(function (Exception $e, $code)
     $request = Request::instance();
 
     if ($request->ajax() || $request->wantsJson() || $request->is('api/*')) {
-        $headers = array();
-
         $code = 403;
+
+        $headers = array();
 
         if ($e instanceof HttpException) {
             $code    = $e->getStatusCode();
