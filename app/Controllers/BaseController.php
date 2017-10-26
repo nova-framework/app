@@ -14,7 +14,6 @@ use Nova\Routing\Controller;
 use Nova\Support\Contracts\RenderableInterface as Renderable;
 use Nova\Support\Facades\App;
 use Nova\Support\Facades\Config;
-use Nova\Support\Facades\Session;
 use Nova\Support\Facades\View;
 use Nova\View\Layout;
 
@@ -63,8 +62,7 @@ abstract class BaseController extends Controller
      */
     protected function initialize()
     {
-        // Share on Views the CSRF Token.
-        View::share('csrfToken', Session::token());
+        //
     }
 
     /**
