@@ -62,7 +62,9 @@ abstract class BaseController extends Controller
      */
     protected function initialize()
     {
-        //
+        if (! isset($this->theme)) {
+            return $this->theme = Config::get('app.theme', 'Bootstrap');
+        }
     }
 
     /**
