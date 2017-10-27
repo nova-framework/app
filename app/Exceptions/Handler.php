@@ -11,6 +11,7 @@ use Nova\Support\Facades\Redirect;
 use Nova\Support\Facades\Response;
 use Nova\Support\Facades\View;
 
+use Symfony\Component\Debug\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Exception;
@@ -100,15 +101,10 @@ class Handler extends ExceptionHandler
      */
     protected function convertExceptionToResponse(Exception $e, Request $request)
     {
-        $code = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
-
-        $headers = method_exists($e, 'getHeaders') ? $e->getHeaders() : array();
-
-        // When the debugging is disabled, we will just render a HttpException.
         $debug = Config::get('app.debug');
 
         if (! $debug) {
-            $e = new HttpException($code, $e->getMessage(), $e, $headers, $e->getCode());
+            $e = FlattenException::create($e);
 
             return $this->renderHttpException($e, $request);
         }
