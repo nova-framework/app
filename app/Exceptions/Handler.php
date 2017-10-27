@@ -110,7 +110,7 @@ class Handler extends ExceptionHandler
         if (! $debug) {
             $e = new HttpException($code, $e->getMessage(), $e, $headers, $e->getCode());
 
-            return $this->renderHttpException($e);
+            return $this->renderHttpException($e, $request);
         }
 
         return parent::convertExceptionToResponse($e, $request);
