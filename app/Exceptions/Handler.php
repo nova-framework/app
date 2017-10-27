@@ -113,8 +113,6 @@ class Handler extends ExceptionHandler
             return $this->renderHttpException($e);
         }
 
-        // NOTE: This is the place to implement custom Exception Handlers, i.e. Whoops!
-
         return parent::convertExceptionToResponse($e, $request);
     }
 
