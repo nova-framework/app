@@ -1,9 +1,10 @@
 <?php
 
 return array (
+  'Be right back.' => '',
   'Internal Server Error' => 'Внутрення ошибка сервера',
   'Method not allowed' => 'Метод не разрешён',
-  'Please login to access this resource.' => '',
+  'Service unavailable' => '',
   'Something has gone wrong on the Web Server.' => 'На веб-сервере что-то пошло не так.',
   'The :attribute and :other must be different.' => ':attribute и :other должны быть разными',
   'The :attribute and :other must match.' => ':attribute и :other должны соответствовать',
