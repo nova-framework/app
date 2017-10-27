@@ -99,6 +99,14 @@ class Handler extends ExceptionHandler
      */
     protected function convertExceptionToResponse(Exception $e)
     {
+        $debug = Config::get('app.debug');
+
+        if (! $debug) {
+            $e = new HttpException(500, $e->getMessage(), $e, array(), $e->getCode());
+
+            return $this->renderHttpException($e);
+        }
+
         // This is the place to implement custom Exception Displayers, i.e. Whoops!
 
         return parent::convertExceptionToResponse($e);
