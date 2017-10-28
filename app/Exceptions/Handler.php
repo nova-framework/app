@@ -103,13 +103,13 @@ class Handler extends ExceptionHandler
     {
         $debug = Config::get('app.debug');
 
-        if ($debug) {
-            return parent::convertExceptionToResponse($e, $request);
+        if (! $debug) {
+            $e = FlattenException::create($e);
+
+            return $this->renderHttpException($e, $request);
         }
 
-        $e = FlattenException::create($e);
-
-        return $this->renderHttpException($e, $request);
+        return parent::convertExceptionToResponse($e, $request);
     }
 
     /**
