@@ -130,7 +130,6 @@ return array(
         'Nova\Session\SessionServiceProvider',
         'Nova\Language\LanguageServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
-        'Nova\Html\HtmlServiceProvider',
         'Nova\View\ViewServiceProvider',
 
         // The Forge Providers.
@@ -211,8 +210,6 @@ return array(
         'Validator'     => 'Nova\Support\Facades\Validator',
         'Log'           => 'Nova\Support\Facades\Log',
         'URL'           => 'Nova\Support\Facades\URL',
-        'Form'          => 'Nova\Support\Facades\Form',
-        'HTML'          => 'Nova\Support\Facades\HTML',
         'Layout'        => 'Nova\Support\Facades\Layout',
         'View'          => 'Nova\Support\Facades\View',
         'Cron'          => 'Nova\Support\Facades\Cron',
