@@ -36,7 +36,10 @@
         "psr-4": {
             "App\\" : "app/",
             "Shared\\" : "shared/"
-        }
+        },
+        "files": [
+            "shared/Support/helpers.php"
+        ]
     },
     "scripts": {
         "post-install-cmd": [
