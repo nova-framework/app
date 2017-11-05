@@ -32,13 +32,7 @@ class Pages extends BaseController
         $path = explode('/', $slug ?: 'home');
 
         // Compute the used variables.
-        $page = $path[0];
-
-        $subpage = isset($path[1]) ? $path[1] : null;
-
-        $title = Str::title(
-            str_replace(array('-', '_'), ' ', $subpage ?: $page)
-        );
+        list ($page, $subpage) = array_pad($path, 2, null);
 
         // Compute the full View name, i.e. 'about-us' -> 'Pages/AboutUs'
         array_unshift($path, 'pages');
@@ -50,8 +44,15 @@ class Pages extends BaseController
         }, $path));
 
         if (! View::exists($view)) {
-            throw new NotFoundHttpException($view);
+            // We will look for the Home view before to go Exception.
+            if (! View::exists($view = $view .'/Home')) {
+                throw new NotFoundHttpException($view);
+            }
         }
+
+        $title = Str::title(
+            str_replace(array('-', '_'), ' ', $subpage ?: ($page ?: 'home'))
+        );
 
         return View::make($view, compact('page', 'subpage'))
             ->shares('title', $title);
