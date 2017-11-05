@@ -17,8 +17,16 @@
 <body>
 
 <div class="container">
+
+@section('content')
     {{ $content }}
+@show
+
 </div>
+
+@section('footer')
+
+@show
 
 @assets('js', array(
     'https://code.jquery.com/jquery-1.12.4.min.js',
