@@ -17,7 +17,7 @@ class Pages extends BaseController
      *
      * @var string
      */
-    protected $theme = 'Bootstrap';
+    protected $theme = false; // Disable the Themes support.
 
     /**
      * The currently used Layout.
