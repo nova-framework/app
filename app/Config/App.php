@@ -37,7 +37,7 @@ return array(
     /**
      * The default Theme.
      */
-    'theme' => 'Bootstrap',
+    'theme' => false, // Disable the support for Themes.
 
     /**
      * The Backend's Color Scheme.
