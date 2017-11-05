@@ -15,16 +15,11 @@ use Nova\Http\Request;
 
 
 /**
- * The Default Routes.
+ * The static Pages.
  */
-Route::any('/', function (Request $request)
-{
-    $view = View::make('Default')
-        ->shares('title', __('Welcome'))
-        ->with('content', __('Yep! It works.'));
+$router->get('/', 'Pages@display');
 
-    return View::makeLayout('Welcome')->with('content', $view);
-});
+$router->get('pages/{slug}', 'Pages@display')->where('slug', '(.*)');
 
 
 /**
