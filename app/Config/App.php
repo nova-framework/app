@@ -160,16 +160,6 @@ return array(
      * The registered Class Aliases.
      */
     'aliases' => array(
-        // The Helpers.
-        'Date'          => 'Nova\Helpers\Date',
-        'Document'      => 'Nova\Helpers\Document',
-        'Ftp'           => 'Nova\Helpers\Ftp',
-        'GeoCode'       => 'Nova\Helpers\GeoCode',
-        'Number'        => 'Nova\Helpers\Number',
-        'ReservedWords' => 'Nova\Helpers\ReservedWords',
-        'SimpleCurl'    => 'Nova\Helpers\SimpleCurl',
-        'Tags'          => 'Nova\Helpers\Tags',
-
         // The Forensics Console.
         'Console'       => 'Nova\Forensics\Console',
 
