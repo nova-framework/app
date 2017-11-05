@@ -55,6 +55,4 @@ return array (
   'This could be the result of an invalid Page request.' => 'Это может быть результатом неверного запроса страницы.',
   'Unauthorized' => 'Нет доступа',
   'Validation Token has expired. Please try again!' => '',
-  'Welcome' => 'Добро пожаловать!',
-  'Yep! It works.' => 'Ага! Это работает.',
 );
