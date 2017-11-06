@@ -14,7 +14,7 @@ use Nova\Database\ORM\Model as BaseModel;
 use Nova\Foundation\Auth\Access\AuthorizableTrait;
 
 
-class User extends BaseModel implements UserInterface, RemindableInterface
+class User extends BaseModel implements UserInterface
 {
     use UserTrait, AuthorizableTrait;
 
