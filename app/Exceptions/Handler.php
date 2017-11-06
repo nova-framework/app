@@ -1,13 +1,18 @@
 <?php
 
-namespace App\Foundation\Exceptions;
+namespace App\Exceptions;
 
 use Nova\Auth\AuthenticationException;
 use Nova\Foundation\Exceptions\Handler as ExceptionHandler;
+use Nova\Http\Request;
 use Nova\Session\TokenMismatchException;
-use Nova\Support\Facades\View;
+use Nova\Support\Facades\Config;
 use Nova\Support\Facades\Redirect;
 use Nova\Support\Facades\Response;
+use Nova\Support\Facades\View;
+
+use Symfony\Component\Debug\Exception\FlattenException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 use Exception;
 
@@ -57,7 +62,7 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $e
      * @return \Nova\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render(Request $request, Exception $e)
     {
         if ($e instanceof TokenMismatchException) {
             return Redirect::back()
@@ -65,20 +70,47 @@ class Handler extends ExceptionHandler
                 ->with('danger', __('Validation Token has expired. Please try again!'));
         }
 
-        // If we got a HttpException, we will render a themed error page.
-        else if ($this->isHttpException($e)) {
-            $status = $e->getStatusCode();
+        return parent::render($request, $e);
+    }
 
-            if (View::exists("Errors/{$status}")) {
-                $view = View::make('Layouts/Default')
-                    ->shares('title', "Error {$status}")
-                    ->nest('content', "Errors/{$status}", array('exception' => $e));
+    /**
+     * Render the given HttpException.
+     *
+     * @param  \Symfony\Component\HttpKernel\Exception\HttpException  $e
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function renderHttpException(HttpException $e, Request $request)
+    {
+        $status = $e->getStatusCode();
 
-                return Response::make($view->render(), $status, $e->getHeaders());
-            }
+        if (View::exists("Errors/{$status}")) {
+            $view = View::makeLayout('Default', 'Bootstrap')
+                ->shares('title', "Error {$status}")
+                ->nest('content', "Errors/{$status}", array('exception' => $e));
+
+            return Response::make($view->render(), $status, $e->getHeaders());
         }
 
-        return parent::render($request, $e);
+        return parent::renderHttpException($e, $request);
+    }
+
+    /**
+     * Convert the given exception into a Response instance.
+     *
+     * @param  \Exception  $e
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    protected function convertExceptionToResponse(Exception $e, Request $request)
+    {
+        $debug = Config::get('app.debug');
+
+        if (! $debug && View::exists("Errors/500")) {
+            $e = FlattenException::create($e);
+
+            return $this->renderHttpException($e, $request);
+        }
+
+        return parent::convertExceptionToResponse($e, $request);
     }
 
     /**
@@ -88,12 +120,19 @@ class Handler extends ExceptionHandler
      * @param  \Nova\Auth\AuthenticationException  $exception
      * @return \Nova\Http\Response
      */
-    protected function unauthenticated($request, AuthenticationException $exception)
+    protected function unauthenticated(Request $request, AuthenticationException $exception)
     {
         if ($request->ajax() || $request->wantsJson() || $request->is('api/*')) {
             return Response::json(array('error' => 'Unauthenticated.'), 401);
         }
 
-        return Redirect::guest('login');
+        $guards = $exception->guards();
+
+        // We will use the first guard.
+        $guard = array_shift($guards);
+
+        $uri = Config::get("auth.guards.{$guard}.paths.authorize", 'login');
+
+        return Redirect::guest($uri);
     }
 }
