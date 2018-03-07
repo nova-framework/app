@@ -37,7 +37,7 @@ return array(
     /**
      * The default Theme.
      */
-    'theme' => false, // Disable the support for Themes.
+    'theme' => 'Bootstrap',
 
     /**
      * The Backend's Color Scheme.
@@ -116,21 +116,26 @@ return array(
      */
     'providers' => array(
         'Nova\Auth\AuthServiceProvider',
+        'Nova\Bus\BusServiceProvider',
         'Nova\Cache\CacheServiceProvider',
         'Nova\Routing\RoutingServiceProvider',
         'Nova\Cookie\CookieServiceProvider',
-        'Nova\Modules\ModuleServiceProvider',
+        //'Nova\Module\ModuleServiceProvider',
+        'Nova\Package\PackageServiceProvider',
         'Nova\Database\DatabaseServiceProvider',
         'Nova\Encryption\EncryptionServiceProvider',
         'Nova\Filesystem\FilesystemServiceProvider',
         'Nova\Hashing\HashServiceProvider',
         'Nova\Mail\MailServiceProvider',
         'Nova\Pagination\PaginationServiceProvider',
+        'Nova\Queue\QueueServiceProvider',
         'Nova\Redis\RedisServiceProvider',
         'Nova\Session\SessionServiceProvider',
         'Nova\Language\LanguageServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
         'Nova\View\ViewServiceProvider',
+        'Nova\Broadcasting\BroadcastServiceProvider',
+        'Nova\Notification\NotificationServiceProvider',
 
         // The Forge Providers.
         'Nova\Cache\ConsoleServiceProvider',
@@ -138,32 +143,27 @@ return array(
         'Nova\Foundation\Providers\ForgeServiceProvider',
         'Nova\Database\MigrationServiceProvider',
         'Nova\Database\SeedServiceProvider',
-        'Nova\Modules\Providers\ConsoleServiceProvider',
-        'Nova\Modules\Providers\GeneratorServiceProvider',
+        'Nova\Package\ConsoleServiceProvider',
         'Nova\Routing\ConsoleServiceProvider',
         'Nova\Session\ConsoleServiceProvider',
-        'Nova\View\ConsoleServiceProvider',
 
         // The Application Providers.
         'App\Providers\AppServiceProvider',
         'App\Providers\AuthServiceProvider',
         'App\Providers\EventServiceProvider',
         'App\Providers\RouteServiceProvider',
-        'App\Providers\ThemeServiceProvider',
+        'App\Providers\BroadcastServiceProvider',
     ),
 
     /**
      * The Service Providers Manifest path.
      */
-    'manifest' => ROOTDIR .'storage',
+    'manifest' => BASEPATH .'storage',
 
     /**
      * The registered Class Aliases.
      */
     'aliases' => array(
-        // The Forensics Console.
-        'Console'       => 'Nova\Forensics\Console',
-
         // The Support Classes.
         'Arr'           => 'Nova\Support\Arr',
         'Assets'        => 'Nova\Support\Assets',
@@ -175,6 +175,8 @@ return array(
         // The Support Facades.
         'App'           => 'Nova\Support\Facades\App',
         'Auth'          => 'Nova\Support\Facades\Auth',
+        'Broadcast'     => 'Nova\Support\Facades\Broadcast',
+        'Bus'           => 'Nova\Support\Facades\Bus',
         'Cache'         => 'Nova\Support\Facades\Cache',
         'Config'        => 'Nova\Support\Facades\Config',
         'Cookie'        => 'Nova\Support\Facades\Cookie',
@@ -188,7 +190,9 @@ return array(
         'Input'         => 'Nova\Support\Facades\Input',
         'Language'      => 'Nova\Support\Facades\Language',
         'Mailer'        => 'Nova\Support\Facades\Mailer',
+        'Notification'  => 'Nova\Support\Facades\Notification',
         'Paginator'     => 'Nova\Support\Facades\Paginator',
+        'Queue'         => 'Nova\Support\Facades\Queue',
         'Redirect'      => 'Nova\Support\Facades\Redirect',
         'Redis'         => 'Nova\Support\Facades\Redis',
         'Request'       => 'Nova\Support\Facades\Request',
@@ -202,8 +206,7 @@ return array(
         'URL'           => 'Nova\Support\Facades\URL',
         'Template'      => 'Nova\Support\Facades\Template',
         'View'          => 'Nova\Support\Facades\View',
-        'Cron'          => 'Nova\Support\Facades\Cron',
-        'Module'        => 'Nova\Support\Facades\Module',
+        'Package'       => 'Nova\Support\Facades\Package',
     ),
 
 );

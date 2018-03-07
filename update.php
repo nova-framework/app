@@ -3,7 +3,7 @@
 
 define("DS", DIRECTORY_SEPARATOR);
 
-define("BASEPATH", dirname(dirname(__FILE__)) .DS);
+define("BASEPATH", dirname(__FILE__) .DS);
 
 $languages = array(
     'cs',
@@ -53,23 +53,35 @@ function phpGrep($q, $path) {
     return $ret;
 }
 
-if(is_dir(BASEPATH .'app'.DS.'Modules')) {
-    $path = str_replace('/', DS, BASEPATH .'app/Modules/*');
+if (is_dir(BASEPATH .'modules')) {
+    $path = str_replace('/', DS, BASEPATH .'modules/*');
 
-    $dirs = glob($path , GLOB_ONLYDIR);
+    $paths = glob($path, GLOB_ONLYDIR);
 
-    foreach($dirs as $module) {
-        $workPaths[] = str_replace('/', DS, 'app/Modules/'.basename($module));
+    foreach($paths as $path) {
+        $workPaths[] = str_replace('/', DS, 'modules/' .basename($path));
     }
 }
 
-if(is_dir(BASEPATH .'app'.DS.'Themes')) {
-    $path = str_replace('/', DS, BASEPATH .'app/Themes/*');
+if (is_dir(BASEPATH .'themes')) {
+    $path = str_replace('/', DS, BASEPATH .'themes/*');
 
-    $dirs = glob($path , GLOB_ONLYDIR);
+    $paths = glob($path , GLOB_ONLYDIR);
 
-    foreach($dirs as $template) {
-        $workPaths[] = str_replace('/', DS, 'app/Themes/'.basename($template));
+    foreach($paths as $path) {
+        $workPaths[] = str_replace('/', DS, 'themes/' .basename($path));
+    }
+}
+
+if(is_dir(BASEPATH .'packages')) {
+    $path = str_replace('/', DS, BASEPATH .'packages/*');
+
+    $paths = glob($path , GLOB_ONLYDIR);
+
+    foreach($paths as $path) {
+        $package = basename($path);
+
+        $workPaths[] = str_replace('/', DS, 'packages/' .$package .'/src');
     }
 }
 

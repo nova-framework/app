@@ -1,6 +1,6 @@
 <?php
 /**
- * Users - A Users Model.
+ * Users - An Users Model.
  *
  * @author Virgil-Adrian Teaca - virgil@giulianaeassociati.com
  * @version 3.0

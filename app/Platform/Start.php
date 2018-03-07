@@ -34,13 +34,13 @@ if (function_exists('mb_internal_encoding')) {
 // Set The System Path
 //--------------------------------------------------------------------------
 
-define('SYSTEMDIR', ROOTDIR .str_replace('/', DS, 'vendor/nova-framework/system/'));
+define('SYSPATH', BASEPATH .str_replace('/', DS, 'vendor/nova-framework/system/'));
 
 //--------------------------------------------------------------------------
 // Set The Storage Path
 //--------------------------------------------------------------------------
 
-define('STORAGE_PATH', ROOTDIR .'storage' .DS);
+define('STORAGE_PATH', BASEPATH .'storage' .DS);
 
 //--------------------------------------------------------------------------
 // Set The Framework Version
@@ -52,7 +52,7 @@ define('VERSION', Application::version());
 // Load Global Configuration
 //--------------------------------------------------------------------------
 
-$path = APPDIR .'Config.php';
+$path = APPPATH .'Config.php';
 
 if (is_readable($path)) require $path;
 
@@ -79,9 +79,9 @@ $env = $app->detectEnvironment(array(
 //--------------------------------------------------------------------------
 
 $paths = array(
-    'base'    => ROOTDIR,
-    'app'     => APPDIR,
-    'public'  => PUBLICDIR,
+    'base'    => BASEPATH,
+    'app'     => APPPATH,
+    'public'  => WEBPATH,
     'storage' => STORAGE_PATH,
 );
 
@@ -98,7 +98,7 @@ $app->instance('app', $app);
 //--------------------------------------------------------------------------
 
 $app->singleton(
-    'Nova\Foundation\Contracts\ExceptionHandlerInterface', 'App\Exceptions\Handler'
+    'Nova\Foundation\Contracts\ExceptionHandlerInterface', 'App\Platform\Exceptions\Handler'
 );
 
 //--------------------------------------------------------------------------
@@ -203,7 +203,7 @@ if (is_readable($path)) require $path;
 // Load The Environment Start Script
 //--------------------------------------------------------------------------
 
-$path = $app['path'] .DS .'Environment' .DS .ucfirst($env) .'.php';
+$path = $app['path'] .DS .'Platform' .DS .'Environment' .DS .ucfirst($env) .'.php';
 
 if (is_readable($path)) require $path;
 

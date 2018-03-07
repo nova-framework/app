@@ -17,10 +17,9 @@ use Nova\Http\Request;
 /**
  * The static Pages.
  */
-$router->get('/', 'Pages@display');
+Route::get('/', 'Pages@show');
 
-$router->get('pages/{slug}', 'Pages@display')->where('slug', '(.*)');
-
+Route::get('pages/{slug}', 'Pages@show')->where('slug', '(.*)');
 
 /**
  * The Language Changer.

@@ -27,21 +27,29 @@ class Pages extends BaseController
     protected $layout = 'Static';
 
 
-    public function display($slug = null)
+    public function show($slug = null)
     {
-        $path = explode('/', $slug ?: 'home');
+        list ($view, $title) = $this->parseSlug($slug, 'pages');
 
-        // Compute the used variables.
-        list ($page, $subpage) = array_pad($path, 2, null);
+        return View::make($view)
+            ->shares('title', ($title != 'Pages') ? $title : 'Home');
+    }
+
+    protected function parseSlug($slug, $type)
+    {
+        $segments = explode('/', $slug, 2);
+
+        // Compute the page and subpage.
+        list ($page, $subpage) = array_pad($segments, 2, null);
 
         // Compute the full View name, i.e. 'about-us' -> 'Pages/AboutUs'
-        array_unshift($path, 'pages');
+        array_unshift($segments, $type);
 
         $view = implode('/', array_map(function ($value)
         {
             return Str::studly($value);
 
-        }, $path));
+        }, $segments));
 
         if (! View::exists($view)) {
             // We will look for the Home view before to go Exception.
@@ -51,10 +59,9 @@ class Pages extends BaseController
         }
 
         $title = Str::title(
-            str_replace(array('-', '_'), ' ', $subpage ?: ($page ?: 'home'))
+            str_replace(array('-', '_'), ' ', $subpage ?: ($page ?: $type))
         );
 
-        return View::make($view, compact('page', 'subpage'))
-            ->shares('title', $title);
+        return array($view, $title);
     }
 }

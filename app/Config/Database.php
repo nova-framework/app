@@ -19,7 +19,7 @@ return array(
     'connections' => array(
         'sqlite' => array(
             'driver'    => 'sqlite',
-            'database'  => APPDIR .'Storage' .DS .'database.sqlite',
+            'database'  => BASEPATH .'storage' .DS .'database.sqlite',
             'prefix'    => '',
         ),
         'mysql' => array(
@@ -46,4 +46,19 @@ return array(
 
     // Migration Repository Table
     'migrations' => 'migrations',
+
+    // Database Backup
+    'backup' => array(
+        // The path where database dumps are stored.
+        'path'  => APPPATH .'Database' .DS .'Backup',
+
+        // The paths to the MySQL tools used by Forge.
+        'mysql' => array(
+            'dumpCommandPath'    => '/usr/bin/mysqldump',
+            'restoreCommandPath' => '/usr/bin/mysql',
+        ),
+
+        // Whether or not the dump file is compressed.
+        'compress' => true,
+    ),
 );
