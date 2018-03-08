@@ -96,7 +96,7 @@ return array(
             'Nova\Foundation\Http\Middleware\SetupLanguage',
             'Nova\View\Middleware\ShareErrorsFromSession',
             'App\Middleware\VerifyCsrfToken',
-            'App\Middleware\MarkNotificationAsRead',
+            //'App\Middleware\MarkNotificationAsRead',
         ),
         'api' => array(
             'throttle:60,1',
@@ -121,7 +121,6 @@ return array(
         'Nova\Cache\CacheServiceProvider',
         'Nova\Routing\RoutingServiceProvider',
         'Nova\Cookie\CookieServiceProvider',
-        //'Nova\Module\ModuleServiceProvider',
         'Nova\Package\PackageServiceProvider',
         'Nova\Database\DatabaseServiceProvider',
         'Nova\Encryption\EncryptionServiceProvider',
