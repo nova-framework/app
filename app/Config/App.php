@@ -40,11 +40,6 @@ return array(
     'theme' => 'Bootstrap',
 
     /**
-     * The Backend's Color Scheme.
-     */
-    'color_scheme' => 'blue',
-
-    /**
      * The default locale that will be used by the translation.
      */
     'locale' => 'en',
@@ -74,7 +69,7 @@ return array(
     |
     */
 
-    'log' => 'daily',
+    'log' => 'single',
 
     /**
      * The Application's Middleware stack.
