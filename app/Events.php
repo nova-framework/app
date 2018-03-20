@@ -7,11 +7,6 @@
  *
  */
 
-use Nova\Http\Request;
-
-
-/** Define Events. */
-
 // Add a Listener to the Event 'nova.queue.looping', to check the database connection.
 Event::listen('nova.queue.looping', function ($connection, $queue)
 {
