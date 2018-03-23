@@ -72,7 +72,7 @@ class BaseController extends Controller
             return;
         }
 
-        // A valid Theme name is configured.
+        // A Theme is configured for this Controller.
         else if (! Str::contains($theme = $this->theme, '/')) {
             $theme = 'Themes/' .$theme;
         }
