@@ -35,9 +35,9 @@ return array(
     'name' => 'Nova 4.0',
 
     /**
-     * The default Theme.
+     * The name of default Theme or false for disabling the usage of Themes.
      */
-    'theme' => 'Bootstrap',
+    'theme' => false,
 
     /**
      * The default locale that will be used by the translation.
