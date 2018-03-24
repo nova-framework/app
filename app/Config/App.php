@@ -126,7 +126,7 @@ return array(
         'Nova\Queue\QueueServiceProvider',
         'Nova\Redis\RedisServiceProvider',
         'Nova\Session\SessionServiceProvider',
-        'Nova\Language\LanguageServiceProvider',
+        'Nova\Localization\LocalizationServiceProvider',
         'Nova\Validation\ValidationServiceProvider',
         'Nova\View\ViewServiceProvider',
         'Nova\Broadcasting\BroadcastServiceProvider',
