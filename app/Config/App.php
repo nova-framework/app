@@ -138,6 +138,7 @@ return array(
         'Nova\Foundation\Providers\ForgeServiceProvider',
         'Nova\Database\MigrationServiceProvider',
         'Nova\Database\SeedServiceProvider',
+        'Nova\Localization\ConsoleServiceProvider',
         'Nova\Package\ConsoleServiceProvider',
         'Nova\Routing\ConsoleServiceProvider',
         'Nova\Session\ConsoleServiceProvider',
