@@ -2,9 +2,9 @@
 
 return array (
   'Bad Request' => 'Неправильный запрос',
-  'Be right back.' => '',
-  'Elapsed Time: <b>{0}</b> sec | Memory Usage: <b>{1}</b> | SQL: <b>{2}</b> {3, plural, one{query} other{queries}} | UMAX: <b>{4}</b>' => '',
-  'Elapsed Time: <b>{0}</b> sec | Memory Usage: <b>{1}</b> | UMAX: <b>{2}</b>' => '',
+  'Be right back.' => 'Вернитесь к нам немного позже',
+  'Elapsed Time: <b>{0}</b> sec | Memory Usage: <b>{1}</b> | SQL: <b>{2}</b> {3, plural, one{query} other{queries}} | UMAX: <b>{4}</b>' => 'Время генерации: <b>{0}</b> sec | Используемая память: <b>{1}</b> | SQL: <b>{2}</b> {3, plural, one{query} other{queries}} | UMAX: <b>{4}</b>',
+  'Elapsed Time: <b>{0}</b> sec | Memory Usage: <b>{1}</b> | UMAX: <b>{2}</b>' => 'Время генерации: <b>{0}</b> sec | Используемая память: <b>{1}</b> | UMAX: <b>{2}</b>',
   'Forbidden' => 'Запрещено',
   'Go to our home page and navigate to the content in question.' => 'Перейдите на нашу домашнюю страницу к соответствующему контенту.',
   'Hello!' => 'Привет',
@@ -66,5 +66,5 @@ return array (
   'Troubleshooting' => 'Исправление проблем',
   'Unauthorized' => 'Неразрешенный',
   'Validation Token has expired. Please try again!' => 'Токен проверки просрочен. Пожалуйста, попробуйте еще раз!',
-  'Whoops!' => '',
+  'Whoops!' => 'Упс!',
 );
