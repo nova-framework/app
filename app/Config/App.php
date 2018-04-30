@@ -116,7 +116,7 @@ return array(
         'Nova\Cache\CacheServiceProvider',
         'Nova\Routing\RoutingServiceProvider',
         'Nova\Cookie\CookieServiceProvider',
-        'Nova\Package\PackageServiceProvider',
+        'Nova\Packages\PackageServiceProvider',
         'Nova\Database\DatabaseServiceProvider',
         'Nova\Encryption\EncryptionServiceProvider',
         'Nova\Filesystem\FilesystemServiceProvider',
@@ -130,7 +130,7 @@ return array(
         'Nova\Validation\ValidationServiceProvider',
         'Nova\View\ViewServiceProvider',
         'Nova\Broadcasting\BroadcastServiceProvider',
-        'Nova\Notification\NotificationServiceProvider',
+        'Nova\Notifications\NotificationServiceProvider',
 
         // The Forge Providers.
         'Nova\Cache\ConsoleServiceProvider',
@@ -139,7 +139,7 @@ return array(
         'Nova\Database\MigrationServiceProvider',
         'Nova\Database\SeedServiceProvider',
         'Nova\Localization\ConsoleServiceProvider',
-        'Nova\Package\ConsoleServiceProvider',
+        'Nova\Packages\ConsoleServiceProvider',
         'Nova\Routing\ConsoleServiceProvider',
         'Nova\Session\ConsoleServiceProvider',
 
