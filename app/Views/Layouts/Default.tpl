@@ -16,7 +16,7 @@ echo Asset::render('css', array(
 
 echo Asset::position('header', 'css');
 
-echo Asset::position('header', 'css');
+echo Asset::position('header', 'js');
 
 @endphp
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
