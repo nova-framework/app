@@ -1,6 +1,7 @@
 <?php
 
 return array (
+  '&laquo; Previous' => '',
   'Bad Request' => '',
   'Be right back.' => '',
   'Elapsed Time: <b>{0}</b> sec | Memory Usage: <b>{1}</b> | SQL: <b>{2}</b> {3, plural, one{query} other{queries}} | UMAX: <b>{4}</b>' => '',
@@ -12,6 +13,7 @@ return array (
   'If you\'re having trouble clicking the "{0}" button, copy and paste the URL below into your web browser:' => '',
   'Internal Server Error' => 'خطای داخلی سرور',
   'Method not allowed' => '',
+  'Next &raquo;' => '',
   'Referrer: {0}' => 'ارجاع: {0}',
   'Regards,' => '',
   'Service unavailable' => '',
