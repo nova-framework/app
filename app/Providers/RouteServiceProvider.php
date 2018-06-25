@@ -54,5 +54,4 @@ class RouteServiceProvider extends ServiceProvider
             require $path .DS .'Web.php';
         });
     }
-
 }
