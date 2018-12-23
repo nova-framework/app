@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
             'username'       => 'admin',
             'password'       => Hash::make('admin'),
             'realname'       => 'Site Administrator',
-            'email'          => 'admin@novaframework.dev',
+            'email'          => 'admin@novaframework.local',
             'remember_token' => '',
             'api_token'      => Str::random(60),
         ));
