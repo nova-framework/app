@@ -52,7 +52,7 @@ This framework was designed and is **strongly recommended** to be installed abov
 Additionally, installing in a sub-directory, on a production server, will introduce severe security issues. If there is no choice still place the framework files above the document root and have only index.php and .htacess from the public folder in the sub folder and adjust the paths accordingly.
 
 #### Recommended
-The framework is located on [Packagist](https://packagist.org/packages/nova-framework/framework).
+The framework is located on [Packagist](https://packagist.org/packages/nova-framework/app).
 
 You can install the framework from a terminal by using:
 
