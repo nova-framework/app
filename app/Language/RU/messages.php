@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  '&laquo; Previous' => '',
+  '&laquo; Previous' => 'Назад',
   'Bad Request' => 'Неправильный запрос',
   'Be right back.' => 'Вернитесь к нам немного позже',
   'Elapsed Time: <b>{0}</b> sec | Memory Usage: <b>{1}</b> | SQL: <b>{2}</b> {3, plural, one{query} other{queries}} | UMAX: <b>{4}</b>' => 'Время генерации: <b>{0}</b> sec | Используемая память: <b>{1}</b> | SQL: <b>{2}</b> {3, plural, one{query} other{queries}} | UMAX: <b>{4}</b>',
@@ -13,7 +13,7 @@ return array (
   'If you\'re having trouble clicking the "{0}" button, copy and paste the URL below into your web browser:' => 'Если у вас возникли проблемы с нажатием кнопки «{0}», скопируйте и вставьте указанный ниже URL-адрес в свой веб-браузер:',
   'Internal Server Error' => 'Внутрення ошибка сервера',
   'Method not allowed' => 'Метод не разрешен',
-  'Next &raquo;' => '',
+  'Next &raquo;' => 'Вперёд',
   'Referrer: {0}' => 'Ссылающийся: {0}',
   'Regards,' => 'С уважением',
   'Service unavailable' => 'Сервис недоступен',
