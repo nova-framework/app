@@ -27,6 +27,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot($router);
 
         //
+        $this->loadAssetRoutes();
     }
 
     /**
@@ -48,5 +49,18 @@ class RouteServiceProvider extends ServiceProvider
         {
             require $path .DS .'Web.php';
         });
+    }
+
+
+    /**
+     * Define the asset routes for the application.
+     *
+     * @return void
+     */
+    protected function loadAssetRoutes()
+    {
+        $dispatcher = $this->app['assets.dispatcher'];
+
+        require app_path('Routes') .DS .'Assets.php';
     }
 }
