@@ -69,7 +69,7 @@ return array(
      */
     'middleware' => array(
         'Nova\Foundation\Http\Middleware\CheckForMaintenanceMode',
-        'Nova\Assets\Middleware\DispatchAssetFiles',
+        'Nova\Routing\Middleware\DispatchAssetFiles',
     ),
 
     /**
