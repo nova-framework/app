@@ -27,7 +27,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot($router);
 
         //
-        $this->loadAssetRoutes();
+        $this->registerAssetRoutes();
     }
 
     /**
@@ -57,7 +57,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function loadAssetRoutes()
+    protected function registerAssetRoutes()
     {
         $dispatcher = $this->app['assets.dispatcher'];
 
