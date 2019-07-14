@@ -25,7 +25,7 @@ return array(
     /**
      * Website Name.
      */
-    'name' => 'Nova 4.1',
+    'name' => 'Nova 4.2',
 
     /**
      * The name of default Theme or false for disabling the usage of Themes.
