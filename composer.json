@@ -1,8 +1,8 @@
 {
-    "name": "nova-framework/framework",
+    "name": "nova-framework/app",
     "type": "project",
-    "description": "Framework for PHP 7.1+",
-    "homepage": "https://github.com/nova-framework/framework",
+    "description": "The Application for Nova Framework 4.1.x",
+    "homepage": "https://github.com/nova-framework/app",
     "license": "MIT",
     "authors": [
         {
