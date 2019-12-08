@@ -26,16 +26,6 @@ Forge::command('app:install', function ()
 
 })->describe('Run all database migrations and seed it with records');
 
-Forge::command('app:refresh', function ()
-{
-    $this->call('migrate:refresh', array('--seed' => true));
-
-    //
-    $this->call('package:migrate:reset');
-    $this->call('package:migrate');
-    $this->call('package:seed');
-
-})->describe('Reset and re-run all database migrations, then seed it with records');
 
 Forge::command('queue:monitor', function ()
 {
